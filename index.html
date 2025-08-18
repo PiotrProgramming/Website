@@ -48,20 +48,12 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            color: white;
-            font-weight: bold;
-            font-size: 1.5rem;
         }
         
         .logo img {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: auto;
             object-fit: contain;
-            border-radius: 50%;
-            background-color: white;
-            padding: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         
         .nav-links {
@@ -324,8 +316,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            cursor: pointer;
         }
         
         .why-us-card:hover {
@@ -353,6 +344,18 @@
         .why-us-card p {
             color: #6b7280;
             line-height: 1.5;
+        }
+        
+        .why-us-description {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .why-us-card.active .why-us-description {
+            display: block;
         }
         
         /* Offer Section */
@@ -482,9 +485,9 @@
         }
         
         .footer-logo img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            width: 150px;
+            height: auto;
+            object-fit: contain;
         }
         
         .footer-about p {
@@ -626,6 +629,10 @@
             .section-description {
                 font-size: 1rem;
             }
+            
+            .logo img {
+                width: 150px;
+            }
         }
     </style>
 </head>
@@ -710,47 +717,65 @@
         <p class="section-description">Nasz świat to projekty naszych klientów i codzienne starania aby stale pozytywnie zaskakiwać Was naszym zaangażowaniem.</p>
         
         <div class="why-us-container">
-            <div class="why-us-card">
+            <div class="why-us-card" onclick="toggleCard(this)">
                 <div class="why-us-icon">
                     <i class="fas fa-user-tie"></i>
                 </div>
                 <h3>Indywidualne podejście</h3>
                 <p>Dostosowujemy się do specyficznych potrzeb każdego klienta</p>
+                <div class="why-us-description">
+                    <p>Każdy klient otrzymuje spersonalizowaną ofertę dopasowaną do jego indywidualnych potrzeb logistycznych. Analizujemy charakter towaru, częstotliwość przewozów oraz specjalne wymagania, aby zapewnić optymalne rozwiązanie.</p>
+                </div>
             </div>
-            <div class="why-us-card">
+            <div class="why-us-card" onclick="toggleCard(this)">
                 <div class="why-us-icon">
                     <i class="fas fa-sync-alt"></i>
                 </div>
                 <h3>Elastyczność i skuteczność</h3>
                 <p>Szybkie reagowanie na zmieniające się wymagania</p>
+                <div class="why-us-description">
+                    <p>Nasz zespół jest gotowy do szybkiego reagowania na zmieniające się potrzeby klientów. Oferujemy elastyczne harmonogramy przewozów, możliwość szybkiej rezerwacji transportu oraz wsparcie 24/7 dla kluczowych przesyłek.</p>
+                </div>
             </div>
-            <div class="why-us-card">
+            <div class="why-us-card" onclick="toggleCard(this)">
                 <div class="why-us-icon">
                     <i class="fas fa-file-invoice-dollar"></i>
                 </div>
                 <h3>Przejrzystość rozliczeń</h3>
                 <p>Brak ukrytych kosztów, jasne warunki współpracy</p>
+                <div class="why-us-description">
+                    <p>Wszystkie koszty są jasno określone w umowie. Nie ma ukrytych opłat ani dodatkowych prowizji. Dostarczamy szczegółowe raporty z każdego przewozu oraz miesięczne zestawienia finansowe.</p>
+                </div>
             </div>
-            <div class="why-us-card">
+            <div class="why-us-card" onclick="toggleCard(this)">
                 <div class="why-us-icon">
                     <i class="fas fa-truck-moving"></i>
                 </div>
                 <h3>Kompleksowość obsługi</h3>
                 <p>Pełne wsparcie na każdym etapie przesyłki</p>
+                <div class="why-us-description">
+                    <p>Oferujemy pełen zakres usług logistycznych - od planowania trasy, przez monitorowanie przewozu w czasie rzeczywistym, aż po dostawę i potwierdzenie odbioru. Nasz zespół opiekuje się przesyłką od A do Z.</p>
+                </div>
             </div>
-            <div class="why-us-card">
+            <div class="why-us-card" onclick="toggleCard(this)">
                 <div class="why-us-icon">
                     <i class="fas fa-clock"></i>
                 </div>
                 <h3>Jakość i terminowość</h3>
                 <p>Gwarancja dotrzymania terminów dostawy</p>
+                <div class="why-us-description">
+                    <p>Nasza flota jest regularnie serwisowana, a kierowcy posiadają odpowiednie kwalifikacje i doświadczenie. Gwarantujemy 99% terminowość dostaw dzięki precyzyjnemu planowaniu i systemowi monitoringu GPS.</p>
+                </div>
             </div>
-            <div class="why-us-card">
+            <div class="why-us-card" onclick="toggleCard(this)">
                 <div class="why-us-icon">
                     <i class="fas fa-globe"></i>
                 </div>
                 <h3>Globalny zakres</h3>
                 <p>Przewozy krajowe i międzynarodowe w całej Europie</p>
+                <div class="why-us-description">
+                    <p>Dysponujemy rozległą siecią partnerów w całej Europie, co pozwala nam realizować przewozy międzynarodowe z zachowaniem najwyższych standardów jakości. Oferujemy regularne kursy do głównych centrów logistycznych.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -965,6 +990,21 @@
             if (!event.target.closest('.language-switcher')) {
                 languageDropdown.classList.remove('show');
             }
+        });
+        
+        // Toggle Why Us cards
+        function toggleCard(card) {
+            card.classList.toggle('active');
+        }
+        
+        // Close cards when clicking outside
+        document.addEventListener('click', function(event) {
+            const cards = document.querySelectorAll('.why-us-card');
+            cards.forEach(card => {
+                if (!card.contains(event.target) && card.classList.contains('active')) {
+                    card.classList.remove('active');
+                }
+            });
         });
     </script>
 </body>
