@@ -75,12 +75,24 @@
         .nav-links a {
             color: white;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            top: 0;
         }
         
         .nav-links a:hover {
             color: var(--primary);
+        }
+        
+        .nav-links a.active {
+            background-color: var(--primary);
+            color: white;
+            top: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(2px);
         }
         
         .language-switcher {
@@ -713,11 +725,11 @@
             </div>
             
             <div class="nav-links">
-                <a href="#about">O FIRMIE</a>
-                <a href="#why">DLACZEGO MY?</a>
-                <a href="#offer">OFERTA</a>
-                <a href="#fleet">TABOR</a>
-                <a href="#contact">KONTAKT</a>
+                <a href="#about" class="nav-link">O FIRMIE</a>
+                <a href="#why" class="nav-link">DLACZEGO MY?</a>
+                <a href="#offer" class="nav-link">OFERTA</a>
+                <a href="#fleet" class="nav-link">TABOR</a>
+                <a href="#contact" class="nav-link">KONTAKT</a>
             </div>
             
             <div class="language-switcher">
@@ -1090,6 +1102,42 @@
                     card.classList.remove('active');
                 });
             }
+        });
+        
+        // Navbar link active state
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Remove active class from all links
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                });
+            });
+            
+            // Set active state based on scroll position
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                document.querySelectorAll('section').forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
         });
     </script>
 </body>
