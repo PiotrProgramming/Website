@@ -1,464 +1,943 @@
-import { useState } from 'react';
-import { Truck, Shield, Globe, Users, Clock, Sparkles, MapPin, Phone, Mail, Building, FileText, ChevronRight, Language } from 'lucide-react';
-
-// Dummy data
-const whyUsItems = [
-  { icon: Sparkles, title: "Indywidualne podejście", description: "Dostosowujemy się do specyficznych potrzeb każdego klienta" },
-  { icon: Users, title: "Elastyczność i skuteczność", description: "Szybkie reagowanie na zmieniające się wymagania" },
-  { icon: FileText, title: "Przejrzystość rozliczeń", description: "Brak ukrytych kosztów, jasne warunki współpracy" },
-  { icon: Truck, title: "Kompleksowość obsługi", description: "Pełne wsparcie na każdym etapie przesyłki" },
-  { icon: Clock, title: "Jakość i terminowość", description: "Gwarancja dotrzymania terminów dostawy" },
-  { icon: Globe, title: "Globalny zakres", description: "Przewozy krajowe i międzynarodowe w całej Europie" }
-];
-
-const languages = ['PL', 'EN', 'DE', 'FR', 'ES'];
-
-function App() {
-  const [language, setLanguage] = useState('PL');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // Multilingual content
-  const t = {
-    PL: {
-      nav: ["O FIRMIE", "DLACZEGO MY?", "OFERTA", "TABOR", "KONTAKT"],
-      hero: {
-        title: "Profesjonalny transport od 1992 roku",
-        subtitle: "Kompleksowe usługi transportowe i spedycyjne na najwyższym europejskim poziomie",
-        cta: "Skontaktuj się z nami"
-      },
-      about: {
-        history: [
-          { year: 1992, title: "Założenie firmy", desc: "Powstanie PRZEDSIĘBIORSTWA HANDLOWO-USŁUGOWEGO JERZY STANISZ, specjalizującego się w transportie krajowym." },
-          { year: 2004, title: "Rozszerzenie działalności", desc: "Wprowadzenie transportu międzynarodowego oraz specjalizacja w przewozach ładunków przestrzennych." },
-          { year: 2023, title: "Nowoczesny tabor", desc: "Obecnie dysponujemy nowoczesnym taborzem pojazdów zapewniających kompleksową obsługę przewozów na najwyższym poziomie." }
-        ]
-      }
-    },
-    EN: {
-      nav: ["ABOUT US", "WHY US?", "OFFER", "FLEET", "CONTACT"],
-      hero: {
-        title: "Professional transport since 1992",
-        subtitle: "Comprehensive logistics services at the highest European standard",
-        cta: "Contact us"
-      },
-      about: {
-        history: [
-          { year: 1992, title: "Company establishment", desc: "Establishment of HANDLOWO-USLUGOWEGO JERZY STANISZ, specializing in domestic transport." },
-          { year: 2004, title: "Business expansion", desc: "Introduction of international transport and specialization in bulk cargo transportation." },
-          { year: 2023, title: "Modern fleet", desc: "We currently have a modern fleet of vehicles providing comprehensive transport services at the highest level." }
-        ]
-      }
-    }
-  };
-
-  return (
-    <div className={`font-sans ${language === 'PL' ? 'text-gray-800' : 'text-black'} min-h-screen`}>
-      {/* Navbar */}
-      <nav className="bg-black sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <img src="https://picsum.photos/50/50" alt="Logo" className="h-10 w-10 rounded-full mr-2" />
-              <span className="font-bold text-xl tracking-tight text-white">STANISZ TRANSPORT</span>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STANISZ TRANSPORT</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e13330;
+            --secondary: #ffffff;
+            --tertiary: #000000;
+            --light-gray: #f3f4f6;
+            --dark-gray: #1f2937;
+            --text-color: #111827;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--text-color);
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: var(--tertiary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .language-switcher button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .language-switcher button:hover {
+            color: var(--primary);
+        }
+        
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-width: 100px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .language-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .language-dropdown button {
+            width: 100%;
+            text-align: left;
+            padding: 0.75rem;
+            border: none;
+            background: transparent;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .language-dropdown button:hover {
+            background-color: #f1f1f1;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: var(--primary);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            background-color: white;
+            color: var(--primary);
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn:hover {
+            background-color: #f5f5f5;
+            transform: translateY(-2px);
+        }
+        
+        /* Section */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .section-description {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* About Section */
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .about-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 5rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #e5e7eb;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        /* Why Us Section */
+        .why-us-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .why-us-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .why-us-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .why-us-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .why-us-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Offer Section */
+        .offer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+        }
+        
+        .offer-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .offer-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .offer-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-text h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-text p {
+            color: #6b7280;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(225, 51, 48, 0.2);
+        }
+        
+        .form-submit {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .form-submit:hover {
+            background-color: #c72626;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--tertiary);
+            color: white;
+            padding: 4rem 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        
+        .footer-about p {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .footer-social a {
+            color: #ccc;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #444;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .about-container,
+            .offer-container,
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .about-image,
+            .offer-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            .mobile-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--tertiary);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            .mobile-menu.show {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .mobile-menu ul {
+                list-style: none;
+                padding: 1rem 0;
+            }
+            
+            .mobile-menu li {
+                margin-bottom: 1rem;
+            }
+            
+            .mobile-menu a {
+                color: white;
+                text-decoration: none;
+                display: block;
+                padding: 0.5rem;
+                transition: color 0.3s ease;
+            }
+            
+            .mobile-menu a:hover {
+                color: var(--primary);
+            }
+            
+            .language-switcher {
+                margin-top: 1rem;
+            }
+            
+            .hero {
+                padding: 4rem 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 4rem 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-description {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://picsum.photos/50/50" alt="Logo">
+                <span>STANISZ TRANSPORT</span>
             </div>
             
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              {t[language].nav.map((item, index) => (
-                <a key={index} href={`#${item.toLowerCase().replace(/\s+/g, '')}`} className="text-white hover:text-red-500 transition-colors">
-                  {item}
-                </a>
-              ))}
-              
-              {/* Language Switcher */}
-              <div className="relative">
-                <button 
-                  onClick={() => setIsMenuOpen(!isMenuOpen)} 
-                  className="flex items-center text-white hover:text-red-500 transition-colors"
-                >
-                  <Language className="h-5 w-5 mr-1" /> 
-                  {language}
+            <div class="nav-links">
+                <a href="#about">O FIRMIE</a>
+                <a href="#why">DLACZEGO MY?</a>
+                <a href="#offer">OFERTA</a>
+                <a href="#fleet">TABOR</a>
+                <a href="#contact">KONTAKT</a>
+            </div>
+            
+            <div class="language-switcher">
+                <button>
+                    <i class="fas fa-globe"></i> PL
                 </button>
+                <div class="language-dropdown">
+                    <button onclick="changeLanguage('PL')">PL</button>
+                    <button onclick="changeLanguage('EN')">EN</button>
+                    <button onclick="changeLanguage('DE')">DE</button>
+                    <button onclick="changeLanguage('FR')">FR</button>
+                    <button onclick="changeLanguage('ES')">ES</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Profesjonalny transport od 1992 roku</h1>
+        <p>Kompleksowe usługi transportowe i spedycyjne na najwyższym europejskim poziomie</p>
+        <a href="#contact" class="btn">Skontaktuj się z nami</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">O FIRMIE</h2>
+        <p class="section-description">Firma PRZEDSIĘBIORSTWO HANDLOWO USŁUGOWE JERZY STANISZ to profesjonalne przedsiębiorstwo zajmujące się transportem i spedycją. Od 1992 roku działamy i nieustannie rozwijamy się, świadcząc naszym krajowym i zagranicznym Klientom usługi na najwyższym, europejskim poziomie.</p>
+        
+        <div class="about-container">
+            <div class="about-text">
+                <div class="about-card">
+                    <h3>Historia firmy</h3>
+                    <p>Od 1992 roku świadczymy usługi transportowe i spedycyjne na najwyższym europejskim poziomie. Specjalizujemy się w kompleksowych usługach transportowych i spedycyjnych dla klientów krajowych i zagranicznych.</p>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1992</div>
+                            <div class="timeline-desc">Założenie firmy</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2004</div>
+                            <div class="timeline-desc">Rozszerzenie działalności</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2023</div>
+                            <div class="timeline-desc">Nowoczesny tabor</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://picsum.photos/600/400" alt="About Image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="why" class="section bg-white">
+        <h2 class="section-title">DLACZEGO MY?</h2>
+        <p class="section-description">Nasz świat to projekty naszych klientów i codzienne starania aby stale pozytywnie zaskakiwać Was naszym zaangażowaniem.</p>
+        
+        <div class="why-us-container">
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Indywidualne podejście</h3>
+                <p>Dostosowujemy się do specyficznych potrzeb każdego klienta</p>
+            </div>
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>Elastyczność i skuteczność</h3>
+                <p>Szybkie reagowanie na zmieniające się wymagania</p>
+            </div>
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <h3>Przejrzystość rozliczeń</h3>
+                <p>Brak ukrytych kosztów, jasne warunki współpracy</p>
+            </div>
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-truck-moving"></i>
+                </div>
+                <h3>Kompleksowość obsługi</h3>
+                <p>Pełne wsparcie na każdym etapie przesyłki</p>
+            </div>
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Jakość i terminowość</h3>
+                <p>Gwarancja dotrzymania terminów dostawy</p>
+            </div>
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Globalny zakres</h3>
+                <p>Przewozy krajowe i międzynarodowe w całej Europie</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offer Section -->
+    <section id="offer" class="section">
+        <h2 class="section-title">OFERTA</h2>
+        <p class="section-description">Od początku działalności nadrzędnym celem działania jest realizacja każdego zlecenia w sposób profesjonalny- terminowy i zgodny z indywidualnymi potrzebami naszych klientów.</p>
+        
+        <div class="offer-container">
+            <div class="offer-text">
+                <div class="about-card">
+                    <h3>Bezpieczeństwo przesyłek</h3>
+                    <ul style="list-style-type: disc; padding-left: 1.5rem;">
+                        <li>Ubezpieczenie OC przewoźnika w ruchu międzynarodowym na sumę gwarancyjną 100.000 euro</li>
+                        <li>Ubezpieczenie OC przewoźnika w ruchu krajowym na sumę gwarancyjną 100.000 zł</li>
+                        <li>Dodatkowe ubezpieczenie Cargo do pełnej wartości przewożonego mienia</li>
+                    </ul>
+                    
+                    <h3>Nasza specjalizacja</h3>
+                    <ul style="list-style-type: disc; padding-left: 1.5rem;">
+                        <li>Przewozy ładunków przestrzennych o kubaturze do 120 m3</li>
+                        <li>Transport materiałów sypkich za pomocą ciągników siodłowych</li>
+                        <li>System nawigacji GPS dla stałego monitoringu przewożonego ładunku</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="offer-image">
+                <img src="https://picsum.photos/600/400" alt="Offer Image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="fleet" class="section bg-white">
+        <h2 class="section-title">TABOR</h2>
+        <p class="section-description">Nasz nowoczesny tabor zapewnia kompleksową obsługę przewozów na najwyższym poziomie.</p>
+        
+        <div class="about-container">
+            <div class="about-text">
+                <div class="about-card">
+                    <h3>ZESTAW JUMBO</h3>
+                    <p><strong>Ładowność:</strong> 12 + 12 ton<br>
+                    <strong>Długość:</strong> 7,7 + 7,7 m<br>
+                    <strong>Szerokość:</strong> 2,50m<br>
+                    <strong>Wysokość:</strong> 3,05m<br>
+                    <strong>Tonaż:</strong> 24t<br>
+                    <strong>Kubatura:</strong> 120 m3<br>
+                    <strong>Europalety:</strong> 38 szt.</p>
+                </div>
                 
-                {isMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
-                    {languages.map(lang => (
-                      <button 
-                        key={lang} 
-                        onClick={() => { setLanguage(lang); setIsMenuOpen(false); }}
-                        className="block px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-left"
-                      >
-                        {lang}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
+                <div class="about-card">
+                    <h3>NACZEPA MEGA</h3>
+                    <p><strong>Długość:</strong> 13,60 m<br>
+                    <strong>Szerokość:</strong> 2,48 m<br>
+                    <strong>Wysokość:</strong> 3,00 m<br>
+                    <strong>Tonaż:</strong> 25 t<br>
+                    <strong>Kubatura:</strong> 100 m3<br>
+                    <strong>Europalety:</strong> 33 szt.</p>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://picsum.photos/600/400" alt="Fleet Image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="section-title">KONTAKT</h2>
+        <p class="section-description">Zapraszamy do kontaktu w celu uzyskania szczegółowych informacji na temat naszych usług.</p>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Adres</h3>
+                        <p>PHU Jerzy Stanisz<br>
+                        ul. Ząbkowicka 22a<br>
+                        57-100 Strzelin</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Telefony</h3>
+                        <p>500 175 331<br>
+                        (71) 39 35 726</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>E-mail</h3>
+                        <p>biuro@stanisz-transport.pl</p>
+                    </div>
+                </div>
             </div>
             
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <button 
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-white"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Imię i nazwisko" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Adres e-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Numer telefonu" required>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" required>
+                            <option value="">Wybierz temat</option>
+                            <option value="oferta">Zapytanie o ofertę</option>
+                            <option value="wspolpraca">Współpraca biznesowa</option>
+                            <option value="pracownik">Zatrudnienie</option>
+                            <option value="inne">Inne</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="5" placeholder="Treść wiadomości..." required></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Wyślij wiadomość</button>
+                </form>
             </div>
-          </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="https://picsum.photos/50/50" alt="Logo">
+                    <span>STANISZ TRANSPORT</span>
+                </div>
+                <p>Profesjonalne usługi transportowe i spedycyjne od 1992 roku. Zapewniamy terminowość, bezpieczeństwo i profesjonalną obsługę dla Twoich przesyłek.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Szybkie linki</h3>
+                <ul>
+                    <li><a href="#about">O firmie</a></li>
+                    <li><a href="#why">Dlaczego my?</a></li>
+                    <li><a href="#offer">Oferta</a></li>
+                    <li><a href="#fleet">Tabor</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Dokumenty</h3>
+                <ul>
+                    <li><a href="#">Decyzja o nadaniu numeru identyfikacyjnego podatkowego</a></li>
+                    <li><a href="#">Licencja krajowa</a></li>
+                    <li><a href="#">Licencja międzynarodowa</a></li>
+                    <li><a href="#">Ubezpieczenie w ruchu krajowym</a></li>
+                    <li><a href="#">Ubezpieczenie w ruchu międzynarodowym</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Kontakt</h3>
+                <ul>
+                    <li><a href="mailto:biuro@stanisz-transport.pl">biuro@stanisz-transport.pl</a></li>
+                    <li><a href="tel:500175331">500 175 331</a></li>
+                    <li><a href="tel:(71)3935726">(71) 39 35 726</a></li>
+                </ul>
+            </div>
         </div>
         
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-black">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {t[language].nav.map((item, index) => (
-                <a 
-                  key={index} 
-                  href={`#${item.toLowerCase().replace(/\s+/g, '')}`}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-red-500"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item}
-                </a>
-              ))}
-              
-              <div className="mt-2 px-3 py-2 border-t border-gray-700">
-                <div className="flex items-center justify-between">
-                  <span className="text-white">Language</span>
-                  <Language className="h-5 w-5 text-white" />
-                </div>
-                <div className="mt-2 space-y-1">
-                  {languages.map(lang => (
-                    <button 
-                      key={lang} 
-                      onClick={() => { setLanguage(lang); setIsMenuOpen(false); }}
-                      className="block px-3 py-2 text-sm text-gray-300 hover:bg-red-500 hover:text-white"
-                    >
-                      {lang}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-      </nav>
-
-      {/* Hero Section */}
-      <section className="bg-red-500 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">{t[language].hero.title}</h1>
-            <p className="text-xl text-white mb-10 max-w-3xl mx-auto">{t[language].hero.subtitle}</p>
-            <a href="#contact" className="bg-white text-red-500 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors text-lg inline-flex items-center">
-              {t[language].hero.cta}
-              <ChevronRight className="ml-2" />
-            </a>
-          </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 stanisz-transport.com | Wszelkie prawa zastrzeżone.</p>
         </div>
-      </section>
+    </footer>
 
-      {/* About Section */}
-      <section id="about" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Profesjonalna firma transportowa od ponad 30 lat</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Od 1992 roku świadczymy usługi transportowe i spedycyjne na najwyższym europejskim poziomie
-            </p>
-          </div>
-          
-          <div className="bg-gray-900 rounded-2xl overflow-hidden">
-            <div className="md:flex">
-              <div className="md:w-1/2 p-8 md:p-12">
-                <div className="relative">
-                  <div className="absolute -inset-1 bg-red-500 rounded-2xl opacity-20"></div>
-                  <div className="relative bg-white rounded-2xl p-6">
-                    <div className="flex items-center mb-4">
-                      <div className="bg-red-500 p-3 rounded-lg mr-4">
-                        <Truck className="h-6 w-6 text-white" />
-                      </div>
-                      <h3 className="text-xl font-bold text-gray-900">STANISZ TRANSPORT</h3>
-                    </div>
-                    <p className="italic text-gray-600 border-l-4 border-red-500 pl-4 py-2 mb-4">
-                      "Cieszymy się opinią rzetelnego partnera o czym świadczy rzesza zadowolonych klientów oraz ciągły rozwój firmy."
-                    </p>
-                    <p className="text-gray-700 leading-relaxed">
-                      Jesteśmy licencjonowanym przewoźnikiem krajowym i międzynarodowym z ponad 30-letnim doświadczeniem. Specjalizujemy się w kompleksowych usługach transportowych i spedycyjnych dla klientów krajowych i zagranicznych.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="md:w-1/2 bg-gray-100 p-8 md:p-12">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Nasza historia</h3>
-                <div className="space-y-6">
-                  {t[language].about.history.map((item, index) => (
-                    <div key={index} className="flex">
-                      <div className="flex flex-col items-center mr-4">
-                        <div className="flex items-center justify-center w-10 h-10 border-2 border-red-500 rounded-full bg-white">
-                          <span className="text-red-500 font-bold">{item.year}</span>
-                        </div>
-                        <div className="w-px h-full bg-gray-300"></div>
-                      </div>
-                      <div className="pt-1 pb-8">
-                        <h4 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h4>
-                        <p className="text-gray-700 leading-relaxed">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Us Section */}
-      <section id="why" className="py-20 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">DLACZEGO MY?</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Codzienne starania aby stale pozytywnie zaskakiwać naszych klientów naszym zaangażowaniem
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {whyUsItems.map((item, index) => (
-              <div key={index} className="group relative bg-white rounded-2xl shadow-md p-8 border border-gray-200 hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 rounded-full bg-red-500 flex items-center justify-center mb-6 group-hover:bg-red-600 transition-colors">
-                  <item.icon className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Offer Section */}
-      <section id="offer" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Kompleksowe usługi transportowe i spedycyjne</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Ponad 30 lat doświadczenia na drogach Polski i Europy gwarantuje profesjonalną realizację zadań
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="relative mb-10">
-                <div className="absolute -inset-4 bg-red-500 rounded-2xl blur opacity-20"></div>
-                <div className="relative bg-white rounded-2xl p-8 shadow-md">
-                  <div className="flex items-start mb-6">
-                    <div className="bg-red-500 p-3 rounded-lg mr-4 flex-shrink-0">
-                      <Shield className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">Bezpieczeństwo przesyłek</h3>
-                      <ul className="space-y-2 text-gray-700">
-                        <li className="flex items-start">
-                          <span className="text-red-500 mr-2">•</span>
-                          <span>Ubezpieczenie OC przewoźnika w ruchu międzynarodowym na sumę 100.000 euro</span>
-                        </li>
-                        <li className="flex items-start">
-                          <span className="text-red-500 mr-2">•</span>
-                          <span>Ubezpieczenie OC przewoźnika w ruchu krajowym na sumę 100.000 zł</span>
-                        </li>
-                        <li className="flex items-start">
-                          <span className="text-red-500 mr-2">•</span>
-                          <span>Dodatkowe ubezpieczenie Cargo do pełnej wartości przewożonego mienia</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="bg-red-500 p-3 rounded-lg mr-4 flex-shrink-0">
-                      <Truck className="h-6 w-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">Nasza specjalizacja</h3>
-                      <ul className="space-y-2 text-gray-700">
-                        <li className="flex items-start">
-                          <span className="text-red-500 mr-2">•</span>
-                          <span>Przewozy ładunków przestrzennych o kubaturze do 120 m3</span>
-                        </li>
-                        <li className="flex items-start">
-                          <span className="text-red-500 mr-2">•</span>
-                          <span>Transport materiałów sypkich za pomocą ciągników siodłowych</span>
-                        </li>
-                        <li className="flex items-start">
-                          <span className="text-red-500 mr-2">•</span>
-                          <span>System nawigacji GPS dla stałego monitoringu przewożonego ładunku</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <script>
+        // Language switching function
+        function changeLanguage(lang) {
+            const languageDropdown = document.querySelector('.language-dropdown');
+            languageDropdown.classList.remove('show');
             
-            <div className="relative">
-              <div className="bg-red-500 rounded-2xl p-8 md:p-12 text-white relative z-10">
-                <h3 className="text-2xl font-bold mb-6">Globalny zasięg</h3>
-                <div className="space-y-6">
-                  <div className="flex">
-                    <div className="bg-white p-2 rounded-lg mr-4 flex-shrink-0">
-                      <Sparkles className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-semibold mb-2">Indywidualne podejście</h4>
-                      <p>Dostosowujemy się do specyficznych potrzeb każdego klienta, tworząc spersonalizowane rozwiązania</p>
-                    </div>
-                  </div>
-                  <div className="flex">
-                    <div className="bg-white p-2 rounded-lg mr-4 flex-shrink-0">
-                      <Clock className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-semibold mb-2">Gwarancja terminowości</h4>
-                      <p>Dzięki systemowi GPS i profesjonalnej organizacji zapewniamy dotrzymanie terminów dostawy</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Fleet Section */}
-      <section id="fleet" className="py-20 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Nowoczesne pojazdy dla profesjonalnych przewozów</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Nasz tabor zapewnia kompleksową obsługę przewozów na najwyższym poziomie
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {/* Fleet items would go here */}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Jesteśmy do Twojej dyspozycji</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Zapraszamy do kontaktu w celu uzyskania szczegółowych informacji na temat naszych usług
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div>
-              <div className="bg-white rounded-2xl shadow-md p-8 border border-gray-200 mb-8">
-                <div className="flex items-center mb-6">
-                  <div className="bg-red-500 p-3 rounded-lg mr-4 flex-shrink-0">
-                    <MapPin className="h-5 w-5 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900">Adres</h3>
-                </div>
-                <p className="text-gray-700 leading-relaxed">
-                  PHU Jerzy Stanisz<br />
-                  ul. Ząbkowicka 22a<br />
-                  57-100 Strzelin
-                </p>
-              </div>
-              
-              <div className="bg-white rounded-2xl shadow-md p-8 border border-gray-200">
-                <div className="flex items-center mb-6">
-                  <div className="bg-red-500 p-3 rounded-lg mr-4 flex-shrink-0">
-                    <Phone className="h-5 w-5 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900">Telefony</h3>
-                </div>
-                <p className="text-gray-700 leading-relaxed">
-                  500 175 331<br />
-                  (71) 39 35 726
-                </p>
-              </div>
-            </div>
+            // Update the language button
+            const languageButton = document.querySelector('.language-switcher button');
+            languageButton.textContent = lang;
             
-            <div className="bg-white rounded-2xl shadow-md p-8 border border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Formularz kontaktowy</h3>
-              <form className="space-y-5">
-                {/* Form fields */}
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <img src="https://picsum.photos/50/50" alt="Logo" className="h-10 w-10 rounded-full mb-4" />
-              <p className="text-gray-400 mb-4">
-                Profesjonalne usługi transportowe i spedycyjne od 1992 roku. Zapewniamy terminowość, bezpieczeństwo i profesjonalną obsługę dla Twoich przesyłek.
-              </p>
-              <div className="flex space-x-4">
-                {/* Social media icons */}
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Szybkie linki</h3>
-              <ul className="space-y-2">
-                {t[language].nav.map((item, index) => (
-                  <li key={index}>
-                    <a href={`#${item.toLowerCase().replace(/\s+/g, '')}`} className="text-gray-400 hover:text-red-500 transition-colors">
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Kontakt</h3>
-              <ul className="space-y-2">
-                <li className="flex items-start">
-                  <MapPin className="h-5 w-5 text-red-500 mr-3 mt-1" />
-                  <span className="text-gray-400">PHU Jerzy Stanisz<br />ul. Ząbkowicka 22a<br />57-100 Strzelin</span>
-                </li>
-                <li className="flex items-start">
-                  <Phone className="h-5 w-5 text-red-500 mr-3 mt-1" />
-                  <span className="text-gray-400">500 175 331<br />(71) 39 35 726</span>
-                </li>
-                <li className="flex items-start">
-                  <Mail className="h-5 w-5 text-red-500 mr-3 mt-1" />
-                  <span className="text-gray-400">biuro@stanisz-transport.pl</span>
-                </li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Dokumenty</h3>
-              <ul className="space-y-2">
-                {/* Documents list */}
-              </ul>
-            </div>
-          </div>
-          
-          <div className="mt-12 pt-8 border-t border-gray-800 text-center">
-            <p className="text-gray-400">© 2025 stanisz-transport.com | Wszelkie prawa zastrzeżone.</p>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-}
-
-export default App;
+            // You would need to update the content based on the selected language
+            console.log('Changing language to:', lang);
+        }
+        
+        // Toggle language dropdown
+        document.querySelector('.language-switcher button').addEventListener('click', function() {
+            const languageDropdown = document.querySelector('.language-dropdown');
+            languageDropdown.classList.toggle('show');
+        });
+        
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(event) {
+            const languageDropdown = document.querySelector('.language-dropdown');
+            if (!event.target.closest('.language-switcher')) {
+                languageDropdown.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
