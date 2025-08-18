@@ -69,7 +69,7 @@
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
         }
         
         .nav-links a {
@@ -77,22 +77,25 @@
             text-decoration: none;
             transition: all 0.3s ease;
             font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 8px 8px 0 0;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px 12px 0 0;
             position: relative;
             top: 0;
+            font-size: 1.1rem;
+            background-color: rgba(255, 255, 255, 0.1);
         }
         
         .nav-links a:hover {
             color: var(--primary);
+            background-color: rgba(255, 255, 255, 0.2);
         }
         
         .nav-links a.active {
             background-color: var(--primary);
             color: white;
-            top: 5px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transform: translateY(2px);
+            top: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(3px);
         }
         
         .language-switcher {
