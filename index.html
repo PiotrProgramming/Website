@@ -82,20 +82,22 @@
             position: relative;
             top: 0;
             font-size: 1.1rem;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(0, 0, 0, 0.3);
         }
         
         .nav-links a:hover {
             color: var(--primary);
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba(0, 0, 0, 0.5);
         }
         
         .nav-links a.active {
-            background-color: var(--primary);
+            background-color: var(--tertiary);
             color: white;
-            top: 10px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-            transform: translateY(3px);
+            top: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transform: translateY(5px);
+            border: 2px solid var(--primary);
+            border-bottom: none;
         }
         
         .language-switcher {
