@@ -45,15 +45,25 @@
             padding: 1rem 2rem;
         }
         
-        .logo {
+        .logo-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
         }
         
-        .logo img {
-            width: 200px;
+        .logo {
+            width: 250px;
             height: auto;
             object-fit: contain;
+            margin-bottom: 0.5rem;
+        }
+        
+        .logo-tagline {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .nav-links {
@@ -314,13 +324,16 @@
             padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             text-align: center;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
         
         .why-us-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
         
         .why-us-icon {
@@ -334,28 +347,45 @@
             justify-content: center;
             margin: 0 auto 1.5rem;
             font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .why-us-card:hover .why-us-icon {
+            transform: scale(1.1);
         }
         
         .why-us-card h3 {
             font-size: 1.3rem;
             margin-bottom: 1rem;
+            transition: color 0.3s ease;
         }
         
         .why-us-card p {
             color: #6b7280;
             line-height: 1.5;
+            margin-bottom: 0;
         }
         
         .why-us-description {
-            margin-top: 1rem;
-            padding: 1rem;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
             background-color: #f8f9fa;
             border-radius: 8px;
-            display: none;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.5s ease;
+            transform: translateY(-10px);
         }
         
         .why-us-card.active .why-us-description {
-            display: block;
+            max-height: 500px;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .why-us-card.active {
+            grid-row: auto;
         }
         
         /* Offer Section */
@@ -630,8 +660,12 @@
                 font-size: 1rem;
             }
             
-            .logo img {
-                width: 150px;
+            .logo {
+                width: 200px;
+            }
+            
+            .logo-tagline {
+                font-size: 1rem;
             }
         }
     </style>
@@ -640,8 +674,9 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <img src="images/logo.png" alt="Logo">
+            <div class="logo-container">
+                <img src="images/logo.png" alt="Logo" class="logo">
+                <div class="logo-tagline">Profesjonalny transport od 1992 roku</div>
             </div>
             
             <div class="nav-links">
@@ -992,19 +1027,34 @@
             }
         });
         
-        // Toggle Why Us cards
-        function toggleCard(card) {
-            card.classList.toggle('active');
+        // Toggle Why Us cards with smooth animation and single expansion
+        function toggleCard(clickedCard) {
+            const cards = document.querySelectorAll('.why-us-card');
+            
+            // If clicking the same active card, close it
+            if (clickedCard.classList.contains('active')) {
+                clickedCard.classList.remove('active');
+                return;
+            }
+            
+            // Close all cards first
+            cards.forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Open the clicked card
+            clickedCard.classList.add('active');
         }
         
         // Close cards when clicking outside
         document.addEventListener('click', function(event) {
-            const cards = document.querySelectorAll('.why-us-card');
-            cards.forEach(card => {
-                if (!card.contains(event.target) && card.classList.contains('active')) {
+            const cardsContainer = document.querySelector('.why-us-container');
+            if (!cardsContainer.contains(event.target)) {
+                const cards = document.querySelectorAll('.why-us-card');
+                cards.forEach(card => {
                     card.classList.remove('active');
-                }
-            });
+                });
+            }
         });
     </script>
 </body>
