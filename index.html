@@ -1,0 +1,350 @@
+import { Truck, Shield, Globe, Users, Clock, Sparkles, MapPin, Phone, Mail, Building, FileText, ChevronRight } from 'lucide-react';
+
+export default function App() {
+  const whyUsItems = [
+    { icon: Sparkles, title: "Indywidualne podejście", description: "Dostosowujemy się do specyficznych potrzeb każdego klienta" },
+    { icon: Users, title: "Elastyczność i skuteczność", description: "Szybkie reagowanie na zmieniające się wymagania" },
+    { icon: FileText, title: "Przejrzystość rozliczeń", description: "Brak ukrytych kosztów, jasne warunki współpracy" },
+    { icon: Truck, title: "Kompleksowość obsługi", description: "Pełne wsparcie na każdym etapie przesyłki" },
+    { icon: Clock, title: "Jakość i terminowość", description: "Gwarancja dotrzymania terminów dostawy" },
+    { icon: Globe, title: "Globalny zakres", description: "Przewozy krajowe i międzynarodowe w całej Europie" }
+  ];
+
+  const fleetData = [
+    {
+      name: "ZESTAW JUMBO",
+      features: [
+        "ładowność 12 + 12 ton",
+        "długość: 7,7 + 7,7 m",
+        "szerokość: 2,50m",
+        "wysokość: 3,05m",
+        "tonaż: 24t",
+        "kubatura: 120 m3",
+        "europalety: 38 szt."
+      ]
+    },
+    {
+      name: "NACZEPA MEGA",
+      description: "Naczepa z zabudową kurtynową i tylnymi drzwiami.",
+      features: [
+        "długość: 13,60 m",
+        "szerokość: 2,48 m",
+        "wysokość: 3,00 m",
+        "tonaż: 25 t",
+        "kubatura: 100 m3",
+        "europalety: 33 szt."
+      ]
+    },
+    {
+      name: "NACZEPA STANDARDOWA",
+      description: "Naczepa z odsuwaną plandeką (góra i boki).",
+      features: [
+        "długość: 13,60 m",
+        "szerokość: 2,45 m",
+        "wysokość: 2,85 m",
+        "tonaż: 25t",
+        "kubatura: 92m3",
+        "europalety: 33 szt."
+      ]
+    }
+  ];
+
+  const galleryImages = [
+    'https://placehold.co/600x400/1e40af/ffffff?text=STANISZ+TRANSPORT',
+    'https://placehold.co/600x400/1e40af/ffffff?text=Flota+Pojazdów',
+    'https://placehold.co/600x400/1e40af/ffffff?text=Załadunek',
+    'https://placehold.co/600x400/1e40af/ffffff?text=Bezpieczeństwo',
+    'https://placehold.co/600x400/1e40af/ffffff?text=Monitoring+GPS',
+    'https://placehold.co/600x400/1e40af/ffffff?text=Współpraca'
+  ];
+
+  const documents = [
+    "DECYZJA W SPRAWIE NADANIA NUMERU IDENTYFIKACJI PODATKOWEJ",
+    "LICENCJA KRAJOWA",
+    "LICENCJA MIĘDZYNARODOWA",
+    "UBEZPIECZENIE W RUCHU KRAJOWYM",
+    "UBEZPIECZENIE W RUCHU MIĘDZYNARODOWYM",
+    "ZAŚWIADCZENIE REGON",
+    "ZAŚWIADCZENIE O WPISIE DO EWIDENCJI DZIAŁALNOŚCI GOSPODARCZEJ"
+  ];
+
+  return (
+    <div className="font-sans text-gray-800">
+      {/* Navigation */}
+      <nav className="bg-blue-900 text-white shadow-lg sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center">
+              <Truck className="h-8 w-8 text-yellow-400 mr-2" />
+              <span className="font-bold text-xl md:text-2xl">STANISZ TRANSPORT</span>
+            </div>
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-8">
+                <a href="#about" className="hover:text-yellow-400 transition-colors">O FIRMIE</a>
+                <a href="#why" className="hover:text-yellow-400 transition-colors">DLACZEGO MY?</a>
+                <a href="#offer" className="hover:text-yellow-400 transition-colors">OFERTA</a>
+                <a href="#fleet" className="hover:text-yellow-400 transition-colors">TABOR</a>
+                <a href="#contact" className="hover:text-yellow-400 transition-colors">KONTAKT</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Profesjonalny transport i spedycja od 1992 roku</h1>
+            <p className="text-xl mb-10 max-w-3xl mx-auto">Kompleksowe usługi transportowe i spedycyjne na najwyższym europejskim poziomie. Zapewniamy terminowość, bezpieczeństwo i profesjonalną obsługę dla Twoich przesyłek.</p>
+            <a href="#contact" className="bg-yellow-400 text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-yellow-300 transition-colors text-lg inline-flex items-center">
+              Skontaktuj się z nami <ChevronRight className="ml-2" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">O FIRMIE</h2>
+            <div className="h-1 w-24 bg-yellow-400 mx-auto rounded-full"></div>
+          </div>
+          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+            <p className="text-lg leading-relaxed mb-6">
+              Firma PRZEDSIĘBIORSTWO HANDLOWO USŁUGOWE JERZY STANISZ to profesjonalne przedsiębiorstwo zajmujące się transportem i spedycją. Od 1992 roku działamy i nieustannie rozwijamy się, świadcząc naszym krajowym i zagranicznym Klientom usługi na najwyższym, europejskim poziomie. Specjalizujemy się w świadczeniu kompleksowych usług w zakresie transportu i spedycji pojazdami o kubaturze 120m3.
+            </p>
+            <p className="text-lg leading-relaxed mb-6">
+              Od wielu lat współpracujemy z naszymi stałymi partnerami w pełni zaspokajając ich potrzeby. Nasi klienci mają możliwość podpisania stałych umów przewozowych na podstawie rzetelnie skalkulowanych frachtów. Cieszymy się opinią rzetelnego partnera o czym świadczy rzesza zadowolonych klientów oraz ciągły rozwój firmy. Jesteśmy licencjonowanym przewoźnikiem krajowym i międzynarodowym.
+            </p>
+            <p className="text-lg leading-relaxed">
+              Zachęcamy do sprawdzenia naszych możliwości żebyście Państwo mogli bezpiecznie i optymistycznie spojrzeć w przyszłość koncentrując się na tym, co dla Was najważniejsze, czyli na Waszych własnych Klientach.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Us Section */}
+      <section id="why" className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">DLACZEGO MY?</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">Nasz świat to projekty naszych klientów i codzienne starania aby stale pozytywnie zaskakiwać Was naszym zaangażowaniem.</p>
+            <div className="h-1 w-24 bg-yellow-400 mx-auto rounded-full mt-4"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {whyUsItems.map((item, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-shadow border-l-4 border-yellow-400">
+                <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                  <item.icon className="h-8 w-8 text-blue-900" />
+                </div>
+                <h3 className="text-xl font-bold text-blue-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Offer Section */}
+      <section id="offer" className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">OFERTA</h2>
+            <div className="h-1 w-24 bg-yellow-400 mx-auto rounded-full"></div>
+          </div>
+          
+          <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
+            <p className="text-lg leading-relaxed mb-6">
+              Od początku działalności nadrzędnym celem działania jest realizacja każdego zlecenia w sposób profesjonalny- terminowy i zgodny z indywidualnymi potrzebami naszych klientów. Wiemy, że ponad 22 lat doświadczeń zdobywanych na drogach naszego kraju i całej Europy jest gwarancją zrealizowania przez nas powierzonych zadań w sposób sprawny i bezpieczny.
+            </p>
+            <p className="text-lg leading-relaxed mb-6">
+              Współpraca z nami daje gwarancję, iż Państwa towar dotrze w określonym przez Was czasie w określone miejsce. By świadczyć dla Państwa usługi transportowe na najwyższym poziomie wyposażyliśmy nasz park w auta o zróżnicowanych parametrach co pozwala nam bezproblemowo oraz bezpiecznie przewozić wszystkie rodzaje towarów.
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <Shield className="h-10 w-10 text-blue-900 mb-4" />
+                <h3 className="text-xl font-bold text-blue-900 mb-3">Bezpieczeństwo przesyłek</h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Posiadamy ubezpieczenie OC przewoźnika w ruchu międzynarodowym na sumę gwarancyjną 100.000 euro</li>
+                  <li>• Ubezpieczenie OC przewoźnika w ruchu krajowym na sumę gwarancyjną 100.000 zł</li>
+                  <li>• Na życzenie klienta wnioskujemy o dodatkowe ubezpieczenie Cargo</li>
+                </ul>
+              </div>
+              
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <Truck className="h-10 w-10 text-blue-900 mb-4" />
+                <h3 className="text-xl font-bold text-blue-900 mb-3">Specjalizacja</h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Przewozy ładunków przestrzennych o kubaturze do 120 m3, 38ep</li>
+                  <li>• Transport materiałów sypkich za pomocą ciągników siodłowych z naczepami do 28 ton</li>
+                  <li>• System nawigacji GPS dla stałego monitoringu przewożonego ładunku</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Fleet Section */}
+      <section id="fleet" className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">TABOR</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">Nasz nowoczesny tabor zapewnia kompleksową obsługę przewozów na najwyższym poziomie</p>
+            <div className="h-1 w-24 bg-yellow-400 mx-auto rounded-full mt-4"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {fleetData.map((vehicle, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 transition-transform hover:scale-[1.02]">
+                <div className="bg-blue-900 text-white p-5">
+                  <h3 className="text-xl font-bold">{vehicle.name}</h3>
+                  {vehicle.description && <p className="text-blue-100 mt-1">{vehicle.description}</p>}
+                </div>
+                <div className="p-6">
+                  <ul className="space-y-2">
+                    {vehicle.features.map((feature, i) => (
+                      <li key={i} className="flex items-start">
+                        <span className="text-yellow-400 mr-2">•</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">GALERIA</h2>
+            <div className="h-1 w-24 bg-yellow-400 mx-auto rounded-full"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {galleryImages.map((src, index) => (
+              <div key={index} className="rounded-xl overflow-hidden shadow-md bg-white">
+                <img 
+                  src={src} 
+                  alt={`Zdjęcie floty ${index + 1}`} 
+                  className="w-full h-60 object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Documents Section */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4">DOKUMENTY</h2>
+            <div className="h-1 w-24 bg-yellow-400 mx-auto rounded-full"></div>
+          </div>
+          
+          <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8">
+            <ul className="space-y-3">
+              {documents.map((doc, index) => (
+                <li key={index} className="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-blue-50 transition-colors">
+                  <FileText className="h-5 w-5 text-blue-900 mr-3 flex-shrink-0" />
+                  <span className="text-gray-700">{doc}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-16 bg-blue-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">KONTAKT</h2>
+            <div className="h-1 w-24 bg-yellow-400 mx-auto rounded-full"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div>
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold mb-4">Nasz adres</h3>
+                <div className="space-y-3">
+                  <p className="flex items-start">
+                    <Building className="h-5 w-5 mt-1 mr-3 text-yellow-400" />
+                    PHU Jerzy Stanisz<br />
+                    ul. Ząbkowicka 22a<br />
+                    57-100 Strzelin
+                  </p>
+                  <p className="flex items-start">
+                    <Phone className="h-5 w-5 mt-1 mr-3 text-yellow-400" />
+                    500 175 331<br />
+                    (71) 39 35 726
+                  </p>
+                  <p className="flex items-start">
+                    <Mail className="h-5 w-5 mt-1 mr-3 text-yellow-400" />
+                    biuro@stanisz-transport.pl
+                  </p>
+                </div>
+              </div>
+              
+              <div className="mb-8">
+                <h3 className="text-2xl font-bold mb-4">Godziny otwarcia</h3>
+                <p>pon-pt / 7:30-15:30</p>
+                <p>sob-nied / nieczynne</p>
+              </div>
+              
+              <div>
+                <h3 className="text-2xl font-bold mb-4">Zespół</h3>
+                <div className="space-y-3">
+                  <p>Jerzy Stanisz - właściciel firmy<br />tel. 509 289 583</p>
+                  <p>Mateusz Stanisz - spedycja<br />tel. 500 175 331</p>
+                  <p>Aneta Szymura - spedytor<br />tel. 883 206 326</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-xl p-8">
+              <h3 className="text-2xl font-bold text-blue-900 mb-6">Formularz kontaktowy</h3>
+              <form className="space-y-4">
+                <div>
+                  <label className="block text-gray-700 mb-1">Imię i nazwisko</label>
+                  <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                </div>
+                <div>
+                  <label className="block text-gray-700 mb-1">Adres e-mail</label>
+                  <input type="email" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                </div>
+                <div>
+                  <label className="block text-gray-700 mb-1">Temat</label>
+                  <input type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                </div>
+                <div>
+                  <label className="block text-gray-700 mb-1">Wiadomość</label>
+                  <textarea rows="5" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                </div>
+                <button type="submit" className="w-full bg-blue-900 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-800 transition-colors">
+                  Wyślij wiadomość
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p>© 2025 stanisz-transport.com | Wszelkie prawa zastrzeżone. Przez Stanisz Transport</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
