@@ -372,11 +372,12 @@
             line-height: 1.4;
         }
         
-        /* Why Us Section */
+        /* Why Us Section - FIXED */
         .why-us-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            position: relative;
         }
         
         .why-us-card {
@@ -389,6 +390,9 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            /* Added to prevent content shifting */
+            display: flex;
+            flex-direction: column;
         }
         
         .why-us-card:hover {
@@ -408,6 +412,7 @@
             margin: 0 auto 1.5rem;
             font-size: 1.5rem;
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
         
         .why-us-card:hover .why-us-icon {
@@ -418,12 +423,23 @@
             font-size: 1.3rem;
             margin-bottom: 1rem;
             transition: color 0.3s ease;
+            flex-shrink: 0;
         }
         
         .why-us-card p {
             color: #6b7280;
             line-height: 1.5;
             margin-bottom: 0;
+            flex-shrink: 0;
+        }
+        
+        /* Description container that expands */
+        .why-us-description-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            min-height: 0;
         }
         
         .why-us-description {
@@ -436,16 +452,124 @@
             opacity: 0;
             transition: all 0.5s ease;
             transform: translateY(-10px);
+            /* Prevent content from affecting layout */
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            right: 2rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            /* Hidden by default */
+            visibility: hidden;
         }
         
         .why-us-card.active .why-us-description {
+            max-height: 300px;
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+        
+        /* Overlay to show expanded content */
+        .why-us-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .why-us-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Better solution - expand within grid without affecting others */
+        .why-us-grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+        }
+        
+        .why-us-grid-item {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 300px;
+        }
+        
+        .why-us-grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .why-us-grid-item .icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .why-us-grid-item:hover .icon {
+            transform: scale(1.1);
+        }
+        
+        .why-us-grid-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .why-us-grid-item p {
+            color: #6b7280;
+            line-height: 1.5;
+            margin-bottom: 0;
+            flex-shrink: 0;
+        }
+        
+        .why-us-grid-item .description {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.5s ease;
+            transform: translateY(-10px);
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+        
+        .why-us-grid-item.active .description {
             max-height: 500px;
             opacity: 1;
             transform: translateY(0);
-        }
-        
-        .why-us-card.active {
-            grid-row: auto;
         }
         
         /* Offer Section */
@@ -751,6 +875,10 @@
             .timeline-event {
                 width: 100%;
             }
+            
+            .why-us-grid-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -856,69 +984,69 @@
         </div>
     </section>
 
-    <!-- Why Us Section -->
+    <!-- Why Us Section - FIXED -->
     <section id="why" class="section bg-white">
         <h2 class="section-title">DLACZEGO MY?</h2>
         <p class="section-description">Nasz świat to projekty naszych klientów i codzienne starania aby stale pozytywnie zaskakiwać Was naszym zaangażowaniem.</p>
         
-        <div class="why-us-container">
-            <div class="why-us-card" onclick="toggleCard(this)">
-                <div class="why-us-icon">
+        <div class="why-us-grid-container">
+            <div class="why-us-grid-item" onclick="toggleCard(this)">
+                <div class="icon">
                     <i class="fas fa-user-tie"></i>
                 </div>
                 <h3>Indywidualne podejście</h3>
                 <p>Dostosowujemy się do specyficznych potrzeb każdego klienta</p>
-                <div class="why-us-description">
+                <div class="description">
                     <p>Każdy klient otrzymuje spersonalizowaną ofertę dopasowaną do jego indywidualnych potrzeb logistycznych. Analizujemy charakter towaru, częstotliwość przewozów oraz specjalne wymagania, aby zapewnić optymalne rozwiązanie.</p>
                 </div>
             </div>
-            <div class="why-us-card" onclick="toggleCard(this)">
-                <div class="why-us-icon">
+            <div class="why-us-grid-item" onclick="toggleCard(this)">
+                <div class="icon">
                     <i class="fas fa-sync-alt"></i>
                 </div>
                 <h3>Elastyczność i skuteczność</h3>
                 <p>Szybkie reagowanie na zmieniające się wymagania</p>
-                <div class="why-us-description">
+                <div class="description">
                     <p>Nasz zespół jest gotowy do szybkiego reagowania na zmieniające się potrzeby klientów. Oferujemy elastyczne harmonogramy przewozów, możliwość szybkiej rezerwacji transportu oraz wsparcie 24/7 dla kluczowych przesyłek.</p>
                 </div>
             </div>
-            <div class="why-us-card" onclick="toggleCard(this)">
-                <div class="why-us-icon">
+            <div class="why-us-grid-item" onclick="toggleCard(this)">
+                <div class="icon">
                     <i class="fas fa-file-invoice-dollar"></i>
                 </div>
                 <h3>Przejrzystość rozliczeń</h3>
                 <p>Brak ukrytych kosztów, jasne warunki współpracy</p>
-                <div class="why-us-description">
+                <div class="description">
                     <p>Wszystkie koszty są jasno określone w umowie. Nie ma ukrytych opłat ani dodatkowych prowizji. Dostarczamy szczegółowe raporty z każdego przewozu oraz miesięczne zestawienia finansowe.</p>
                 </div>
             </div>
-            <div class="why-us-card" onclick="toggleCard(this)">
-                <div class="why-us-icon">
+            <div class="why-us-grid-item" onclick="toggleCard(this)">
+                <div class="icon">
                     <i class="fas fa-truck-moving"></i>
                 </div>
                 <h3>Kompleksowość obsługi</h3>
                 <p>Pełne wsparcie na każdym etapie przesyłki</p>
-                <div class="why-us-description">
+                <div class="description">
                     <p>Oferujemy pełen zakres usług logistycznych - od planowania trasy, przez monitorowanie przewozu w czasie rzeczywistym, aż po dostawę i potwierdzenie odbioru. Nasz zespół opiekuje się przesyłką od A do Z.</p>
                 </div>
             </div>
-            <div class="why-us-card" onclick="toggleCard(this)">
-                <div class="why-us-icon">
+            <div class="why-us-grid-item" onclick="toggleCard(this)">
+                <div class="icon">
                     <i class="fas fa-clock"></i>
                 </div>
                 <h3>Jakość i terminowość</h3>
                 <p>Gwarancja dotrzymania terminów dostawy</p>
-                <div class="why-us-description">
+                <div class="description">
                     <p>Nasza flota jest regularnie serwisowana, a kierowcy posiadają odpowiednie kwalifikacje i doświadczenie. Gwarantujemy 99% terminowość dostaw dzięki precyzyjnemu planowaniu i systemowi monitoringu GPS.</p>
                 </div>
             </div>
-            <div class="why-us-card" onclick="toggleCard(this)">
-                <div class="why-us-icon">
+            <div class="why-us-grid-item" onclick="toggleCard(this)">
+                <div class="icon">
                     <i class="fas fa-globe"></i>
                 </div>
                 <h3>Globalny zakres</h3>
                 <p>Przewozy krajowe i międzynarodowe w całej Europie</p>
-                <div class="why-us-description">
+                <div class="description">
                     <p>Dysponujemy rozległą siecią partnerów w całej Europie, co pozwala nam realizować przewozy międzynarodowe z zachowaniem najwyższych standardów jakości. Oferujemy regularne kursy do głównych centrów logistycznych.</p>
                 </div>
             </div>
@@ -1137,9 +1265,9 @@
             }
         });
         
-        // Toggle Why Us cards with smooth animation and single expansion
+        // Toggle Why Us cards with smooth animation - FIXED VERSION
         function toggleCard(clickedCard) {
-            const cards = document.querySelectorAll('.why-us-card');
+            const cards = document.querySelectorAll('.why-us-grid-item');
             
             // If clicking the same active card, close it
             if (clickedCard.classList.contains('active')) {
@@ -1158,9 +1286,9 @@
         
         // Close cards when clicking outside
         document.addEventListener('click', function(event) {
-            const cardsContainer = document.querySelector('.why-us-container');
+            const cardsContainer = document.querySelector('.why-us-grid-container');
             if (!cardsContainer.contains(event.target)) {
-                const cards = document.querySelectorAll('.why-us-card');
+                const cards = document.querySelectorAll('.why-us-grid-item');
                 cards.forEach(card => {
                     card.classList.remove('active');
                 });
