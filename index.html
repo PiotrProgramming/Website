@@ -302,59 +302,60 @@
             color: var(--primary);
         }
         
-        .timeline {
+        /* Horizontal Timeline */
+        .horizontal-timeline {
             position: relative;
-            padding-left: 3rem;
+            margin: 3rem 0;
+            padding: 2rem 0;
         }
         
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 14px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
+        .timeline-track {
+            position: relative;
+            height: 4px;
             background-color: #e5e7eb;
+            margin: 0;
         }
         
-        .timeline-item {
+        .timeline-events {
+            display: flex;
+            justify-content: space-between;
             position: relative;
-            padding: 1.5rem 0;
-            margin-bottom: 1rem;
+            margin-top: -7px;
         }
         
-        .timeline-item:first-child {
-            padding-top: 0;
+        .timeline-event {
+            position: relative;
+            text-align: center;
+            width: 12%;
+            min-width: 100px;
         }
         
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        .timeline-item::before {
-            content: '';
+        .timeline-dot {
             position: absolute;
-            left: -20px;
-            top: 0;
-            width: 30px;
-            height: 30px;
+            top: -7px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
             background-color: var(--primary);
             border-radius: 50%;
             border: 4px solid white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            z-index: 2;
         }
         
         .timeline-year {
             font-weight: bold;
             color: var(--primary);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            margin-top: 25px;
             margin-bottom: 0.5rem;
         }
         
         .timeline-desc {
+            font-size: 0.85rem;
             color: #6b7280;
-            line-height: 1.5;
+            line-height: 1.4;
         }
         
         /* Why Us Section */
@@ -716,6 +717,22 @@
             .logo-tagline {
                 font-size: 0.7rem;
             }
+            
+            .timeline-events {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .timeline-event {
+                width: 45%;
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .timeline-event {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -769,23 +786,48 @@
             <div class="about-text">
                 <div class="about-card">
                     <h3>Historia firmy</h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-year">1992</div>
-                            <div class="timeline-desc">Założenie firmy<br>
-                                Powstanie PRZEDSIĘBIORSTWA HANDLOWO-USŁUGOWEGO JERZY STANISZ, specjalizującego się w transportie krajowym.
+                    <div class="horizontal-timeline">
+                        <div class="timeline-track"></div>
+                        <div class="timeline-events">
+                            <div class="timeline-event">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-year">1992</div>
+                                <div class="timeline-desc">Założenie firmy specjalizującej się w transportie krajowym</div>
                             </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-year">2004</div>
-                            <div class="timeline-desc">Rozszerzenie działalności<br>
-                                Wprowadzenie transportu międzynarodowego oraz specjalizacja w przewozach ładunków przestrzennych.
+                            <div class="timeline-event">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-year">1995</div>
+                                <div class="timeline-desc">Rozszerzenie floty o samochody ciężarowe marki MAN i Mercedes-Benz</div>
                             </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-year">2023</div>
-                            <div class="timeline-desc">Nowoczesny tabor<br>
-                                Obecnie dysponujemy nowoczesnym taborzem pojazdów zapewniających kompleksową obsługę przewozów na najwyższym poziomie.
+                            <div class="timeline-event">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-year">2000</div>
+                                <div class="timeline-desc">Uzyskanie licencji przewoźnika krajowego i rozpoczęcie współpracy z największymi firmami logistycznymi</div>
+                            </div>
+                            <div class="timeline-event">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-year">2004</div>
+                                <div class="timeline-desc">Wprowadzenie transportu międzynarodowego oraz specjalizacja w przewozach ładunków przestrzennych</div>
+                            </div>
+                            <div class="timeline-event">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-year">2010</div>
+                                <div class="timeline-desc">Zakup nowoczesnego taboru z naczepami typu mega i jumbo</div>
+                            </div>
+                            <div class="timeline-event">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-year">2015</div>
+                                <div class="timeline-desc">Wdrożenie systemu GPS do monitoringu przewozów</div>
+                            </div>
+                            <div class="timeline-event">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-year">2020</div>
+                                <div class="timeline-desc">Uzyskanie certyfikatu ISO 9001:2015 oraz rozszerzenie działalności na transport materiałów sypkich</div>
+                            </div>
+                            <div class="timeline-event">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-year">2023</div>
+                                <div class="timeline-desc">Dysponujemy nowoczesnym taborzem pojazdów zapewniających kompleksową obsługę przewozów</div>
                             </div>
                         </div>
                     </div>
