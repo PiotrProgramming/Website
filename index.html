@@ -1464,7 +1464,7 @@
     <section class="hero">
         <!-- Hero background container with actual image tag -->
         <div class="hero-background-container">
-            <img src="images/photo1.png" alt="Transport background" class="hero-background-img" id="heroBackgroundImg">
+            <img src="images/photo1.jpg" alt="Transport background" class="hero-background-img" id="heroBackgroundImg">
         </div>
         
         <div class="hero-overlay"></div>
@@ -1960,30 +1960,42 @@
             const header = document.querySelector('.header');
             const heroBackgroundImg = document.getElementById('heroBackgroundImg');
             
+            // Get nav elements once and reuse them
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const languageButton = document.querySelector('.language-button');
+            const languageDropdown = document.querySelector('.language-dropdown');
+            
             // Add error handling for the image
             if (heroBackgroundImg) {
                 heroBackgroundImg.onerror = function() {
-                    console.error("Hero background image failed to load. Expected path: 'images/photo1.png'");
-                    // Create a visual indicator that the image is missing
-                    this.style.backgroundColor = '#f0f0f0';
-                    this.style.opacity = '0.3';
-                    this.style.border = '2px dashed #d32f2f';
+                    console.error("Hero background image failed to load. Trying alternative format...");
                     
-                    // Add a text indicator
-                    const errorMsg = document.createElement('div');
-                    errorMsg.textContent = 'Hero background image not found';
-                    errorMsg.style.position = 'absolute';
-                    errorMsg.style.top = '50%';
-                    errorMsg.style.left = '50%';
-                    errorMsg.style.transform = 'translate(-50%, -50%)';
-                    errorMsg.style.color = '#d32f2f';
-                    errorMsg.style.fontWeight = 'bold';
-                    errorMsg.style.fontSize = '1.2rem';
-                    errorMsg.style.zIndex = '10';
-                    
-                    const container = this.parentElement;
-                    container.style.position = 'relative';
-                    container.appendChild(errorMsg);
+                    // Try to load photo1.jpg if photo1.png fails
+                    const imgPath = this.src;
+                    if (imgPath.endsWith('.png')) {
+                        this.src = imgPath.replace('.png', '.jpg');
+                    } else if (imgPath.endsWith('.jpg')) {
+                        // If both formats fail, show error message
+                        this.style.backgroundColor = '#f0f0f0';
+                        this.style.opacity = '0.3';
+                        this.style.border = '2px dashed #d32f2f';
+                        
+                        const errorMsg = document.createElement('div');
+                        errorMsg.textContent = 'Hero background image not found';
+                        errorMsg.style.position = 'absolute';
+                        errorMsg.style.top = '50%';
+                        errorMsg.style.left = '50%';
+                        errorMsg.style.transform = 'translate(-50%, -50%)';
+                        errorMsg.style.color = '#d32f2f';
+                        errorMsg.style.fontWeight = 'bold';
+                        errorMsg.style.fontSize = '1.2rem';
+                        errorMsg.style.zIndex = '10';
+                        
+                        const container = this.parentElement;
+                        container.style.position = 'relative';
+                        container.appendChild(errorMsg);
+                    }
                 };
                 
                 // Initial state - no blur
@@ -1999,7 +2011,7 @@
                 }
                 
                 // Update hero background blur effect
-                if (heroBackgroundImg) {
+                if (heroBackgroundImg && !heroBackgroundImg.onerror) {
                     const scrollTop = window.pageYOffset;
                     const heroHeight = document.querySelector('.hero').offsetHeight;
                     
@@ -2023,37 +2035,35 @@
             });
             
             // Language switcher
-            const languageButton = document.querySelector('.language-button');
-            const languageDropdown = document.querySelector('.language-dropdown');
-            
-            languageButton.addEventListener('click', function() {
-                languageDropdown.classList.toggle('show');
-            });
-            
-            document.addEventListener('click', function(event) {
-                if (!event.target.closest('.language-switcher')) {
-                    languageDropdown.classList.remove('show');
-                }
-            });
+            if (languageButton && languageDropdown) {
+                languageButton.addEventListener('click', function() {
+                    languageDropdown.classList.toggle('show');
+                });
+                
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.language-switcher')) {
+                        languageDropdown.classList.remove('show');
+                    }
+                });
+            }
             
             // Mobile menu
-            const mobileMenuButton = document.querySelector('.mobile-menu-button');
-            const navLinks = document.querySelector('.nav-links');
-            
-            mobileMenuButton.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-                this.innerHTML = navLinks.classList.contains('active') ? 
-                    '<i class="fas fa-times"></i>' : 
-                    '<i class="fas fa-bars"></i>';
-            });
-            
-            // Close mobile menu when clicking a link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', function() {
-                    navLinks.classList.remove('active');
-                    mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
+            if (mobileMenuButton && navLinks) {
+                mobileMenuButton.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    this.innerHTML = navLinks.classList.contains('active') ? 
+                        '<i class="fas fa-times"></i>' : 
+                        '<i class="fas fa-bars"></i>';
                 });
-            });
+                
+                // Close mobile menu when clicking a link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
             
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2081,7 +2091,7 @@
             
             // Update active nav link based on scroll position
             const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-link');
+            const navLinksAll = document.querySelectorAll('.nav-link');
             
             window.addEventListener('scroll', function() {
                 let current = '';
@@ -2095,7 +2105,7 @@
                     }
                 });
                 
-                navLinks.forEach(link => {
+                navLinksAll.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${current}`) {
                         link.classList.add('active');
