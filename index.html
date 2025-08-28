@@ -192,11 +192,11 @@
         
         /* Typography System */
         h1 {
-            font-size: var(--text-6xl);
+            font-size: var(--text-5xl); /* Reduced from 6xl to 5xl for better fit */
             line-height: var(--leading-tight);
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: -0.025em;
-            margin-bottom: var(--space-6);
+            margin-bottom: var(--space-4); /* Reduced margin */
         }
         
         h2 {
@@ -589,9 +589,9 @@
         /* Dedicated text container with higher opacity for better readability */
         .hero-text-container {
             background: rgba(240, 242, 245, 0.9); /* Bright gray at 90% opacity */
-            border-radius: var(--radius-xl);
-            padding: var(--space-8);
-            box-shadow: var(--shadow-md);
+            border-radius: var(--radius-lg); /* Reduced from xl to lg */
+            padding: var(--space-6); /* Reduced from 8 to 6 */
+            box-shadow: var(--shadow-sm); /* Slightly smaller shadow */
             backdrop-filter: blur(4px);
             width: 100%;
         }
@@ -608,26 +608,26 @@
             color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            margin-bottom: var(--space-4);
+            margin-bottom: var(--space-3); /* Reduced margin */
             display: inline-block;
             padding-bottom: var(--space-1);
             border-bottom: 2px solid var(--primary);
         }
         
         .hero-title {
-            font-size: var(--text-6xl);
+            font-size: var(--text-5xl); /* Reduced from 6xl to 5xl */
             line-height: var(--leading-tight);
             font-weight: 800;
             letter-spacing: -0.025em;
-            margin-bottom: var(--space-5);
+            margin-bottom: var(--space-4); /* Reduced margin */
             color: var(--text-primary);
         }
         
         .hero-description {
-            font-size: var(--text-xl);
+            font-size: var(--text-lg); /* Reduced from xl to lg */
             line-height: var(--leading-relaxed);
             color: var(--text-secondary);
-            margin-bottom: var(--space-8);
+            margin-bottom: var(--space-6); /* Reduced margin */
             max-width: 600px;
         }
         
@@ -636,7 +636,7 @@
             align-items: center;
             justify-content: center;
             gap: var(--space-3);
-            padding: var(--space-4) var(--space-6);
+            padding: var(--space-3) var(--space-5); /* Reduced padding */
             border-radius: var(--radius-lg);
             font-weight: 600;
             font-size: var(--text-base);
@@ -644,7 +644,7 @@
             cursor: pointer;
             transition: var(--transition-spring);
             border: none;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-sm);
         }
         
         .btn-primary {
@@ -655,7 +655,7 @@
         .btn-primary:hover {
             background: linear-gradient(135deg, var(--primary-600), var(--primary-800));
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-md);
         }
         
         .btn-outline {
@@ -1801,4 +1801,308 @@
                                 <span class="fleet-card-spec-value">25 t</span>
                             </div>
                             <div class="fleet-card-spec">
-                                <span class="fleet-card-spec-label">Kub
+                                <span class="fleet-card-spec-label">Kubatura</span>
+                                <span class="fleet-card-spec-value">100 m3</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Europalety</span>
+                                <span class="fleet-card-spec-value">33 szt.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title-h2">KONTAKT</h2>
+                <p class="section-description">Zapraszamy do kontaktu w celu uzyskania szczegółowych informacji na temat naszych usług.</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-card animate-fade-in">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Adres</h3>
+                            <p>PHU Jerzy Stanisz<br>
+                            ul. Ząbkowicka 22a<br>
+                            57-100 Strzelin</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card animate-fade-in delay-1">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Telefony</h3>
+                            <p>500 175 331<br>
+                            (71) 39 35 726</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card animate-fade-in delay-2">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>E-mail</h3>
+                            <p>biuro@stanisz-transport.pl</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form animate-fade-in delay-3">
+                    <form>
+                        <div class="form-group">
+                            <label for="name" class="form-label">Imię i nazwisko</label>
+                            <input type="text" id="name" class="form-control" placeholder="Wpisz swoje imię i nazwisko" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Adres e-mail</label>
+                            <input type="email" id="email" class="form-control" placeholder="Wpisz swój adres email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Numer telefonu</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="Wpisz swój numer telefonu" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Temat wiadomości</label>
+                            <select id="subject" class="form-control form-select" required>
+                                <option value="" disabled selected>Wybierz temat</option>
+                                <option value="oferta">Zapytanie o ofertę</option>
+                                <option value="wspolpraca">Współpraca biznesowa</option>
+                                <option value="pracownik">Zatrudnienie</option>
+                                <option value="inne">Inne</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Treść wiadomości</label>
+                            <textarea id="message" class="form-control form-textarea" placeholder="Napisz wiadomość..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Wyślij wiadomość
+                            <span class="btn-icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="footer-logo-text">STANISZ TRANSPORT</div>
+                </a>
+                <p class="footer-description">Profesjonalne usługi transportowe i spedycyjne od 1992 roku. Zapewniamy terminowość, bezpieczeństwo i profesjonalną obsługę dla Twoich przesyłek.</p>
+                <div class="footer-social">
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="footer-links-title">Szybkie linki</h3>
+                <ul class="footer-links">
+                    <li><a href="#about" class="footer-link">O firmie</a></li>
+                    <li><a href="#why" class="footer-link">Dlaczego my?</a></li>
+                    <li><a href="#offer" class="footer-link">Oferta</a></li>
+                    <li><a href="#fleet" class="footer-link">Tabor</a></li>
+                    <li><a href="#contact" class="footer-link">Kontakt</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="footer-links-title">Dokumenty</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Decyzja o nadaniu numeru identyfikacyjnego podatkowego</a></li>
+                    <li><a href="#" class="footer-link">Licencja krajowa</a></li>
+                    <li><a href="#" class="footer-link">Licencja międzynarodowa</a></li>
+                    <li><a href="#" class="footer-link">Ubezpieczenie w ruchu krajowym</a></li>
+                    <li><a href="#" class="footer-link">Ubezpieczenie w ruchu międzynarodowym</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="footer-links-title">Kontakt</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:biuro@stanisz-transport.pl" class="footer-link">biuro@stanisz-transport.pl</a></li>
+                    <li><a href="tel:500175331" class="footer-link">500 175 331</a></li>
+                    <li><a href="tel:(71)3935726" class="footer-link">(71) 39 35 726</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 STANISZ TRANSPORT | Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('.header');
+            const heroBackgroundImg = document.getElementById('heroBackgroundImg');
+            
+            // Get nav elements once and reuse them
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const languageButton = document.querySelector('.language-button');
+            const languageDropdown = document.querySelector('.language-dropdown');
+            
+            // Add error handling for the image
+            if (heroBackgroundImg) {
+                heroBackgroundImg.onerror = function() {
+                    console.error("Hero background image failed to load. Trying alternative format...");
+                    
+                    // Try to load photo1.jpg if photo1.png fails
+                    const imgPath = this.src;
+                    if (imgPath.endsWith('.png')) {
+                        this.src = imgPath.replace('.png', '.jpg');
+                    } else if (imgPath.endsWith('.jpg')) {
+                        // If both formats fail, show error message
+                        this.style.backgroundColor = '#f0f0f0';
+                        this.style.opacity = '0.3';
+                        this.style.border = '2px dashed #d32f2f';
+                        
+                        const errorMsg = document.createElement('div');
+                        errorMsg.textContent = 'Hero background image not found';
+                        errorMsg.style.position = 'absolute';
+                        errorMsg.style.top = '50%';
+                        errorMsg.style.left = '50%';
+                        errorMsg.style.transform = 'translate(-50%, -50%)';
+                        errorMsg.style.color = '#d32f2f';
+                        errorMsg.style.fontWeight = 'bold';
+                        errorMsg.style.fontSize = '1.2rem';
+                        errorMsg.style.zIndex = '10';
+                        
+                        const container = this.parentElement;
+                        container.style.position = 'relative';
+                        container.appendChild(errorMsg);
+                    }
+                };
+                
+                // NO SCROLL EFFECT - CONSISTENT BLUR OF 6px
+                heroBackgroundImg.style.filter = 'blur(6px)';
+            }
+            
+            // Update header on scroll
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Language switcher
+            if (languageButton && languageDropdown) {
+                languageButton.addEventListener('click', function() {
+                    languageDropdown.classList.toggle('show');
+                });
+                
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.language-switcher')) {
+                        languageDropdown.classList.remove('show');
+                    }
+                });
+            }
+            
+            // Mobile menu
+            if (mobileMenuButton && navLinks) {
+                mobileMenuButton.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    this.innerHTML = navLinks.classList.contains('active') ? 
+                        '<i class="fas fa-times"></i>' : 
+                        '<i class="fas fa-bars"></i>';
+                });
+                
+                // Close mobile menu when clicking a link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active nav link
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // Update active nav link based on scroll position
+            const sections = document.querySelectorAll('section');
+            const navLinksAll = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinksAll.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
