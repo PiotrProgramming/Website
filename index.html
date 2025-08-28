@@ -575,14 +575,14 @@
             transition: filter 0.3s ease;
         }
         
-        /* Overlay for better text contrast - CHANGED TO SOLID WHITE AT 25% OPACITY */
+        /* Overlay for better text contrast - CHANGED TO SOLID WHITE AT 30% OPACITY */
         .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.25); /* Solid white at 25% opacity */
+            background: rgba(255, 255, 255, 0.3); /* Solid white at 30% opacity */
             z-index: -1;
         }
         
@@ -1135,7 +1135,7 @@
             box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
         }
         
-        /* FIXED: Added '' prefix to SVG URL */
+        /* FIXED: Corrected SVG URL format */
         .form-select {
             appearance: none;
             background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
@@ -1998,8 +1998,8 @@
                     }
                 };
                 
-                // INCREASED BLUR TO 3px (more noticeable but still subtle)
-                heroBackgroundImg.style.filter = 'blur(3px)';
+                // INCREASED BLUR TO 5px (more pronounced blur)
+                heroBackgroundImg.style.filter = 'blur(5px)';
             }
             
             window.addEventListener('scroll', function() {
@@ -2023,15 +2023,15 @@
                         const blurEnd = heroHeight * 0.7;
                         const scrollProgress = Math.min((scrollTop - blurStart) / (blurEnd - blurStart), 1);
                         
-                        // Start from 3px (more noticeable) and go up to 10px
-                        const minBlur = 3;
-                        const maxBlur = 10;
+                        // Start from 5px (more pronounced) and go up to 12px
+                        const minBlur = 5;
+                        const maxBlur = 12;
                         const blurAmount = minBlur + (scrollProgress * (maxBlur - minBlur));
                         
                         heroBackgroundImg.style.filter = `blur(${blurAmount}px)`;
                     } else {
-                        // Maintain the increased blur (3px) when not scrolling
-                        heroBackgroundImg.style.filter = 'blur(3px)';
+                        // Maintain the increased blur (5px) when not scrolling
+                        heroBackgroundImg.style.filter = 'blur(5px)';
                     }
                 }
             });
