@@ -575,14 +575,14 @@
             transition: filter 0.3s ease;
         }
         
-        /* Overlay for better text contrast */
+        /* Overlay for better text contrast - CHANGED TO SOLID WHITE AT 25% OPACITY */
         .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(211, 47, 47, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+            background: rgba(255, 255, 255, 0.25); /* Solid white at 25% opacity */
             z-index: -1;
         }
         
@@ -1998,8 +1998,8 @@
                     }
                 };
                 
-                // VERY SLIGHT BLUR (1px) as requested - this is the key change
-                heroBackgroundImg.style.filter = 'blur(1px)';
+                // INCREASED BLUR TO 3px (more noticeable but still subtle)
+                heroBackgroundImg.style.filter = 'blur(3px)';
             }
             
             window.addEventListener('scroll', function() {
@@ -2023,15 +2023,15 @@
                         const blurEnd = heroHeight * 0.7;
                         const scrollProgress = Math.min((scrollTop - blurStart) / (blurEnd - blurStart), 1);
                         
-                        // Start from 1px (instead of 0px) and go up to 8px
-                        const minBlur = 1;
-                        const maxBlur = 8;
+                        // Start from 3px (more noticeable) and go up to 10px
+                        const minBlur = 3;
+                        const maxBlur = 10;
                         const blurAmount = minBlur + (scrollProgress * (maxBlur - minBlur));
                         
                         heroBackgroundImg.style.filter = `blur(${blurAmount}px)`;
                     } else {
-                        // Maintain the very slight blur (1px) when not scrolling
-                        heroBackgroundImg.style.filter = 'blur(1px)';
+                        // Maintain the increased blur (3px) when not scrolling
+                        heroBackgroundImg.style.filter = 'blur(3px)';
                     }
                 }
             });
