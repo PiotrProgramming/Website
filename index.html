@@ -349,24 +349,24 @@
             }
         }
         
-        /* Header & Navigation - FIXED */
+        /* Header & Navigation - FIXED - BLACK BACKGROUND */
         .header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: var(--z-sticky);
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(0, 0, 0, 0.95); /* Black background */
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             transition: var(--transition-normal);
             height: 72px; /* Fixed height for consistent calculations */
         }
         
         .header.scrolled {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            background: rgba(255, 255, 255, 0.99);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.99);
         }
         
         .header-container {
@@ -382,8 +382,6 @@
             align-items: center;
             gap: var(--space-3);
             text-decoration: none;
-            font-weight: 700;
-            color: var(--text-primary);
             transition: var(--transition-fast);
         }
         
@@ -391,29 +389,10 @@
             opacity: 0.9;
         }
         
-        .logo-icon {
-            width: 40px;
+        .logo-image {
             height: 40px;
-            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.25rem;
-        }
-        
-        .logo-text {
-            font-size: var(--text-xl);
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-        
-        .logo-subtext {
-            font-size: var(--text-xs);
-            color: var(--text-tertiary);
-            font-weight: 400;
-            margin-top: -2px;
+            width: auto;
+            display: block;
         }
         
         .nav {
@@ -432,7 +411,7 @@
             position: relative;
             font-size: var(--text-sm);
             font-weight: 500;
-            color: var(--text-secondary);
+            color: #e5e7eb; /* Light gray for contrast on black */
             text-decoration: none;
             transition: var(--transition-fast);
             padding: var(--space-2) 0;
@@ -440,7 +419,7 @@
         }
         
         .nav-link:hover {
-            color: var(--primary);
+            color: var(--primary-light);
         }
         
         .nav-link::after {
@@ -450,7 +429,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--primary);
+            background-color: var(--primary-light);
             transition: var(--transition-fast);
         }
         
@@ -459,7 +438,7 @@
         }
         
         .nav-link.active {
-            color: var(--primary);
+            color: var(--primary-light);
         }
         
         .nav-link.active::after {
@@ -483,7 +462,7 @@
             gap: var(--space-2);
             background: none;
             border: none;
-            color: var(--text-secondary);
+            color: #e5e7eb; /* Light gray for contrast on black */
             font-size: var(--text-sm);
             font-weight: 500;
             cursor: pointer;
@@ -493,15 +472,15 @@
         }
         
         .language-button:hover {
-            background-color: var(--neutral-100);
-            color: var(--primary);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--primary-light);
         }
         
         .language-dropdown {
             position: absolute;
             top: calc(100% + var(--space-2));
             right: 0;
-            background: var(--bg-white);
+            background: rgba(0, 0, 0, 0.95);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-xl);
             overflow: hidden;
@@ -511,6 +490,7 @@
             transition: var(--transition-normal);
             z-index: var(--z-dropdown);
             min-width: 160px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .language-dropdown.show {
@@ -524,7 +504,7 @@
             align-items: center;
             gap: var(--space-3);
             padding: var(--space-3) var(--space-4);
-            color: var(--text-secondary);
+            color: #e5e7eb; /* Light gray for contrast on black */
             font-size: var(--text-sm);
             font-weight: 500;
             background: none;
@@ -536,13 +516,13 @@
         }
         
         .language-option:hover {
-            background-color: var(--primary-50);
-            color: var(--primary);
+            background-color: rgba(211, 47, 47, 0.1);
+            color: var(--primary-light);
         }
         
         .language-option.active {
-            background-color: var(--primary-50);
-            color: var(--primary);
+            background-color: rgba(211, 47, 47, 0.1);
+            color: var(--primary-light);
             font-weight: 600;
         }
         
@@ -550,7 +530,7 @@
             display: none;
             background: none;
             border: none;
-            color: var(--text-secondary);
+            color: #e5e7eb; /* Light gray for contrast on black */
             font-size: 1.5rem;
             cursor: pointer;
             transition: var(--transition-fast);
@@ -559,8 +539,8 @@
         }
         
         .mobile-menu-button:hover {
-            background-color: var(--neutral-100);
-            color: var(--primary);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--primary-light);
         }
         
         /* Hero Section */
@@ -1189,7 +1169,7 @@
         
         .form-select {
             appearance: none;
-            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 1rem center;
             background-size: 1em;
@@ -1440,7 +1420,8 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: var(--bg-white);
+                background: rgba(0, 0, 0, 0.95);
+                border: 1px solid rgba(255, 255, 255, 0.1);
                 flex-direction: column;
                 padding: var(--space-5);
                 gap: var(--space-4);
@@ -1464,17 +1445,11 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header - BLACK BACKGROUND -->
     <header class="header">
         <div class="container header-container">
             <a href="#" class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-truck"></i>
-                </div>
-                <div>
-                    <div class="logo-text">STANISZ TRANSPORT</div>
-                    <div class="logo-subtext">Professional Logistics & Transport</div>
-                </div>
+                <img src="/images/logo.png" alt="STANISZ TRANSPORT Logo" class="logo-image">
             </a>
             
             <nav class="nav">
