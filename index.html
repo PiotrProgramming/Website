@@ -948,29 +948,42 @@
             gap: var(--space-3);
         }
         
-        /* Offer Section */
+        /* Offer Section - CENTERED AND SPLIT INTO 2 COLUMNS */
         .offer-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-12);
-            align-items: center;
+            grid-template-columns: 1fr 1fr; /* Equal columns */
+            gap: var(--space-8);
         }
         
-        .offer-content {
+        .offer-column {
             display: flex;
             flex-direction: column;
-            gap: var(--space-6);
+            align-items: center; /* Center content horizontally */
+            text-align: center; /* Center text */
+        }
+        
+        .offer-column h3 {
+            text-align: center !important;
+        }
+        
+        .offer-column ul {
+            width: 100%;
+            max-width: 400px; /* Limit width for better readability */
+            margin: 0 auto;
         }
         
         .offer-list {
             list-style: none;
+            margin: 0 auto;
         }
         
         .offer-list-item {
             display: flex;
             align-items: flex-start;
+            justify-content: center; /* Center items */
             gap: var(--space-3);
             padding: var(--space-3) 0;
+            margin: 0 auto;
         }
         
         .offer-list-icon {
@@ -988,6 +1001,7 @@
         
         .offer-list-content {
             color: var(--text-secondary);
+            text-align: left; /* Left-align content within items for readability */
         }
         
         /* Fleet Section */
@@ -1333,6 +1347,16 @@
             .section-header {
                 text-align: center;
             }
+            
+            /* Single column layout for mobile */
+            .offer-column {
+                text-align: left;
+                align-items: flex-start;
+            }
+            
+            .offer-list-item {
+                justify-content: flex-start;
+            }
         }
         
         @media (max-width: 768px) {
@@ -1659,75 +1683,76 @@
                 <p class="section-description">Od początku działalności nadrzędnym celem działania jest realizacja każdego zlecenia w sposób profesjonalny- terminowy i zgodny z indywidualnymi potrzebami naszych klientów.</p>
             </div>
             
+            <!-- Updated Offer Section with Centered Text and Two Columns -->
             <div class="offer-container">
-                <div class="offer-content animate-fade-in">
-                    <div class="about-card">
-                        <h3 class="about-card-title">
-                            <span class="about-card-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </span>
-                            Bezpieczeństwo przesyłek
-                        </h3>
-                        <ul class="offer-list">
-                            <li class="offer-list-item">
-                                <div class="offer-list-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="offer-list-content">
-                                    Ubezpieczenie OC przewoźnika w ruchu międzynarodowym na sumę gwarancyjną 100.000 euro
-                                </div>
-                            </li>
-                            <li class="offer-list-item">
-                                <div class="offer-list-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="offer-list-content">
-                                    Ubezpieczenie OC przewoźnika w ruchu krajowym na sumę gwarancyjną 100.000 zł
-                                </div>
-                            </li>
-                            <li class="offer-list-item">
-                                <div class="offer-list-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="offer-list-content">
-                                    Dodatkowe ubezpieczenie Cargo do pełnej wartości przewożonego mienia
-                                </div>
-                            </li>
-                        </ul>
-                        
-                        <h3 class="about-card-title" style="margin-top: 2rem;">
-                            <span class="about-card-icon">
-                                <i class="fas fa-truck-loading"></i>
-                            </span>
-                            Nasza specjalizacja
-                        </h3>
-                        <ul class="offer-list">
-                            <li class="offer-list-item">
-                                <div class="offer-list-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="offer-list-content">
-                                    Przewozy ładunków przestrzennych o kubaturze do 120 m3
-                                </div>
-                            </li>
-                            <li class="offer-list-item">
-                                <div class="offer-list-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="offer-list-content">
-                                    Transport materiałów sypkich za pomocą ciągników siodłowych
-                                </div>
-                            </li>
-                            <li class="offer-list-item">
-                                <div class="offer-list-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="offer-list-content">
-                                    System nawigacji GPS dla stałego monitoringu przewożonego ładunku
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="offer-column animate-fade-in">
+                    <h3 class="about-card-title text-center">
+                        <span class="about-card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </span>
+                        Bezpieczeństwo przesyłek
+                    </h3>
+                    <ul class="offer-list">
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                Ubezpieczenie OC przewoźnika w ruchu międzynarodowym na sumę gwarancyjną 100.000 euro
+                            </div>
+                        </li>
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                Ubezpieczenie OC przewoźnika w ruchu krajowym na sumę gwarancyjną 100.000 zł
+                            </div>
+                        </li>
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                Dodatkowe ubezpieczenie Cargo do pełnej wartości przewożonego mienia
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="offer-column animate-fade-in delay-1">
+                    <h3 class="about-card-title text-center">
+                        <span class="about-card-icon">
+                            <i class="fas fa-truck-loading"></i>
+                        </span>
+                        Nasza specjalizacja
+                    </h3>
+                    <ul class="offer-list">
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                Przewozy ładunków przestrzennych o kubaturze do 120 m3
+                            </div>
+                        </li>
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                Transport materiałów sypkich za pomocą ciągników siodłowych
+                            </div>
+                        </li>
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                System nawigacji GPS dla stałego monitoringu przewożonego ładunku
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
