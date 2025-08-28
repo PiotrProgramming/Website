@@ -3,100 +3,470 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STANISZ TRANSPORT</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>STANISZ TRANSPORT | Professional Logistics & Transport</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #e13330;
-            --secondary: #ffffff;
-            --tertiary: #000000;
-            --light-gray: #f3f4f6;
-            --dark-gray: #1f2937;
-            --text-color: #111827;
+            /* Core Color Palette */
+            --primary: #d32f2f;
+            --primary-light: #ff6659;
+            --primary-dark: #9a0007;
+            --primary-50: #fff0f0;
+            --primary-100: #ffe5e5;
+            --primary-200: #ffcaca;
+            --primary-300: #ffb0b0;
+            --primary-400: #ff9595;
+            --primary-500: #d32f2f;
+            --primary-600: #c62828;
+            --primary-700: #b71c1c;
+            --primary-800: #9a0007;
+            --primary-900: #750005;
+            
+            /* Neutral Colors */
+            --neutral-50: #f9fafb;
+            --neutral-100: #f3f4f6;
+            --neutral-200: #e5e7eb;
+            --neutral-300: #d1d5db;
+            --neutral-400: #9ca3af;
+            --neutral-500: #6b7280;
+            --neutral-600: #4b5563;
+            --neutral-700: #374151;
+            --neutral-800: #1f2937;
+            --neutral-900: #111827;
+            
+            /* Additional Brand Colors */
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-yellow: #f59e0b;
+            
+            /* Background Colors */
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            
+            /* Text Colors */
+            --text-primary: var(--neutral-900);
+            --text-secondary: var(--neutral-700);
+            --text-tertiary: var(--neutral-600);
+            --text-inverse: #ffffff;
+            
+            /* Spacing System */
+            --space-1: 0.25rem;  /* 4px */
+            --space-2: 0.5rem;   /* 8px */
+            --space-3: 0.75rem;  /* 12px */
+            --space-4: 1rem;     /* 16px */
+            --space-5: 1.25rem;  /* 20px */
+            --space-6: 1.5rem;   /* 24px */
+            --space-7: 1.75rem;  /* 28px */
+            --space-8: 2rem;     /* 32px */
+            --space-9: 2.25rem;  /* 36px */
+            --space-10: 2.5rem;  /* 40px */
+            --space-11: 2.75rem; /* 44px */
+            --space-12: 3rem;    /* 48px */
+            --space-14: 3.5rem;  /* 56px */
+            --space-16: 4rem;    /* 64px */
+            --space-20: 5rem;    /* 80px */
+            --space-24: 6rem;    /* 96px */
+            --space-28: 7rem;    /* 112px */
+            --space-32: 8rem;    /* 128px */
+            
+            /* Border Radius */
+            --radius-sm: 0.375rem; /* 6px */
+            --radius-md: 0.5rem;   /* 8px */
+            --radius-lg: 0.75rem;  /* 12px */
+            --radius-xl: 1rem;     /* 16px */
+            --radius-2xl: 1.5rem;  /* 24px */
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+            
+            /* Transitions */
+            --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-spring: all 0.4s cubic-bezier(0.17, 0.67, 0.5, 1.25);
+            
+            /* Typography */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --font-serif: 'Plus Jakarta Sans', Georgia, 'Times New Roman', serif;
+            
+            /* Font Sizes */
+            --text-xs: 0.75rem;   /* 12px */
+            --text-sm: 0.875rem;  /* 14px */
+            --text-base: 1rem;    /* 16px */
+            --text-lg: 1.125rem;  /* 18px */
+            --text-xl: 1.25rem;   /* 20px */
+            --text-2xl: 1.5rem;   /* 24px */
+            --text-3xl: 1.875rem; /* 30px */
+            --text-4xl: 2.25rem;  /* 36px */
+            --text-5xl: 3rem;     /* 48px */
+            --text-6xl: 3.75rem;  /* 60px */
+            --text-7xl: 4.5rem;   /* 72px */
+            --text-8xl: 6rem;     /* 96px */
+            --text-9xl: 8rem;     /* 128px */
+            
+            /* Line Heights */
+            --leading-tight: 1.25;
+            --leading-snug: 1.375;
+            --leading-normal: 1.5;
+            --leading-relaxed: 1.625;
+            --leading-loose: 2;
+            
+            /* Z-index */
+            --z-0: 0;
+            --z-10: 10;
+            --z-20: 20;
+            --z-30: 30;
+            --z-40: 40;
+            --z-50: 50;
+            --z-100: 100;
+            --z-1000: 1000;
+            --z-modal: 2000;
+            --z-dropdown: 1000;
+            --z-sticky: 1100;
+            --z-toast: 9999;
+            --z-tooltip: 10000;
         }
         
-        * {
+        /* Modern CSS Reset with Focus on Accessibility */
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-family: var(--font-sans);
+            font-size: 100%;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         body {
-            background-color: var(--light-gray);
-            color: var(--text-color);
+            background: var(--bg-light);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
         }
         
-        /* Navigation */
-        .navbar {
-            background-color: var(--tertiary);
-            position: sticky;
+        img, picture, video, canvas, svg {
+            display: block;
+            max-width: 100%;
+        }
+        
+        input, button, textarea, select {
+            font: inherit;
+        }
+        
+        p, h1, h2, h3, h4, h5, h6 {
+            overflow-wrap: break-word;
+        }
+        
+        #root, #__next {
+            isolation: isolate;
+        }
+        
+        /* Focus styles for accessibility */
+        :focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 3px var(--primary-100);
+        }
+        
+        :focus:not(:focus-visible) {
+            outline: none;
+            box-shadow: none;
+        }
+        
+        /* Typography System */
+        h1 {
+            font-size: var(--text-6xl);
+            line-height: var(--leading-tight);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: var(--space-6);
+        }
+        
+        h2 {
+            font-size: var(--text-4xl);
+            line-height: var(--leading-tight);
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: var(--space-5);
+        }
+        
+        h3 {
+            font-size: var(--text-2xl);
+            line-height: var(--leading-snug);
+            font-weight: 600;
+            margin-bottom: var(--space-4);
+        }
+        
+        h4 {
+            font-size: var(--text-xl);
+            line-height: var(--leading-normal);
+            font-weight: 600;
+            margin-bottom: var(--space-3);
+        }
+        
+        p {
+            font-size: var(--text-base);
+            line-height: var(--leading-relaxed);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-4);
+        }
+        
+        .text-lg {
+            font-size: var(--text-lg);
+            line-height: var(--leading-relaxed);
+        }
+        
+        .text-xl {
+            font-size: var(--text-xl);
+            line-height: var(--leading-relaxed);
+        }
+        
+        .text-2xl {
+            font-size: var(--text-2xl);
+            line-height: var(--leading-snug);
+        }
+        
+        .text-3xl {
+            font-size: var(--text-3xl);
+            line-height: var(--leading-tight);
+        }
+        
+        .text-4xl {
+            font-size: var(--text-4xl);
+            line-height: var(--leading-tight);
+        }
+        
+        .text-sm {
+            font-size: var(--text-sm);
+            line-height: var(--leading-normal);
+        }
+        
+        .text-xs {
+            font-size: var(--text-xs);
+            line-height: var(--leading-normal);
+        }
+        
+        .font-semibold {
+            font-weight: 600;
+        }
+        
+        .font-medium {
+            font-weight: 500;
+        }
+        
+        .font-light {
+            font-weight: 300;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-left {
+            text-align: left;
+        }
+        
+        .text-right {
+            text-align: right;
+        }
+        
+        .leading-tight {
+            line-height: var(--leading-tight);
+        }
+        
+        .leading-normal {
+            line-height: var(--leading-normal);
+        }
+        
+        .text-primary {
+            color: var(--primary);
+        }
+        
+        .text-secondary {
+            color: var(--text-secondary);
+        }
+        
+        .text-tertiary {
+            color: var(--text-tertiary);
+        }
+        
+        .bg-primary {
+            background-color: var(--primary);
+        }
+        
+        .bg-white {
+            background-color: var(--bg-white);
+        }
+        
+        .bg-light {
+            background-color: var(--bg-light);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--space-6);
+            padding-right: var(--space-6);
+        }
+        
+        @media (max-width: 1024px) {
+            .container {
+                padding-left: var(--space-5);
+                padding-right: var(--space-5);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding-left: var(--space-4);
+                padding-right: var(--space-4);
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .container {
+                padding-left: var(--space-3);
+                padding-right: var(--space-3);
+            }
+        }
+        
+        /* Header & Navigation */
+        .header {
+            position: fixed;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            left: 0;
+            right: 0;
+            z-index: var(--z-sticky);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: var(--transition-normal);
         }
         
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .header.scrolled {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.99);
+        }
+        
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-        }
-        
-        .logo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: var(--space-4) 0;
         }
         
         .logo {
-            width: 300px;
-            height: auto;
-            object-fit: contain;
-            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            text-decoration: none;
+            font-weight: 700;
+            color: var(--text-primary);
+            transition: var(--transition-fast);
         }
         
-        .logo-tagline {
+        .logo:hover {
+            opacity: 0.9;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            font-size: 0.8rem;
-            font-weight: 500;
-            text-align: center;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            letter-spacing: 0.5px;
+            font-size: 1.25rem;
+        }
+        
+        .logo-text {
+            font-size: var(--text-xl);
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .logo-subtext {
+            font-size: var(--text-xs);
+            color: var(--text-tertiary);
+            font-weight: 400;
+            margin-top: -2px;
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
         }
         
         .nav-links {
             display: flex;
-            gap: 1.5rem;
+            align-items: center;
+            gap: var(--space-7);
         }
         
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            padding: 0.8rem 1.5rem;
-            border-radius: 0 0 12px 12px;
+        .nav-link {
             position: relative;
-            top: 0;
-            font-size: 1.1rem;
-            background-color: rgba(0, 0, 0, 0.3);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition-fast);
+            padding: var(--space-2) 0;
+            letter-spacing: -0.025em;
         }
         
-        .nav-links a:hover {
+        .nav-link:hover {
             color: var(--primary);
-            background-color: rgba(0, 0, 0, 0.5);
         }
         
-        .nav-links a.active {
-            background-color: var(--tertiary);
-            color: white;
-            top: 50px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-            transform: translateY(10px);
-            border-radius: 0 0 15px 15px;
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition-fast);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: var(--primary);
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-5);
         }
         
         .language-switcher {
@@ -104,70 +474,101 @@
             display: inline-block;
         }
         
-        .language-switcher button {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 1rem;
-            padding: 0.5rem;
+        .language-button {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
+            gap: var(--space-2);
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-md);
         }
         
-        .language-switcher button:hover {
+        .language-button:hover {
+            background-color: var(--neutral-100);
             color: var(--primary);
         }
         
         .language-dropdown {
             position: absolute;
-            top: 100%;
+            top: calc(100% + var(--space-2));
             right: 0;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            min-width: 100px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 1001;
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
+            transform: translateY(10px);
+            transition: var(--transition-normal);
+            z-index: var(--z-dropdown);
+            min-width: 160px;
         }
         
         .language-dropdown.show {
             opacity: 1;
             visibility: visible;
+            transform: translateY(0);
         }
         
-        .language-dropdown button {
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            padding: var(--space-3) var(--space-4);
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            background: none;
+            border: none;
             width: 100%;
             text-align: left;
-            padding: 0.75rem;
-            border: none;
-            background: transparent;
-            color: #333;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: var(--transition-fast);
         }
         
-        .language-dropdown button:hover {
-            background-color: #f1f1f1;
+        .language-option:hover {
+            background-color: var(--primary-50);
+            color: var(--primary);
+        }
+        
+        .language-option.active {
+            background-color: var(--primary-50);
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            padding: var(--space-2);
+            border-radius: var(--radius-md);
+        }
+        
+        .mobile-menu-button:hover {
+            background-color: var(--neutral-100);
+            color: var(--primary);
         }
         
         /* Hero Section */
         .hero {
-            background-color: var(--primary);
-            color: white;
-            padding: 8rem 2rem;
-            text-align: center;
-            position: relative;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            padding: var(--space-20) 0;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-gradient);
         }
         
         .hero::before {
@@ -177,818 +578,1361 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('images/Photo1.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.2;
-            z-index: 1;
+            background: linear-gradient(135deg, rgba(211, 47, 47, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+            z-index: -1;
         }
         
         .hero-content {
+            max-width: 650px;
             position: relative;
-            z-index: 2;
-            max-width: 800px;
+            z-index: 1;
         }
         
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        .hero-subtitle {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-4);
+            display: inline-block;
+            padding-bottom: var(--space-1);
+            border-bottom: 2px solid var(--primary);
         }
         
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        .hero-title {
+            font-size: var(--text-6xl);
+            line-height: var(--leading-tight);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: var(--space-5);
+            color: var(--text-primary);
+        }
+        
+        .hero-description {
+            font-size: var(--text-xl);
+            line-height: var(--leading-relaxed);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-8);
+            max-width: 600px;
+        }
+        
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50%;
+            max-width: 700px;
+            z-index: 0;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-2xl);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition-spring);
+        }
+        
+        .hero-image:hover img {
+            transform: scale(1.03);
         }
         
         .btn {
-            background-color: white;
-            color: var(--primary);
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            justify-content: center;
+            gap: var(--space-3);
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: var(--text-base);
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition-spring);
+            border: none;
+            box-shadow: var(--shadow-md);
         }
         
-        .btn:hover {
-            background-color: #f5f5f5;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            color: white;
         }
         
-        /* Section */
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-600), var(--primary-800));
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary-50);
+            transform: translateY(-2px);
+        }
+        
+        .btn-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Section Styling */
         .section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: var(--space-20) 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--space-12);
         }
         
         .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary);
-            border-radius: 2px;
+            font-size: var(--text-4xl);
+            line-height: var(--leading-tight);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-4);
         }
         
         .section-description {
-            text-align: center;
-            font-size: 1.1rem;
-            color: #6b7280;
-            margin-bottom: 3rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: var(--text-xl);
+            line-height: var(--leading-relaxed);
+            color: var(--text-secondary);
+        }
+        
+        .section-title-h2 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: var(--space-6);
+        }
+        
+        .section-title-h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-500), var(--accent-blue));
+            border-radius: 2px;
         }
         
         /* About Section */
         .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-12);
+            align-items: center;
+        }
+        
+        .about-content {
             display: flex;
-            flex-wrap: wrap;
-            gap: 4rem;
-        }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-            position: relative;
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
+            gap: var(--space-6);
         }
         
         .about-card {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-spring);
         }
         
-        .about-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
         
-        /* Horizontal Timeline */
-        .horizontal-timeline-wrapper {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 3rem 2rem;
-            margin: 2rem 0;
-            width: 100%;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .horizontal-timeline {
-            position: relative;
-            margin: 0 auto;
-            width: 100%;
-            padding: 2rem 0;
-        }
-        
-        .timeline-track {
-            position: relative;
-            height: 4px;
-            background-color: #e5e7eb;
-            margin: 0;
-            width: 100%;
-        }
-        
-        .timeline-events {
+        .about-card-title {
             display: flex;
-            justify-content: space-between;
-            position: relative;
-            margin-top: -7px;
+            align-items: center;
+            gap: var(--space-3);
+            color: var(--primary);
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            margin-bottom: var(--space-5);
         }
         
-        .timeline-event {
+        .about-card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-50);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+        
+        /* Timeline Section */
+        .timeline-container {
+            background: var(--bg-white);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-lg);
             position: relative;
-            text-align: center;
-            width: 12%;
-            min-width: 100px;
+            overflow: hidden;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-500), var(--accent-blue));
+            border-radius: 2px 2px 0 0;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: var(--space-6) 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            background: var(--neutral-200);
+        }
+        
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: var(--space-5) var(--space-6);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            align-self: flex-start;
+            padding-right: calc(50% + var(--space-7));
+        }
+        
+        .timeline-item:nth-child(even) {
+            align-self: flex-end;
+            padding-left: calc(50% + var(--space-7));
+        }
+        
+        .timeline-item-content {
+            background: var(--bg-light);
+            border-radius: var(--radius-lg);
+            padding: var(--space-5);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-fast);
+            border-left: 3px solid var(--primary);
+        }
+        
+        .timeline-item:hover .timeline-item-content {
+            background: var(--primary-50);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .timeline-year {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-2);
         }
         
         .timeline-dot {
             position: absolute;
-            top: -7px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: calc(50% - 12px);
             width: 24px;
             height: 24px;
-            background-color: var(--primary);
             border-radius: 50%;
-            border: 4px solid white;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            z-index: 2;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            box-shadow: 0 0 0 4px white;
+            transition: var(--transition-fast);
         }
         
-        .timeline-year {
-            font-weight: bold;
-            color: var(--primary);
-            font-size: 1.1rem;
-            margin-top: 25px;
-            margin-bottom: 0.5rem;
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: white;
         }
         
-        .timeline-desc {
-            font-size: 0.85rem;
-            color: #6b7280;
-            line-height: 1.4;
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: calc(-12px - 1px);
         }
         
-        /* Why Us Section - FIXED VERSION */
-        .why-us-container {
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: calc(-12px - 1px);
+        }
+        
+        /* Why Us Section */
+        .why-us-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: var(--space-6);
         }
         
         .why-us-card {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            text-align: center;
-            cursor: pointer;
-            position: relative;
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
             overflow: hidden;
-            /* Fixed height to prevent size changes */
-            height: 350px;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .why-us-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        .why-us-icon {
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-        
-        .why-us-card:hover .why-us-icon {
-            transform: scale(1.1);
-        }
-        
-        .why-us-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            transition: color 0.3s ease;
-            flex-shrink: 0;
-        }
-        
-        .why-us-card p {
-            color: #6b7280;
-            line-height: 1.5;
-            margin-bottom: 0;
-            flex-shrink: 0;
-        }
-        
-        .why-us-description {
-            margin-top: 1.5rem;
-            padding: 1.5rem;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: all 0.5s ease;
-            transform: translateY(-10px);
-            /* Fixed positioning to overlay without changing card size */
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background-color: white;
-            border-top: 1px solid #eee;
-            z-index: 10;
-            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .why-us-card.active .why-us-description {
-            max-height: 200px;
-            opacity: 1;
-            transform: translateY(0);
-            top: 100%;
-        }
-        
-        /* Better approach - use overlay that doesn't affect card size */
-        .why-us-grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-spring);
             position: relative;
+            z-index: 1;
         }
         
-        .why-us-grid-item {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            text-align: center;
-            cursor: pointer;
-            position: relative;
-            /* Fixed dimensions to prevent size changes */
-            height: 320px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-        
-        .why-us-grid-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        .why-us-grid-item .icon {
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-        
-        .why-us-grid-item:hover .icon {
-            transform: scale(1.1);
-        }
-        
-        .why-us-grid-item h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            transition: color 0.3s ease;
-            flex-shrink: 0;
-        }
-        
-        .why-us-grid-item p {
-            color: #6b7280;
-            line-height: 1.5;
-            margin-bottom: 0;
-            flex-shrink: 0;
-        }
-        
-        /* Expandable description that overlays without changing card size */
-        .why-us-grid-item .expandable-content {
+        .why-us-card::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: white;
-            border-radius: 12px;
-            padding: 2rem;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-500), var(--accent-blue));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition-normal);
+            z-index: 2;
+        }
+        
+        .why-us-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .why-us-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .why-us-card-content {
+            padding: var(--space-7);
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: all 0.4s ease;
-            z-index: 20;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            min-height: 380px;
         }
         
-        .why-us-grid-item.active .expandable-content {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .expandable-content .close-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #6b7280;
-            width: 30px;
-            height: 30px;
+        .why-us-card-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--primary-50);
+            border-radius: var(--radius-xl);
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
+            margin-bottom: var(--space-5);
+            color: var(--primary);
+            font-size: 1.75rem;
+            transition: var(--transition-fast);
         }
         
-        .expandable-content .close-btn:hover {
-            background-color: #f5f5f5;
+        .why-us-card:hover .why-us-card-icon {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .why-us-card-title {
+            font-size: var(--text-xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-3);
+            transition: var(--transition-fast);
+        }
+        
+        .why-us-card:hover .why-us-card-title {
             color: var(--primary);
         }
         
-        .expandable-content p {
-            color: #6b7280;
-            line-height: 1.6;
-            text-align: center;
-            margin-top: 1rem;
+        .why-us-card-description {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-5);
+            flex-grow: 1;
+        }
+        
+        .why-us-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        
+        .why-us-card-link:hover {
+            gap: var(--space-3);
         }
         
         /* Offer Section */
         .offer-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-12);
+            align-items: center;
         }
         
-        .offer-text {
-            flex: 1;
-            min-width: 300px;
+        .offer-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
+        
+        .offer-list {
+            list-style: none;
+        }
+        
+        .offer-list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+            padding: var(--space-3) 0;
+        }
+        
+        .offer-list-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--primary-100);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.75rem;
+        }
+        
+        .offer-list-content {
+            color: var(--text-secondary);
         }
         
         .offer-image {
-            flex: 1;
-            min-width: 300px;
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-2xl);
             position: relative;
+        }
+        
+        .offer-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(211, 47, 47, 0.1), transparent);
+            z-index: 1;
         }
         
         .offer-image img {
             width: 100%;
             height: auto;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: block;
+            transition: var(--transition-spring);
+        }
+        
+        .offer-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        /* Fleet Section */
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: var(--space-6);
+        }
+        
+        .fleet-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-spring);
+            position: relative;
+        }
+        
+        .fleet-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-500), var(--accent-green));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition-normal);
+        }
+        
+        .fleet-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .fleet-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .fleet-card-content {
+            padding: var(--space-7);
+        }
+        
+        .fleet-card-title {
+            font-size: var(--text-xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-4);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+        
+        .fleet-card-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-4);
+        }
+        
+        .fleet-card-spec {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .fleet-card-spec-label {
+            font-size: var(--text-sm);
+            color: var(--text-tertiary);
+            margin-bottom: var(--space-1);
+        }
+        
+        .fleet-card-spec-value {
+            font-weight: 600;
+            color: var(--text-primary);
         }
         
         /* Contact Section */
         .contact-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-12);
         }
         
         .contact-info {
-            flex: 1;
-            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
         }
         
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .contact-item {
-            margin-bottom: 1.5rem;
+        .contact-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-7);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-spring);
             display: flex;
             align-items: flex-start;
+            gap: var(--space-5);
         }
         
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .contact-card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-50);
+            border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 1rem;
             flex-shrink: 0;
+            color: var(--primary);
+            font-size: 1.25rem;
         }
         
-        .contact-text h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+        .contact-card-content h3 {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-2);
         }
         
-        .contact-text p {
-            color: #6b7280;
+        /* Contact Form */
+        .contact-form {
+            background: var(--bg-white);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-xl);
         }
         
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: var(--space-6);
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-2);
+            font-weight: 500;
+            color: var(--text-secondary);
         }
         
         .form-control {
             width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
+            padding: var(--space-4);
+            border: 1px solid var(--neutral-300);
+            border-radius: var(--radius-lg);
+            font-size: var(--text-base);
+            transition: var(--transition-fast);
+            background: var(--bg-light);
         }
         
         .form-control:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(225, 51, 48, 0.2);
+            background: var(--bg-white);
+            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
         }
         
-        .form-submit {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.75rem 2rem;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
         }
         
-        .form-submit:hover {
-            background-color: #c72626;
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
         }
         
         /* Footer */
         .footer {
-            background-color: var(--tertiary);
-            color: white;
-            padding: 4rem 2rem;
+            background: var(--neutral-900);
+            color: var(--text-inverse);
+            padding: var(--space-14) 0 var(--space-8);
         }
         
         .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-8);
+        }
+        
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-5);
         }
         
         .footer-logo {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: var(--space-3);
+            text-decoration: none;
         }
         
-        .footer-logo img {
-            width: 150px;
-            height: auto;
-            object-fit: contain;
+        .footer-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
         }
         
-        .footer-about p {
-            color: #ccc;
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-links h3 {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+        .footer-logo-text {
+            font-size: var(--text-xl);
+            font-weight: 700;
             color: white;
         }
         
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-links a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary);
+        .footer-description {
+            color: var(--neutral-400);
+            line-height: var(--leading-relaxed);
         }
         
         .footer-social {
             display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: var(--space-3);
+            margin-top: var(--space-4);
         }
         
-        .footer-social a {
-            color: #ccc;
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
+        .footer-social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: var(--transition-fast);
         }
         
-        .footer-social a:hover {
-            color: var(--primary);
+        .footer-social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links-title {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: white;
+            margin-bottom: var(--space-4);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-link {
+            display: block;
+            color: var(--neutral-400);
+            text-decoration: none;
+            margin-bottom: var(--space-3);
+            transition: var(--transition-fast);
+            font-size: var(--text-base);
+            line-height: var(--leading-normal);
+        }
+        
+        .footer-link:hover {
+            color: white;
+            transform: translateX(3px);
         }
         
         .footer-bottom {
+            margin-top: var(--space-10);
+            padding-top: var(--space-6);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #444;
-            color: #ccc;
-            font-size: 0.9rem;
+            color: var(--neutral-500);
+            font-size: var(--text-sm);
         }
         
-        /* Responsive */
-        @media (max-width: 900px) {
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-image {
+                width: 45%;
+            }
+        }
+        
+        @media (max-width: 1024px) {
             .about-container,
             .offer-container,
             .contact-container {
-                flex-direction: column;
+                grid-template-columns: 1fr;
             }
             
-            .about-image,
-            .offer-image {
-                order: -1;
+            .hero-image {
+                display: none;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+            
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .section-header {
+                text-align: center;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                width: 100%;
+                padding: 0;
+                align-self: center;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 50%;
+                transform: translateX(-50%);
+                top: 0;
+            }
+            
+            .timeline::before {
+                left: 50%;
+                transform: translateX(-50%);
             }
         }
         
         @media (max-width: 768px) {
+            h1 {
+                font-size: var(--text-4xl);
+            }
+            
+            h2 {
+                font-size: var(--text-3xl);
+            }
+            
+            .hero-title {
+                font-size: var(--text-4xl);
+            }
+            
+            .hero-description {
+                font-size: var(--text-lg);
+            }
+            
+            .section {
+                padding: var(--space-14) 0;
+            }
+            
+            .section-header {
+                margin-bottom: var(--space-8);
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-6);
+            }
+            
+            .why-us-grid,
+            .fleet-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            h1 {
+                font-size: var(--text-3xl);
+            }
+            
+            h2 {
+                font-size: var(--text-2xl);
+            }
+            
+            .hero-title {
+                font-size: var(--text-3xl);
+            }
+            
+            .section-title {
+                font-size: var(--text-2xl);
+            }
+            
+            .section-description {
+                font-size: var(--text-lg);
+            }
+            
+            .container {
+                padding-left: var(--space-4);
+                padding-right: var(--space-4);
+            }
+            
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg-white);
+                flex-direction: column;
+                padding: var(--space-5);
+                gap: var(--space-4);
+                box-shadow: var(--shadow-md);
+                z-index: var(--z-dropdown);
+                animation: fadeIn 0.3s ease;
+            }
+            
+            .nav-links.active {
+                display: flex;
             }
             
             .mobile-menu-button {
                 display: block;
             }
             
-            .mobile-menu {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--tertiary);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-                z-index: 1000;
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-            }
-            
-            .mobile-menu.show {
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            .mobile-menu ul {
-                list-style: none;
-                padding: 1rem 0;
-            }
-            
-            .mobile-menu li {
-                margin-bottom: 1rem;
-            }
-            
-            .mobile-menu a {
-                color: white;
-                text-decoration: none;
-                display: block;
-                padding: 0.5rem;
-                transition: color 0.3s ease;
-            }
-            
-            .mobile-menu a:hover {
-                color: var(--primary);
-            }
-            
-            .language-switcher {
-                margin-top: 1rem;
-            }
-            
-            .hero {
-                padding: 6rem 2rem;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .section {
-                padding: 4rem 2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .section-description {
-                font-size: 1rem;
-            }
-            
-            .logo {
-                width: 250px;
-            }
-            
-            .logo-tagline {
-                font-size: 0.7rem;
-            }
-            
-            .timeline-events {
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-            
-            .timeline-event {
-                width: 45%;
-                margin-bottom: 1.5rem;
-            }
-            
-            .horizontal-timeline-wrapper {
-                padding: 2rem 1rem;
-            }
-            
-            .why-us-grid-container {
+            .footer-container {
                 grid-template-columns: 1fr;
-            }
-            
-            .why-us-grid-item {
-                height: auto;
-                min-height: 250px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .timeline-event {
-                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo-container">
-                <img src="images/logo.png" alt="Logo" class="logo">
-                <div class="logo-tagline">Transport and Forwarding</div>
-            </div>
-            
-            <div class="nav-links">
-                <a href="#about" class="nav-link">O FIRMIE</a>
-                <a href="#why" class="nav-link">DLACZEGO MY?</a>
-                <a href="#offer" class="nav-link">OFERTA</a>
-                <a href="#fleet" class="nav-link">TABOR</a>
-                <a href="#contact" class="nav-link">KONTAKT</a>
-            </div>
-            
-            <div class="language-switcher">
-                <button>
-                    <i class="fas fa-globe"></i> PL
-                </button>
-                <div class="language-dropdown">
-                    <button onclick="changeLanguage('PL')">PL</button>
-                    <button onclick="changeLanguage('EN')">EN</button>
-                    <button onclick="changeLanguage('DE')">DE</button>
-                    <button onclick="changeLanguage('FR')">FR</button>
-                    <button onclick="changeLanguage('ES')">ES</button>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-truck"></i>
                 </div>
-            </div>
+                <div>
+                    <div class="logo-text">STANISZ TRANSPORT</div>
+                    <div class="logo-subtext">Professional Logistics & Transport</div>
+                </div>
+            </a>
+            
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="#about" class="nav-link active">O FIRMIE</a></li>
+                    <li><a href="#why" class="nav-link">DLACZEGO MY?</a></li>
+                    <li><a href="#offer" class="nav-link">OFERTA</a></li>
+                    <li><a href="#fleet" class="nav-link">TABOR</a></li>
+                    <li><a href="#contact" class="nav-link">KONTAKT</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="language-button">
+                            <i class="fas fa-globe"></i>
+                            PL
+                        </button>
+                        <div class="language-dropdown">
+                            <button class="language-option active">PL</button>
+                            <button class="language-option">EN</button>
+                            <button class="language-option">DE</button>
+                            <button class="language-option">FR</button>
+                            <button class="language-option">ES</button>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn btn-primary">
+                        Skontaktuj się z nami
+                        <span class="btn-icon">
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-button">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Profesjonalny transport od 1992 roku</h1>
-            <p>Kompleksowe usługi transportowe i spedycyjne na najwyższym europejskim poziomie</p>
-            <a href="#contact" class="btn">Skontaktuj się z nami</a>
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <div class="hero-subtitle">Profesjonalny transport od 1992 roku</div>
+                <h1 class="hero-title">Kompleksowe usługi transportowe i spedycyjne na najwyższym europejskim poziomie</h1>
+                <p class="hero-description">Od ponad 30 lat zapewniamy terminowość, bezpieczeństwo i profesjonalną obsługę dla Twoich przesyłek na terenie całej Europy.</p>
+                <a href="#contact" class="btn btn-primary">
+                    Skontaktuj się z nami
+                    <span class="btn-icon">
+                        <i class="fas fa-arrow-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-image animate-fade-in delay-2">
+            <img src="https://images.unsplash.com/photo-1489959515274-ef68b6823309?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Professional transport truck">
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="section">
-        <h2 class="section-title">O FIRMIE</h2>
-        <p class="section-description">Firma PRZEDSIĘBIORSTWO HANDLOWO USŁUGOWE JERZY STANISZ to profesjonalne przedsiębiorstwo zajmujące się transportem i spedycją. Od 1992 roku działamy i nieustannie rozwijamy się, świadcząc naszym krajowym i zagranicznym Klientom usługi na najwyższym, europejskim poziomie.</p>
-        
-        <div class="about-container">
-            <div class="about-text">
-                <div class="about-card">
-                    <h3>Historia firmy</h3>
-                </div>
-                <div class="horizontal-timeline-wrapper">
-                    <div class="horizontal-timeline">
-                        <div class="timeline-track"></div>
-                        <div class="timeline-events">
-                            <div class="timeline-event">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title-h2">O FIRMIE</h2>
+                <p class="section-description">Firma PRZEDSIĘBIORSTWO HANDLOWO USŁUGOWE JERZY STANISZ to profesjonalne przedsiębiorstwo zajmujące się transportem i spedycją. Od 1992 roku działamy i nieustannie rozwijamy się, świadcząc naszym krajowym i zagranicznym Klientom usługi na najwyższym, europejskim poziomie.</p>
+            </div>
+            
+            <div class="about-container">
+                <div class="about-content">
+                    <div class="about-card animate-fade-in">
+                        <h3 class="about-card-title">
+                            <span class="about-card-icon">
+                                <i class="fas fa-history"></i>
+                            </span>
+                            Historia firmy
+                        </h3>
+                        <p>Od początku naszej działalności nadrzędnym celem działania jest realizacja każdego zlecenia w sposób profesjonalny, terminowy i zgodny z indywidualnymi potrzebami naszych klientów.</p>
+                    </div>
+                    
+                    <div class="timeline-container animate-fade-in delay-1">
+                        <div class="timeline">
+                            <div class="timeline-item">
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-year">1992</div>
-                                <div class="timeline-desc">Założenie firmy specjalizującej się w transportie krajowym</div>
+                                <div class="timeline-item-content">
+                                    <p>Założenie firmy specjalizującej się w transportie krajowym</p>
+                                </div>
                             </div>
-                            <div class="timeline-event">
+                            <div class="timeline-item">
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-year">1995</div>
-                                <div class="timeline-desc">Rozszerzenie floty o samochody ciężarowe marki MAN i Mercedes-Benz</div>
+                                <div class="timeline-item-content">
+                                    <p>Rozszerzenie floty o samochody ciężarowe marki MAN i Mercedes-Benz</p>
+                                </div>
                             </div>
-                            <div class="timeline-event">
+                            <div class="timeline-item">
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-year">2000</div>
-                                <div class="timeline-desc">Uzyskanie licencji przewoźnika krajowego i rozpoczęcie współpracy z największymi firmami logistycznymi</div>
+                                <div class="timeline-item-content">
+                                    <p>Uzyskanie licencji przewoźnika krajowego i rozpoczęcie współpracy z największymi firmami logistycznymi</p>
+                                </div>
                             </div>
-                            <div class="timeline-event">
+                            <div class="timeline-item">
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-year">2004</div>
-                                <div class="timeline-desc">Wprowadzenie transportu międzynarodowego oraz specjalizacja w przewozach ładunków przestrzennych</div>
+                                <div class="timeline-item-content">
+                                    <p>Wprowadzenie transportu międzynarodowego oraz specjalizacja w przewozach ładunków przestrzennych</p>
+                                </div>
                             </div>
-                            <div class="timeline-event">
+                            <div class="timeline-item">
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-year">2010</div>
-                                <div class="timeline-desc">Zakup nowoczesnego taboru z naczepami typu mega i jumbo</div>
+                                <div class="timeline-item-content">
+                                    <p>Zakup nowoczesnego taboru z naczepami typu mega i jumbo</p>
+                                </div>
                             </div>
-                            <div class="timeline-event">
+                            <div class="timeline-item">
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-year">2015</div>
-                                <div class="timeline-desc">Wdrożenie systemu GPS do monitoringu przewozów</div>
+                                <div class="timeline-item-content">
+                                    <p>Wdrożenie systemu GPS do monitoringu przewozów</p>
+                                </div>
                             </div>
-                            <div class="timeline-event">
+                            <div class="timeline-item">
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-year">2020</div>
-                                <div class="timeline-desc">Uzyskanie certyfikatu ISO 9001:2015 oraz rozszerzenie działalności na transport materiałów sypkich</div>
+                                <div class="timeline-item-content">
+                                    <p>Uzyskanie certyfikatu ISO 9001:2015 oraz rozszerzenie działalności na transport materiałów sypkich</p>
+                                </div>
                             </div>
-                            <div class="timeline-event">
+                            <div class="timeline-item">
                                 <div class="timeline-dot"></div>
                                 <div class="timeline-year">2023</div>
-                                <div class="timeline-desc">Dysponujemy nowoczesnym taborzem pojazdów zapewniających kompleksową obsługę przewozów</div>
+                                <div class="timeline-item-content">
+                                    <p>Dysponujemy nowoczesnym taborzem pojazdów zapewniających kompleksową obsługę przewozów</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image animate-fade-in delay-2">
+                    <img src="https://images.unsplash.com/photo-1519929201907-4dc9386c99f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="About Stanisz Transport">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="why" class="section" style="background-color: #f9fafb;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title-h2">DLACZEGO MY?</h2>
+                <p class="section-description">Nasz świat to projekty naszych klientów i codzienne starania aby stale pozytywnie zaskakiwać Was naszym zaangażowaniem.</p>
+            </div>
+            
+            <div class="why-us-grid">
+                <div class="why-us-card animate-fade-in">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Indywidualne podejście</h3>
+                        <p class="why-us-card-description">Dostosowujemy się do specyficznych potrzeb każdego klienta, tworząc spersonalizowane rozwiązania logistyczne.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="why-us-card animate-fade-in delay-1">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Elastyczność i skuteczność</h3>
+                        <p class="why-us-card-description">Szybkie reagowanie na dynamiczne zmiany rynkowe i specjalne wymagania klientów.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="why-us-card animate-fade-in delay-2">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Przejrzystość rozliczeń</h3>
+                        <p class="why-us-card-description">Brak ukrytych kosztów, jasne warunki współpracy i transparentne rozliczenia.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="why-us-card animate-fade-in">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-truck-moving"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Kompleksowość obsługi</h3>
+                        <p class="why-us-card-description">Pełne wsparcie na każdym etapie przesyłki - od planowania do dostawy.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="why-us-card animate-fade-in delay-1">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Jakość i terminowość</h3>
+                        <p class="why-us-card-description">Gwarancja dotrzymania terminów dostawy dzięki precyzyjnemu planowaniu i systemowi monitoringu GPS.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="why-us-card animate-fade-in delay-2">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Globalny zakres</h3>
+                        <p class="why-us-card-description">Przewozy krajowe i międzynarodowe w całej Europie dzięki rozległej sieci partnerów.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offer Section -->
+    <section id="offer" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title-h2">OFERTA</h2>
+                <p class="section-description">Od początku działalności nadrzędnym celem działania jest realizacja każdego zlecenia w sposób profesjonalny- terminowy i zgodny z indywidualnymi potrzebami naszych klientów.</p>
+            </div>
+            
+            <div class="offer-container">
+                <div class="offer-content animate-fade-in">
+                    <div class="about-card">
+                        <h3 class="about-card-title">
+                            <span class="about-card-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </span>
+                            Bezpieczeństwo przesyłek
+                        </h3>
+                        <ul class="offer-list">
+                            <li class="offer-list-item">
+                                <div class="offer-list-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="offer-list-content">
+                                    Ubezpieczenie OC przewoźnika w ruchu międzynarodowym na sumę gwarancyjną 100.000 euro
+                                </div>
+                            </li>
+                            <li class="offer-list-item">
+                                <div class="offer-list-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="offer-list-content">
+                                    Ubezpieczenie OC przewoźnika w ruchu krajowym na sumę gwarancyjną 100.000 zł
+                                </div>
+                            </li>
+                            <li class="offer-list-item">
+                                <div class="offer-list-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="offer-list-content">
+                                    Dodatkowe ubezpieczenie Cargo do pełnej wartości przewożonego mienia
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <h3 class="about-card-title" style="margin-top: 2rem;">
+                            <span class="about-card-icon">
+                                <i class="fas fa-truck-loading"></i>
+                            </span>
+                            Nasza specjalizacja
+                        </h3>
+                        <ul class="offer-list">
+                            <li class="offer-list-item">
+                                <div class="offer-list-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="offer-list-content">
+                                    Przewozy ładunków przestrzennych o kubaturze do 120 m3
+                                </div>
+                            </li>
+                            <li class="offer-list-item">
+                                <div class="offer-list-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="offer-list-content">
+                                    Transport materiałów sypkich za pomocą ciągników siodłowych
+                                </div>
+                            </li>
+                            <li class="offer-list-item">
+                                <div class="offer-list-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="offer-list-content">
+                                    System nawigacji GPS dla stałego monitoringu przewożonego ładunku
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="offer-image animate-fade-in delay-1">
+                    <img src="https://images.unsplash.com/photo-1586190237066-1d876d19f6c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Transport Offer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="fleet" class="section" style="background-color: #f9fafb;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title-h2">TABOR</h2>
+                <p class="section-description">Nasz nowoczesny tabor zapewnia kompleksową obsługę przewozów na najwyższym poziomie.</p>
+            </div>
+            
+            <div class="fleet-grid">
+                <div class="fleet-card animate-fade-in">
+                    <div class="fleet-card-content">
+                        <h3 class="fleet-card-title">
+                            <i class="fas fa-truck-container"></i>
+                            ZESTAW JUMBO
+                        </h3>
+                        <div class="fleet-card-specs">
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Ładowność</span>
+                                <span class="fleet-card-spec-value">12 + 12 ton</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Długość</span>
+                                <span class="fleet-card-spec-value">7,7 + 7,7 m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Szerokość</span>
+                                <span class="fleet-card-spec-value">2,50m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Wysokość</span>
+                                <span class="fleet-card-spec-value">3,05m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Tonaż</span>
+                                <span class="fleet-card-spec-value">24t</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Kubatura</span>
+                                <span class="fleet-card-spec-value">120 m3</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Europalety</span>
+                                <span class="fleet-card-spec-value">38 szt.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fleet-card animate-fade-in delay-1">
+                    <div class="fleet-card-content">
+                        <h3 class="fleet-card-title">
+                            <i class="fas fa-trailer"></i>
+                            NACZEPA MEGA
+                        </h3>
+                        <div class="fleet-card-specs">
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Długość</span>
+                                <span class="fleet-card-spec-value">13,60 m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Szerokość</span>
+                                <span class="fleet-card-spec-value">2,48 m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Wysokość</span>
+                                <span class="fleet-card-spec-value">3,00 m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Tonaż</span>
+                                <span class="fleet-card-spec-value">25 t</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Kubatura</span>
+                                <span class="fleet-card-spec-value">100 m3</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Europalety</span>
+                                <span class="fleet-card-spec-value">33 szt.</span>
                             </div>
                         </div>
                     </div>
@@ -997,353 +1941,241 @@
         </div>
     </section>
 
-    <!-- Why Us Section - FIXED VERSION -->
-    <section id="why" class="section bg-white">
-        <h2 class="section-title">DLACZEGO MY?</h2>
-        <p class="section-description">Nasz świat to projekty naszych klientów i codzienne starania aby stale pozytywnie zaskakiwać Was naszym zaangażowaniem.</p>
-        
-        <div class="why-us-grid-container">
-            <div class="why-us-grid-item" onclick="toggleCard(this)">
-                <div class="icon">
-                    <i class="fas fa-user-tie"></i>
-                </div>
-                <h3>Indywidualne podejście</h3>
-                <p>Dostosowujemy się do specyficznych potrzeb każdego klienta</p>
-                <div class="expandable-content">
-                    <button class="close-btn" onclick="event.stopPropagation(); this.parentElement.parentElement.classList.remove('active');">&times;</button>
-                    <h3>Indywidualne podejście</h3>
-                    <p>Każdy klient otrzymuje spersonalizowaną ofertę dopasowaną do jego indywidualnych potrzeb logistycznych. Analizujemy charakter towaru, częstotliwość przewozów oraz specjalne wymagania, aby zapewnić optymalne rozwiązanie.</p>
-                </div>
-            </div>
-            <div class="why-us-grid-item" onclick="toggleCard(this)">
-                <div class="icon">
-                    <i class="fas fa-sync-alt"></i>
-                </div>
-                <h3>Elastyczność i skuteczność</h3>
-                <p>Szybkie reagowanie na zmieniające się wymagania</p>
-                <div class="expandable-content">
-                    <button class="close-btn" onclick="event.stopPropagation(); this.parentElement.parentElement.classList.remove('active');">&times;</button>
-                    <h3>Elastyczność i skuteczność</h3>
-                    <p>Nasz zespół jest gotowy do szybkiego reagowania na zmieniające się potrzeby klientów. Oferujemy elastyczne harmonogramy przewozów, możliwość szybkiej rezerwacji transportu oraz wsparcie 24/7 dla kluczowych przesyłek.</p>
-                </div>
-            </div>
-            <div class="why-us-grid-item" onclick="toggleCard(this)">
-                <div class="icon">
-                    <i class="fas fa-file-invoice-dollar"></i>
-                </div>
-                <h3>Przejrzystość rozliczeń</h3>
-                <p>Brak ukrytych kosztów, jasne warunki współpracy</p>
-                <div class="expandable-content">
-                    <button class="close-btn" onclick="event.stopPropagation(); this.parentElement.parentElement.classList.remove('active');">&times;</button>
-                    <h3>Przejrzystość rozliczeń</h3>
-                    <p>Wszystkie koszty są jasno określone w umowie. Nie ma ukrytych opłat ani dodatkowych prowizji. Dostarczamy szczegółowe raporty z każdego przewozu oraz miesięczne zestawienia finansowe.</p>
-                </div>
-            </div>
-            <div class="why-us-grid-item" onclick="toggleCard(this)">
-                <div class="icon">
-                    <i class="fas fa-truck-moving"></i>
-                </div>
-                <h3>Kompleksowość obsługi</h3>
-                <p>Pełne wsparcie na każdym etapie przesyłki</p>
-                <div class="expandable-content">
-                    <button class="close-btn" onclick="event.stopPropagation(); this.parentElement.parentElement.classList.remove('active');">&times;</button>
-                    <h3>Kompleksowość obsługi</h3>
-                    <p>Oferujemy pełen zakres usług logistycznych - od planowania trasy, przez monitorowanie przewozu w czasie rzeczywistym, aż po dostawę i potwierdzenie odbioru. Nasz zespół opiekuje się przesyłką od A do Z.</p>
-                </div>
-            </div>
-            <div class="why-us-grid-item" onclick="toggleCard(this)">
-                <div class="icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <h3>Jakość i terminowość</h3>
-                <p>Gwarancja dotrzymania terminów dostawy</p>
-                <div class="expandable-content">
-                    <button class="close-btn" onclick="event.stopPropagation(); this.parentElement.parentElement.classList.remove('active');">&times;</button>
-                    <h3>Jakość i terminowość</h3>
-                    <p>Nasza flota jest regularnie serwisowana, a kierowcy posiadają odpowiednie kwalifikacje i doświadczenie. Gwarantujemy 99% terminowość dostaw dzięki precyzyjnemu planowaniu i systemowi monitoringu GPS.</p>
-                </div>
-            </div>
-            <div class="why-us-grid-item" onclick="toggleCard(this)">
-                <div class="icon">
-                    <i class="fas fa-globe"></i>
-                </div>
-                <h3>Globalny zakres</h3>
-                <p>Przewozy krajowe i międzynarodowe w całej Europie</p>
-                <div class="expandable-content">
-                    <button class="close-btn" onclick="event.stopPropagation(); this.parentElement.parentElement.classList.remove('active');">&times;</button>
-                    <h3>Globalny zakres</h3>
-                    <p>Dysponujemy rozległą siecią partnerów w całej Europie, co pozwala nam realizować przewozy międzynarodowe z zachowaniem najwyższych standardów jakości. Oferujemy regularne kursy do głównych centrów logistycznych.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Offer Section -->
-    <section id="offer" class="section">
-        <h2 class="section-title">OFERTA</h2>
-        <p class="section-description">Od początku działalności nadrzędnym celem działania jest realizacja każdego zlecenia w sposób profesjonalny- terminowy i zgodny z indywidualnymi potrzebami naszych klientów.</p>
-        
-        <div class="offer-container">
-            <div class="offer-text">
-                <div class="about-card">
-                    <h3>Bezpieczeństwo przesyłek</h3>
-                    <ul style="list-style-type: disc; padding-left: 1.5rem;">
-                        <li>Ubezpieczenie OC przewoźnika w ruchu międzynarodowym na sumę gwarancyjną 100.000 euro</li>
-                        <li>Ubezpieczenie OC przewoźnika w ruchu krajowym na sumę gwarancyjną 100.000 zł</li>
-                        <li>Dodatkowe ubezpieczenie Cargo do pełnej wartości przewożonego mienia</li>
-                    </ul>
-                    
-                    <h3>Nasza specjalizacja</h3>
-                    <ul style="list-style-type: disc; padding-left: 1.5rem;">
-                        <li>Przewozy ładunków przestrzennych o kubaturze do 120 m3</li>
-                        <li>Transport materiałów sypkich za pomocą ciągników siodłowych</li>
-                        <li>System nawigacji GPS dla stałego monitoringu przewożonego ładunku</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="offer-image">
-                <img src="https://picsum.photos/600/400" alt="Offer Image">
-            </div>
-        </div>
-    </section>
-
-    <!-- Fleet Section -->
-    <section id="fleet" class="section bg-white">
-        <h2 class="section-title">TABOR</h2>
-        <p class="section-description">Nasz nowoczesny tabor zapewnia kompleksową obsługę przewozów na najwyższym poziomie.</p>
-        
-        <div class="about-container">
-            <div class="about-text">
-                <div class="about-card">
-                    <h3>ZESTAW JUMBO</h3>
-                    <p><strong>Ładowność:</strong> 12 + 12 ton<br>
-                    <strong>Długość:</strong> 7,7 + 7,7 m<br>
-                    <strong>Szerokość:</strong> 2,50m<br>
-                    <strong>Wysokość:</strong> 3,05m<br>
-                    <strong>Tonaż:</strong> 24t<br>
-                    <strong>Kubatura:</strong> 120 m3<br>
-                    <strong>Europalety:</strong> 38 szt.</p>
-                </div>
-                
-                <div class="about-card">
-                    <h3>NACZEPA MEGA</h3>
-                    <p><strong>Długość:</strong> 13,60 m<br>
-                    <strong>Szerokość:</strong> 2,48 m<br>
-                    <strong>Wysokość:</strong> 3,00 m<br>
-                    <strong>Tonaż:</strong> 25 t<br>
-                    <strong>Kubatura:</strong> 100 m3<br>
-                    <strong>Europalety:</strong> 33 szt.</p>
-                </div>
-            </div>
-            <div class="about-image">
-                <img src="https://picsum.photos/600/400" alt="Fleet Image">
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact" class="section">
-        <h2 class="section-title">KONTAKT</h2>
-        <p class="section-description">Zapraszamy do kontaktu w celu uzyskania szczegółowych informacji na temat naszych usług.</p>
-        
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h3>Adres</h3>
-                        <p>PHU Jerzy Stanisz<br>
-                        ul. Ząbkowicka 22a<br>
-                        57-100 Strzelin</p>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h3>Telefony</h3>
-                        <p>500 175 331<br>
-                        (71) 39 35 726</p>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-text">
-                        <h3>E-mail</h3>
-                        <p>biuro@stanisz-transport.pl</p>
-                    </div>
-                </div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title-h2">KONTAKT</h2>
+                <p class="section-description">Zapraszamy do kontaktu w celu uzyskania szczegółowych informacji na temat naszych usług.</p>
             </div>
             
-            <div class="contact-form">
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Imię i nazwisko" required>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-card animate-fade-in">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Adres</h3>
+                            <p>PHU Jerzy Stanisz<br>
+                            ul. Ząbkowicka 22a<br>
+                            57-100 Strzelin</p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Adres e-mail" required>
+                    
+                    <div class="contact-card animate-fade-in delay-1">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Telefony</h3>
+                            <p>500 175 331<br>
+                            (71) 39 35 726</p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="tel" class="form-control" placeholder="Numer telefonu" required>
+                    
+                    <div class="contact-card animate-fade-in delay-2">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>E-mail</h3>
+                            <p>biuro@stanisz-transport.pl</p>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <select class="form-control" required>
-                            <option value="">Wybierz temat</option>
-                            <option value="oferta">Zapytanie o ofertę</option>
-                            <option value="wspolpraca">Współpraca biznesowa</option>
-                            <option value="pracownik">Zatrudnienie</option>
-                            <option value="inne">Inne</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" rows="5" placeholder="Treść wiadomości..." required></textarea>
-                    </div>
-                    <button type="submit" class="form-submit">Wyślij wiadomość</button>
-                </form>
+                </div>
+                
+                <div class="contact-form animate-fade-in delay-3">
+                    <form>
+                        <div class="form-group">
+                            <label for="name" class="form-label">Imię i nazwisko</label>
+                            <input type="text" id="name" class="form-control" placeholder="Wpisz swoje imię i nazwisko" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Adres e-mail</label>
+                            <input type="email" id="email" class="form-control" placeholder="Wpisz swój adres email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Numer telefonu</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="Wpisz swój numer telefonu" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Temat wiadomości</label>
+                            <select id="subject" class="form-control form-select" required>
+                                <option value="" disabled selected>Wybierz temat</option>
+                                <option value="oferta">Zapytanie o ofertę</option>
+                                <option value="wspolpraca">Współpraca biznesowa</option>
+                                <option value="pracownik">Zatrudnienie</option>
+                                <option value="inne">Inne</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Treść wiadomości</label>
+                            <textarea id="message" class="form-control form-textarea" placeholder="Napisz wiadomość..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Wyślij wiadomość
+                            <span class="btn-icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </span>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-about">
-                <div class="footer-logo">
-                    <img src="images/logo.png" alt="Logo">
-                </div>
-                <p>Profesjonalne usługi transportowe i spedycyjne od 1992 roku. Zapewniamy terminowość, bezpieczeństwo i profesjonalną obsługę dla Twoich przesyłek.</p>
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="footer-logo-text">STANISZ TRANSPORT</div>
+                </a>
+                <p class="footer-description">Profesjonalne usługi transportowe i spedycyjne od 1992 roku. Zapewniamy terminowość, bezpieczeństwo i profesjonalną obsługę dla Twoich przesyłek.</p>
                 <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                 </div>
             </div>
             
-            <div class="footer-links">
-                <h3>Szybkie linki</h3>
-                <ul>
-                    <li><a href="#about">O firmie</a></li>
-                    <li><a href="#why">Dlaczego my?</a></li>
-                    <li><a href="#offer">Oferta</a></li>
-                    <li><a href="#fleet">Tabor</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
+            <div>
+                <h3 class="footer-links-title">Szybkie linki</h3>
+                <ul class="footer-links">
+                    <li><a href="#about" class="footer-link">O firmie</a></li>
+                    <li><a href="#why" class="footer-link">Dlaczego my?</a></li>
+                    <li><a href="#offer" class="footer-link">Oferta</a></li>
+                    <li><a href="#fleet" class="footer-link">Tabor</a></li>
+                    <li><a href="#contact" class="footer-link">Kontakt</a></li>
                 </ul>
             </div>
             
-            <div class="footer-links">
-                <h3>Dokumenty</h3>
-                <ul>
-                    <li><a href="#">Decyzja o nadaniu numeru identyfikacyjnego podatkowego</a></li>
-                    <li><a href="#">Licencja krajowa</a></li>
-                    <li><a href="#">Licencja międzynarodowa</a></li>
-                    <li><a href="#">Ubezpieczenie w ruchu krajowym</a></li>
-                    <li><a href="#">Ubezpieczenie w ruchu międzynarodowym</a></li>
+            <div>
+                <h3 class="footer-links-title">Dokumenty</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Decyzja o nadaniu numeru identyfikacyjnego podatkowego</a></li>
+                    <li><a href="#" class="footer-link">Licencja krajowa</a></li>
+                    <li><a href="#" class="footer-link">Licencja międzynarodowa</a></li>
+                    <li><a href="#" class="footer-link">Ubezpieczenie w ruchu krajowym</a></li>
+                    <li><a href="#" class="footer-link">Ubezpieczenie w ruchu międzynarodowym</a></li>
                 </ul>
             </div>
             
-            <div class="footer-links">
-                <h3>Kontakt</h3>
-                <ul>
-                    <li><a href="mailto:biuro@stanisz-transport.pl">biuro@stanisz-transport.pl</a></li>
-                    <li><a href="tel:500175331">500 175 331</a></li>
-                    <li><a href="tel:(71)3935726">(71) 39 35 726</a></li>
+            <div>
+                <h3 class="footer-links-title">Kontakt</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:biuro@stanisz-transport.pl" class="footer-link">biuro@stanisz-transport.pl</a></li>
+                    <li><a href="tel:500175331" class="footer-link">500 175 331</a></li>
+                    <li><a href="tel:(71)3935726" class="footer-link">(71) 39 35 726</a></li>
                 </ul>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 stanisz-transport.com | Wszelkie prawa zastrzeżone.</p>
-            <p>&copy; Przygotowane przez Piotr Kołodziejczyk</p>
+            <p>&copy; 2023 STANISZ TRANSPORT | Wszelkie prawa zastrzeżone.</p>
         </div>
     </footer>
 
     <script>
-        // Language switching function
-        function changeLanguage(lang) {
-            const languageDropdown = document.querySelector('.language-dropdown');
-            languageDropdown.classList.remove('show');
+        // Header scroll effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('.header');
             
-            // Update the language button
-            const languageButton = document.querySelector('.language-switcher button');
-            languageButton.textContent = lang;
-            
-            // You would need to update the content based on the selected language
-            console.log('Changing language to:', lang);
-        }
-        
-        // Toggle language dropdown
-        document.querySelector('.language-switcher button').addEventListener('click', function() {
-            const languageDropdown = document.querySelector('.language-dropdown');
-            languageDropdown.classList.toggle('show');
-        });
-        
-        // Close dropdown when clicking outside
-        window.addEventListener('click', function(event) {
-            const languageDropdown = document.querySelector('.language-dropdown');
-            if (!event.target.closest('.language-switcher')) {
-                languageDropdown.classList.remove('show');
-            }
-        });
-        
-        // Toggle Why Us cards - FIXED VERSION
-        function toggleCard(clickedCard) {
-            const cards = document.querySelectorAll('.why-us-grid-item');
-            
-            // If clicking the same active card, close it
-            if (clickedCard.classList.contains('active')) {
-                clickedCard.classList.remove('active');
-                return;
-            }
-            
-            // Close all cards first
-            cards.forEach(card => {
-                card.classList.remove('active');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
             });
             
-            // Open the clicked card
-            clickedCard.classList.add('active');
-        }
-        
-        // Close cards when clicking outside
-        document.addEventListener('click', function(event) {
-            const cardsContainer = document.querySelector('.why-us-grid-container');
-            if (!cardsContainer.contains(event.target)) {
-                const cards = document.querySelectorAll('.why-us-grid-item');
-                cards.forEach(card => {
-                    card.classList.remove('active');
+            // Language switcher
+            const languageButton = document.querySelector('.language-button');
+            const languageDropdown = document.querySelector('.language-dropdown');
+            
+            languageButton.addEventListener('click', function() {
+                languageDropdown.classList.toggle('show');
+            });
+            
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.language-switcher')) {
+                    languageDropdown.classList.remove('show');
+                }
+            });
+            
+            // Mobile menu
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                this.innerHTML = navLinks.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : 
+                    '<i class="fas fa-bars"></i>';
+            });
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
                 });
-            }
-        });
-        
-        // Navbar link active state
-        document.addEventListener('DOMContentLoaded', function() {
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active nav link
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // Update active nav link based on scroll position
+            const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-link');
             
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    // Remove active class from all links
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    
-                    // Add active class to clicked link
-                    this.classList.add('active');
-                });
-            });
-            
-            // Set active state based on scroll position
             window.addEventListener('scroll', function() {
                 let current = '';
                 
-                document.querySelectorAll('section').forEach(section => {
+                sections.forEach(section => {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.clientHeight;
                     
-                    if (pageYOffset >= (sectionTop - 200)) {
+                    if (pageYOffset >= (sectionTop - 100)) {
                         current = section.getAttribute('id');
                     }
                 });
