@@ -543,7 +543,7 @@
             color: var(--primary-light);
         }
         
-        /* Hero Section - COMPLETELY REVISED */
+        /* Hero Section - NEW SCROLL-BLUR EFFECT */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -553,9 +553,8 @@
             overflow: hidden;
         }
         
-        /* Blurred background image - now with higher opacity and proper z-index */
-        .hero::before {
-            content: '';
+        /* Dedicated background element for scroll effect */
+        .hero-background {
             position: absolute;
             top: 0;
             left: 0;
@@ -564,22 +563,18 @@
             background-image: url('images/photo1.png');
             background-size: cover;
             background-position: center;
-            filter: blur(8px);
-            opacity: 0.6; /* Significantly increased from previous versions */
             z-index: -2;
-            /* Added transition to prevent flickering */
-            transition: opacity 0.3s ease;
+            transition: filter 0.1s ease; /* Smooth blur transition */
         }
         
-        /* Semi-transparent overlay for better text readability */
-        .hero::after {
-            content: '';
+        /* Overlay for better text contrast */
+        .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(211, 47, 47, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(211, 47, 47, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
             z-index: -1;
         }
         
@@ -1457,8 +1452,12 @@
         </div>
     </header>
 
-    <!-- Hero Section - NOW WITH VISIBLE BLURRED BACKGROUND -->
+    <!-- Hero Section - WITH SCROLL-BLUR EFFECT -->
     <section class="hero">
+        <!-- Dedicated background element for the scroll effect -->
+        <div class="hero-background"></div>
+        <div class="hero-overlay"></div>
+        
         <div class="container">
             <div class="hero-content animate-fade-in">
                 <div class="hero-subtitle">Profesjonalny transport od 1992 roku</div>
@@ -1949,12 +1948,44 @@
         // Header scroll effect
         document.addEventListener('DOMContentLoaded', function() {
             const header = document.querySelector('.header');
+            const heroBackground = document.querySelector('.hero-background');
+            
+            // Initial state - no blur
+            if (heroBackground) {
+                heroBackground.style.filter = 'blur(0px)';
+            }
             
             window.addEventListener('scroll', function() {
+                // Update header
                 if (window.scrollY > 50) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
+                }
+                
+                // Update hero background blur effect
+                if (heroBackground) {
+                    const scrollTop = window.pageYOffset;
+                    const heroHeight = document.querySelector('.hero').offsetHeight;
+                    
+                    // Calculate how far we are through the hero section
+                    // Start blurring when we've scrolled 20% of the hero height
+                    const blurStart = heroHeight * 0.2;
+                    
+                    if (scrollTop > blurStart) {
+                        // Calculate how far we are into the blur transition
+                        // Complete blur when we've scrolled 70% of the hero height
+                        const blurEnd = heroHeight * 0.7;
+                        const scrollProgress = Math.min((scrollTop - blurStart) / (blurEnd - blurStart), 1);
+                        
+                        // Max blur amount - 8px seems reasonable for a subtle effect
+                        const maxBlur = 8;
+                        const blurAmount = scrollProgress * maxBlur;
+                        
+                        heroBackground.style.filter = `blur(${blurAmount}px)`;
+                    } else {
+                        heroBackground.style.filter = 'blur(0px)';
+                    }
                 }
             });
             
