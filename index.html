@@ -1986,4 +1986,135 @@
                         errorMsg.style.position = 'absolute';
                         errorMsg.style.top = '50%';
                         errorMsg.style.left = '50%';
-         
+                        errorMsg.style.transform = 'translate(-50%, -50%)';
+                        errorMsg.style.color = '#d32f2f';
+                        errorMsg.style.fontWeight = 'bold';
+                        errorMsg.style.fontSize = '1.2rem';
+                        errorMsg.style.zIndex = '10';
+                        
+                        const container = this.parentElement;
+                        container.style.position = 'relative';
+                        container.appendChild(errorMsg);
+                    }
+                };
+                
+                // VERY SLIGHT BLUR (1px) as requested - this is the key change
+                heroBackgroundImg.style.filter = 'blur(1px)';
+            }
+            
+            window.addEventListener('scroll', function() {
+                // Update header
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                // Update hero background blur effect
+                if (heroBackgroundImg && !heroBackgroundImg.onerror) {
+                    const scrollTop = window.pageYOffset;
+                    const heroHeight = document.querySelector('.hero').offsetHeight;
+                    
+                    // Start blurring when we've scrolled 20% of the hero height
+                    const blurStart = heroHeight * 0.2;
+                    
+                    if (scrollTop > blurStart) {
+                        // Calculate how far we are into the blur transition
+                        const blurEnd = heroHeight * 0.7;
+                        const scrollProgress = Math.min((scrollTop - blurStart) / (blurEnd - blurStart), 1);
+                        
+                        // Start from 1px (instead of 0px) and go up to 8px
+                        const minBlur = 1;
+                        const maxBlur = 8;
+                        const blurAmount = minBlur + (scrollProgress * (maxBlur - minBlur));
+                        
+                        heroBackgroundImg.style.filter = `blur(${blurAmount}px)`;
+                    } else {
+                        // Maintain the very slight blur (1px) when not scrolling
+                        heroBackgroundImg.style.filter = 'blur(1px)';
+                    }
+                }
+            });
+            
+            // Language switcher
+            if (languageButton && languageDropdown) {
+                languageButton.addEventListener('click', function() {
+                    languageDropdown.classList.toggle('show');
+                });
+                
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.language-switcher')) {
+                        languageDropdown.classList.remove('show');
+                    }
+                });
+            }
+            
+            // Mobile menu
+            if (mobileMenuButton && navLinks) {
+                mobileMenuButton.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    this.innerHTML = navLinks.classList.contains('active') ? 
+                        '<i class="fas fa-times"></i>' : 
+                        '<i class="fas fa-bars"></i>';
+                });
+                
+                // Close mobile menu when clicking a link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active nav link
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // Update active nav link based on scroll position
+            const sections = document.querySelectorAll('section');
+            const navLinksAll = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinksAll.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
