@@ -543,7 +543,7 @@
             color: var(--primary-light);
         }
         
-        /* Hero Section - NEW SCROLL-BLUR EFFECT */
+        /* Hero Section - COMPLETE REWORK WITH ACTUAL IMG TAG */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -553,18 +553,26 @@
             overflow: hidden;
         }
         
-        /* Dedicated background element for scroll effect */
-        .hero-background {
+        /* Hero background image container */
+        .hero-background-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('images/photo1.png');
-            background-size: cover;
-            background-position: center;
             z-index: -2;
-            transition: filter 0.1s ease; /* Smooth blur transition */
+            overflow: hidden;
+        }
+        
+        /* The actual image element */
+        .hero-background-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s ease;
         }
         
         /* Overlay for better text contrast */
@@ -1452,10 +1460,13 @@
         </div>
     </header>
 
-    <!-- Hero Section - WITH SCROLL-BLUR EFFECT -->
+    <!-- Hero Section - WITH ACTUAL IMG TAG FOR BACKGROUND -->
     <section class="hero">
-        <!-- Dedicated background element for the scroll effect -->
-        <div class="hero-background"></div>
+        <!-- Hero background container with actual image tag -->
+        <div class="hero-background-container">
+            <img src="images/photo1.png" alt="Transport background" class="hero-background-img" id="heroBackgroundImg">
+        </div>
+        
         <div class="hero-overlay"></div>
         
         <div class="container">
@@ -1945,14 +1956,38 @@
     </footer>
 
     <script>
-        // Header scroll effect
         document.addEventListener('DOMContentLoaded', function() {
             const header = document.querySelector('.header');
-            const heroBackground = document.querySelector('.hero-background');
+            const heroBackgroundImg = document.getElementById('heroBackgroundImg');
             
-            // Initial state - no blur
-            if (heroBackground) {
-                heroBackground.style.filter = 'blur(0px)';
+            // Add error handling for the image
+            if (heroBackgroundImg) {
+                heroBackgroundImg.onerror = function() {
+                    console.error("Hero background image failed to load. Expected path: 'images/photo1.png'");
+                    // Create a visual indicator that the image is missing
+                    this.style.backgroundColor = '#f0f0f0';
+                    this.style.opacity = '0.3';
+                    this.style.border = '2px dashed #d32f2f';
+                    
+                    // Add a text indicator
+                    const errorMsg = document.createElement('div');
+                    errorMsg.textContent = 'Hero background image not found';
+                    errorMsg.style.position = 'absolute';
+                    errorMsg.style.top = '50%';
+                    errorMsg.style.left = '50%';
+                    errorMsg.style.transform = 'translate(-50%, -50%)';
+                    errorMsg.style.color = '#d32f2f';
+                    errorMsg.style.fontWeight = 'bold';
+                    errorMsg.style.fontSize = '1.2rem';
+                    errorMsg.style.zIndex = '10';
+                    
+                    const container = this.parentElement;
+                    container.style.position = 'relative';
+                    container.appendChild(errorMsg);
+                };
+                
+                // Initial state - no blur
+                heroBackgroundImg.style.filter = 'blur(0px)';
             }
             
             window.addEventListener('scroll', function() {
@@ -1964,27 +1999,25 @@
                 }
                 
                 // Update hero background blur effect
-                if (heroBackground) {
+                if (heroBackgroundImg) {
                     const scrollTop = window.pageYOffset;
                     const heroHeight = document.querySelector('.hero').offsetHeight;
                     
-                    // Calculate how far we are through the hero section
                     // Start blurring when we've scrolled 20% of the hero height
                     const blurStart = heroHeight * 0.2;
                     
                     if (scrollTop > blurStart) {
                         // Calculate how far we are into the blur transition
-                        // Complete blur when we've scrolled 70% of the hero height
                         const blurEnd = heroHeight * 0.7;
                         const scrollProgress = Math.min((scrollTop - blurStart) / (blurEnd - blurStart), 1);
                         
-                        // Max blur amount - 8px seems reasonable for a subtle effect
+                        // Max blur amount
                         const maxBlur = 8;
                         const blurAmount = scrollProgress * maxBlur;
                         
-                        heroBackground.style.filter = `blur(${blurAmount}px)`;
+                        heroBackgroundImg.style.filter = `blur(${blurAmount}px)`;
                     } else {
-                        heroBackground.style.filter = 'blur(0px)';
+                        heroBackgroundImg.style.filter = 'blur(0px)';
                     }
                 }
             });
