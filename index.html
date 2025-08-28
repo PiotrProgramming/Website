@@ -543,42 +543,43 @@
             color: var(--primary-light);
         }
         
-        /* Hero Section */
+        /* Hero Section - COMPLETELY REVISED */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: calc(var(--space-20) + 72px) 0 var(--space-20); /* Added space for header */
+            padding: calc(var(--space-20) + 72px) 0 var(--space-20);
             position: relative;
             overflow: hidden;
-            /* Removed the default background gradient */
         }
         
-        /* Fixed background image with blur */
+        /* Blurred background image - now with higher opacity and proper z-index */
         .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
+            width: 100%;
+            height: 100%;
             background-image: url('images/photo1.png');
             background-size: cover;
             background-position: center;
             filter: blur(8px);
-            opacity: 0.4; /* Increased from 0.2 to make it more visible */
+            opacity: 0.6; /* Significantly increased from previous versions */
             z-index: -2;
+            /* Added transition to prevent flickering */
+            transition: opacity 0.3s ease;
         }
         
-        /* Slight red overlay for better text contrast */
+        /* Semi-transparent overlay for better text readability */
         .hero::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(211, 47, 47, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(211, 47, 47, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%);
             z-index: -1;
         }
         
@@ -1456,7 +1457,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - NOW WITH VISIBLE BLURRED BACKGROUND -->
     <section class="hero">
         <div class="container">
             <div class="hero-content animate-fade-in">
