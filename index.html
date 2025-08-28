@@ -586,6 +586,15 @@
             z-index: -1;
         }
         
+        /* NEW: Text container with higher opacity for better readability */
+        .hero-text-container {
+            background: rgba(240, 242, 245, 0.9); /* Bright gray at 90% opacity */
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-md);
+            backdrop-filter: blur(4px);
+        }
+        
         .hero-content {
             max-width: 650px;
             position: relative;
@@ -1471,15 +1480,18 @@
         
         <div class="container">
             <div class="hero-content animate-fade-in">
-                <div class="hero-subtitle">Profesjonalny transport od 1992 roku</div>
-                <h1 class="hero-title">Kompleksowe usługi transportowe i spedycyjne na najwyższym europejskim poziomie</h1>
-                <p class="hero-description">Od ponad 30 lat zapewniamy terminowość, bezpieczeństwo i profesjonalną obsługę dla Twoich przesyłek na terenie całej Europy.</p>
-                <a href="#contact" class="btn btn-primary">
-                    Skontaktuj się z nami
-                    <span class="btn-icon">
-                        <i class="fas fa-arrow-right"></i>
-                    </span>
-                </a>
+                <!-- NEW: Dedicated text container with higher opacity -->
+                <div class="hero-text-container">
+                    <div class="hero-subtitle">Profesjonalny transport od 1992 roku</div>
+                    <h1 class="hero-title">Kompleksowe usługi transportowe i spedycyjne na najwyższym europejskim poziomie</h1>
+                    <p class="hero-description">Od ponad 30 lat zapewniamy terminowość, bezpieczeństwo i profesjonalną obsługę dla Twoich przesyłek na terenie całej Europy.</p>
+                    <a href="#contact" class="btn btn-primary">
+                        Skontaktuj się z nami
+                        <span class="btn-icon">
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
