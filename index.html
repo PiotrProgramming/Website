@@ -783,12 +783,12 @@
             font-size: 1.25rem;
         }
         
-        /* Timeline Section - COMPLETELY FIXED */
+        /* Horizontal Timeline Section - COMPLETELY REDESIGNED */
         .timeline-container {
             background: var(--bg-white);
-            border-radius: var(--radius-2xl);
-            padding: var(--space-8);
-            box-shadow: var(--shadow-lg);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-md);
             position: relative;
             overflow: hidden;
         }
@@ -804,62 +804,43 @@
             border-radius: 2px 2px 0 0;
         }
         
-        .timeline {
-            position: relative;
-            padding: var(--space-6) 0;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            background: var(--neutral-200);
-        }
-        
-        .timeline-item {
-            position: relative;
-            width: 50%;
-            padding: var(--space-5) var(--space-6);
+        .horizontal-timeline {
             display: flex;
-            flex-direction: column;
-            min-height: 120px;
+            overflow-x: auto;
+            padding: var(--space-4) 0;
+            gap: var(--space-4);
+            scrollbar-width: thin;
+            scrollbar-color: var(--neutral-300) var(--bg-light);
         }
         
-        .timeline-item:nth-child(odd) {
-            align-self: flex-start;
-            padding-right: calc(50% + var(--space-7));
+        .horizontal-timeline::-webkit-scrollbar {
+            height: 6px;
         }
         
-        .timeline-item:nth-child(even) {
-            align-self: flex-end;
-            padding-left: calc(50% + var(--space-7));
-        }
-        
-        .timeline-item-content {
+        .horizontal-timeline::-webkit-scrollbar-track {
             background: var(--bg-light);
-            border-radius: var(--radius-lg);
-            padding: var(--space-5);
+            border-radius: 3px;
+        }
+        
+        .horizontal-timeline::-webkit-scrollbar-thumb {
+            background: var(--neutral-300);
+            border-radius: 3px;
+        }
+        
+        .timeline-milestone {
+            min-width: 180px;
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
             box-shadow: var(--shadow-sm);
             transition: var(--transition-fast);
-            border-left: 3px solid var(--primary);
-            word-break: break-word;
-            hyphens: auto;
-            width: 100%;
-            max-width: 400px; /* Maximum width for readability */
-            min-width: 250px; /* Minimum width to prevent text from becoming vertical */
             position: relative;
-            z-index: 2;
+            border-top: 3px solid var(--primary);
         }
         
-        .timeline-item:hover .timeline-item-content {
+        .timeline-milestone:hover {
             background: var(--primary-50);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-md);
         }
         
@@ -868,38 +849,14 @@
             color: var(--primary);
             font-size: var(--text-lg);
             margin-bottom: var(--space-2);
+            text-align: center;
         }
         
-        .timeline-dot {
-            position: absolute;
-            top: calc(50% - 12px);
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            box-shadow: 0 0 0 4px white;
-            transition: var(--transition-fast);
-        }
-        
-        .timeline-dot::before {
-            content: '';
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: white;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-dot {
-            right: calc(-12px - 1px);
-        }
-        
-        .timeline-item:nth-child(even) .timeline-dot {
-            left: calc(-12px - 1px);
+        .timeline-description {
+            font-size: var(--text-sm);
+            color: var(--text-tertiary);
+            line-height: var(--leading-normal);
+            text-align: center;
         }
         
         /* Why Us Section */
@@ -1414,45 +1371,6 @@
             .section-header {
                 text-align: center;
             }
-            
-            /* COMPLETELY FIXED TIMELINE FOR MOBILE */
-            .timeline {
-                padding: var(--space-4) 0;
-            }
-            
-            .timeline::before {
-                left: 30px;
-                transform: none;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding: var(--space-4) 0;
-                align-self: center;
-                min-height: 100px;
-            }
-            
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                padding-left: calc(30px + var(--space-7)) !important;
-                padding-right: 0 !important;
-            }
-            
-            .timeline-item-content {
-                min-width: 100% !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                padding: var(--space-4) !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-            }
-            
-            .timeline-dot {
-                left: 30px !important;
-                transform: none !important;
-                top: auto !important;
-                bottom: calc(100% - 12px) !important;
-            }
         }
         
         @media (max-width: 768px) {
@@ -1639,63 +1557,40 @@
                         <p>Od początku naszej działalności nadrzędnym celem działania jest realizacja każdego zlecenia w sposób profesjonalny, terminowy i zgodny z indywidualnymi potrzebami naszych klientów.</p>
                     </div>
                     
+                    <!-- Horizontal Timeline -->
                     <div class="timeline-container animate-fade-in delay-1">
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
+                        <div class="horizontal-timeline">
+                            <div class="timeline-milestone">
                                 <div class="timeline-year">1992</div>
-                                <div class="timeline-item-content">
-                                    <p>Założenie firmy specjalizującej się w transportie krajowym</p>
-                                </div>
+                                <div class="timeline-description">Założenie firmy specjalizującej się w transportie krajowym</div>
                             </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
+                            <div class="timeline-milestone">
                                 <div class="timeline-year">1995</div>
-                                <div class="timeline-item-content">
-                                    <p>Rozszerzenie floty o samochody ciężarowe marki MAN i Mercedes-Benz</p>
-                                </div>
+                                <div class="timeline-description">Rozszerzenie floty o samochody ciężarowe marki MAN i Mercedes-Benz</div>
                             </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
+                            <div class="timeline-milestone">
                                 <div class="timeline-year">2000</div>
-                                <div class="timeline-item-content">
-                                    <p>Uzyskanie licencji przewoźnika krajowego i rozpoczęcie współpracy z największymi firmami logistycznymi</p>
-                                </div>
+                                <div class="timeline-description">Uzyskanie licencji przewoźnika krajowego i współpraca z największymi firmami logistycznymi</div>
                             </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
+                            <div class="timeline-milestone">
                                 <div class="timeline-year">2004</div>
-                                <div class="timeline-item-content">
-                                    <p>Wprowadzenie transportu międzynarodowego oraz specjalizacja w przewozach ładunków przestrzennych</p>
-                                </div>
+                                <div class="timeline-description">Transport międzynarodowy i specjalizacja w przewozach ładunków przestrzennych</div>
                             </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
+                            <div class="timeline-milestone">
                                 <div class="timeline-year">2010</div>
-                                <div class="timeline-item-content">
-                                    <p>Zakup nowoczesnego taboru z naczepami typu mega i jumbo</p>
-                                </div>
+                                <div class="timeline-description">Zakup nowoczesnego taboru z naczepami typu mega i jumbo</div>
                             </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
+                            <div class="timeline-milestone">
                                 <div class="timeline-year">2015</div>
-                                <div class="timeline-item-content">
-                                    <p>Wdrożenie systemu GPS do monitoringu przewozów</p>
-                                </div>
+                                <div class="timeline-description">Wdrożenie systemu GPS do monitoringu przewozów</div>
                             </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
+                            <div class="timeline-milestone">
                                 <div class="timeline-year">2020</div>
-                                <div class="timeline-item-content">
-                                    <p>Uzyskanie certyfikatu ISO 9001:2015 oraz rozszerzenie działalności na transport materiałów sypkich</p>
-                                </div>
+                                <div class="timeline-description">Certyfikat ISO 9001:2015 i transport materiałów sypkich</div>
                             </div>
-                            <div class="timeline-item">
-                                <div class="timeline-dot"></div>
+                            <div class="timeline-milestone">
                                 <div class="timeline-year">2023</div>
-                                <div class="timeline-item-content">
-                                    <p>Dysponujemy nowoczesnym taborzem pojazdów zapewniających kompleksową obsługę przewozów</p>
-                                </div>
+                                <div class="timeline-description">Nowoczesny tabor zapewniający kompleksową obsługę przewozów</div>
                             </div>
                         </div>
                     </div>
