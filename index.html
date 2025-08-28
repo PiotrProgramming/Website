@@ -551,9 +551,10 @@
             padding: calc(var(--space-20) + 72px) 0 var(--space-20); /* Added space for header */
             position: relative;
             overflow: hidden;
-            background: var(--bg-gradient);
+            /* Removed the default background gradient */
         }
         
+        /* Fixed background image with blur */
         .hero::before {
             content: '';
             position: absolute;
@@ -565,10 +566,11 @@
             background-size: cover;
             background-position: center;
             filter: blur(8px);
-            opacity: 0.2;
-            z-index: -1;
+            opacity: 0.4; /* Increased from 0.2 to make it more visible */
+            z-index: -2;
         }
         
+        /* Slight red overlay for better text contrast */
         .hero::after {
             content: '';
             position: absolute;
@@ -576,7 +578,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(211, 47, 47, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(135deg, rgba(211, 47, 47, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
             z-index: -1;
         }
         
@@ -1129,7 +1131,7 @@
             box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
         }
         
-        /* FIXED: Added 'data:' prefix to SVG URL */
+        /* FIXED: Added '' prefix to SVG URL */
         .form-select {
             appearance: none;
             background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
