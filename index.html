@@ -192,11 +192,11 @@
         
         /* Typography System */
         h1 {
-            font-size: var(--text-5xl); /* Reduced from 6xl to 5xl for better fit */
+            font-size: var(--text-5xl);
             line-height: var(--leading-tight);
             font-weight: 800;
             letter-spacing: -0.025em;
-            margin-bottom: var(--space-4); /* Reduced margin */
+            margin-bottom: var(--space-4);
         }
         
         h2 {
@@ -543,23 +543,24 @@
             color: var(--primary-light);
         }
         
-        /* Hero Section - COMPLETE REWORK WITH ACTUAL IMG TAG */
+        /* Hero Section - WITH PARALLAX EFFECT */
         .hero {
-            height: 100vh; /* Changed from min-height to height */
+            height: 100vh;
             display: flex;
             align-items: center;
-            padding-top: 72px; /* Only top padding to account for fixed header */
+            padding-top: 72px;
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
         
-        /* Hero background image container */
+        /* Hero background image container - FIXED POSITIONING FOR PARALLAX */
         .hero-background-container {
-            position: absolute;
+            position: fixed; /* Changed to fixed for parallax effect */
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: 100vh; /* Fixed height to match viewport */
             z-index: -2;
             overflow: hidden;
         }
@@ -572,7 +573,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: blur(6px); /* CONSISTENT BLUR - NO SCROLL EFFECT */
+            filter: blur(6px);
         }
         
         /* Overlay for better text contrast - 50% OPACITY BRIGHT GRAY */
@@ -589,11 +590,12 @@
         /* Dedicated text container with higher opacity for better readability */
         .hero-text-container {
             background: rgba(240, 242, 245, 0.9); /* Bright gray at 90% opacity */
-            border-radius: var(--radius-lg); /* Reduced from xl to lg */
-            padding: var(--space-6); /* Reduced from 8 to 6 */
-            box-shadow: var(--shadow-sm); /* Slightly smaller shadow */
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-sm);
             backdrop-filter: blur(4px);
             width: 100%;
+            transition: all 0.3s ease;
         }
         
         .hero-content {
@@ -608,26 +610,26 @@
             color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            margin-bottom: var(--space-3); /* Reduced margin */
+            margin-bottom: var(--space-3);
             display: inline-block;
             padding-bottom: var(--space-1);
             border-bottom: 2px solid var(--primary);
         }
         
         .hero-title {
-            font-size: var(--text-5xl); /* Reduced from 6xl to 5xl */
+            font-size: var(--text-5xl);
             line-height: var(--leading-tight);
             font-weight: 800;
             letter-spacing: -0.025em;
-            margin-bottom: var(--space-4); /* Reduced margin */
+            margin-bottom: var(--space-4);
             color: var(--text-primary);
         }
         
         .hero-description {
-            font-size: var(--text-lg); /* Reduced from xl to lg */
+            font-size: var(--text-lg);
             line-height: var(--leading-relaxed);
             color: var(--text-secondary);
-            margin-bottom: var(--space-6); /* Reduced margin */
+            margin-bottom: var(--space-6);
             max-width: 600px;
         }
         
@@ -636,7 +638,7 @@
             align-items: center;
             justify-content: center;
             gap: var(--space-3);
-            padding: var(--space-3) var(--space-5); /* Reduced padding */
+            padding: var(--space-3) var(--space-5);
             border-radius: var(--radius-lg);
             font-weight: 600;
             font-size: var(--text-base);
@@ -679,8 +681,20 @@
         
         /* Section Styling - FIXED */
         .section {
-            padding: calc(var(--space-20) + 72px) 0 var(--space-20); /* Added top padding for header */
-            scroll-margin-top: 100px; /* Ensures content isn't covered by fixed header */
+            padding: calc(var(--space-20) + 72px) 0 var(--space-20);
+            scroll-margin-top: 100px;
+            position: relative;
+            z-index: 2; /* Higher z-index to appear above hero content */
+            background: var(--bg-light); /* Explicit background to cover hero content */
+        }
+        
+        /* First section after hero needs special treatment */
+        #about {
+            padding-top: calc(var(--space-10) + 72px); /* Less top padding since hero content scrolls under */
+            margin-top: -120px; /* Pulls the section up to overlap with hero */
+            position: relative;
+            z-index: 3; /* Highest z-index for the first content section */
+            background: var(--bg-light);
         }
         
         .section-header {
@@ -1329,6 +1343,10 @@
             .section-header {
                 text-align: center;
             }
+            
+            #about {
+                margin-top: -80px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -1364,6 +1382,10 @@
             .why-us-grid,
             .fleet-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            #about {
+                margin-top: -60px;
             }
         }
         
@@ -1419,6 +1441,10 @@
             
             .footer-container {
                 grid-template-columns: 1fr;
+            }
+            
+            #about {
+                margin-top: -40px;
             }
         }
     </style>
