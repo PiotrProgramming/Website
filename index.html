@@ -783,7 +783,7 @@
             font-size: 1.25rem;
         }
         
-        /* Timeline Section - FIXED */
+        /* Timeline Section - COMPLETELY FIXED */
         .timeline-container {
             background: var(--bg-white);
             border-radius: var(--radius-2xl);
@@ -807,6 +807,9 @@
         .timeline {
             position: relative;
             padding: var(--space-6) 0;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .timeline::before {
@@ -826,6 +829,7 @@
             padding: var(--space-5) var(--space-6);
             display: flex;
             flex-direction: column;
+            min-height: 120px;
         }
         
         .timeline-item:nth-child(odd) {
@@ -845,10 +849,13 @@
             box-shadow: var(--shadow-sm);
             transition: var(--transition-fast);
             border-left: 3px solid var(--primary);
-            /* FIXED: Added word wrapping to prevent vertical text */
-            word-wrap: break-word;
-            overflow-wrap: break-word;
+            word-break: break-word;
             hyphens: auto;
+            width: 100%;
+            max-width: 400px; /* Maximum width for readability */
+            min-width: 250px; /* Minimum width to prevent text from becoming vertical */
+            position: relative;
+            z-index: 2;
         }
         
         .timeline-item:hover .timeline-item-content {
@@ -1226,7 +1233,7 @@
         
         .form-select {
             appearance: none;
-            background-image: url("image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 1rem center;
             background-size: 1em;
@@ -1408,12 +1415,9 @@
                 text-align: center;
             }
             
-            /* Timeline fixes for mobile */
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                width: 100%;
-                padding: var(--space-3) 0;
-                align-self: center;
+            /* COMPLETELY FIXED TIMELINE FOR MOBILE */
+            .timeline {
+                padding: var(--space-4) 0;
             }
             
             .timeline::before {
@@ -1422,8 +1426,25 @@
             }
             
             .timeline-item {
-                padding-left: calc(var(--space-7) + 30px) !important;
+                width: 100%;
+                padding: var(--space-4) 0;
+                align-self: center;
+                min-height: 100px;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding-left: calc(30px + var(--space-7)) !important;
                 padding-right: 0 !important;
+            }
+            
+            .timeline-item-content {
+                min-width: 100% !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: var(--space-4) !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
             }
             
             .timeline-dot {
@@ -1521,15 +1542,6 @@
             
             .footer-container {
                 grid-template-columns: 1fr;
-            }
-            
-            /* Additional mobile timeline fixes */
-            .timeline-container {
-                padding: var(--space-5);
-            }
-            
-            .timeline-item-content {
-                padding: var(--space-4);
             }
         }
     </style>
