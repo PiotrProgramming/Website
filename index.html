@@ -544,15 +544,15 @@
             color: var(--primary-light);
         }
         
-        /* Hero Section - WITH PROPER PARALLAX SCROLLING */
+        /* Hero Section - WITH VIDEO BACKGROUND */
         .hero {
             height: 100vh;
             position: relative;
             overflow: hidden;
         }
         
-        /* Hero background image container - FIXED POSITIONING */
-        .hero-background-container {
+        /* Video background container */
+        .hero-video-container {
             position: fixed;
             top: 0;
             left: 0;
@@ -562,25 +562,26 @@
             overflow: hidden;
         }
         
-        /* The actual image element */
-        .hero-background-img {
+        .hero-video {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: blur(6px);
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -1;
         }
         
-        /* Overlay for better text contrast - 50% OPACITY BRIGHT GRAY */
+        /* Overlay for better text contrast */
         .hero-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background: rgba(240, 242, 245, 0.5); /* Bright gray at 50% opacity */
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%); /* Gradient from maszonski.pl */
             z-index: -1;
         }
         
@@ -589,9 +590,10 @@
             background: rgba(240, 242, 245, 0.9); /* Bright gray at 90% opacity */
             border-radius: var(--radius-lg);
             padding: var(--space-6);
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow-md);
             backdrop-filter: blur(4px);
             width: 100%;
+            max-width: 650px;
         }
         
         .hero-content {
@@ -1498,11 +1500,15 @@
         </div>
     </header>
 
-    <!-- Hero Section - WITH ACTUAL IMG TAG FOR BACKGROUND -->
+    <!-- Hero Section - WITH VIDEO BACKGROUND -->
     <section class="hero">
-        <!-- Hero background container with actual image tag -->
-        <div class="hero-background-container">
-            <img src="images/photo1.jpg" alt="Transport background" class="hero-background-img" id="heroBackgroundImg">
+        <!-- Hero video background container -->
+        <div class="hero-video-container">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <!-- Using a free-to-use highway traffic video from Pexels -->
+                <source src="https://videos.pexels.com/video-files/5317460/5317460-uhd_2160_3840_30fps.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
         
         <div class="hero-overlay"></div>
@@ -1999,50 +2005,92 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize video handling after DOM is fully loaded
+            const initVideoBackground = function() {
+                const heroVideo = document.querySelector('.hero-video');
+                const heroVideoContainer = document.querySelector('.hero-video-container');
+                
+                // Only proceed if video element exists
+                if (!heroVideo || !heroVideoContainer) {
+                    console.warn("Hero video elements not found. Using fallback background.");
+                    return;
+                }
+                
+                // Ensure video is responsive
+                function resizeVideo() {
+                    const videoRatio = 16/9; // Assuming 16:9 video
+                    const windowRatio = window.innerWidth / window.innerHeight;
+                    
+                    if (windowRatio < videoRatio) {
+                        heroVideo.style.width = 'auto';
+                        heroVideo.style.height = '100vh';
+                    } else {
+                        heroVideo.style.width = '100vw';
+                        heroVideo.style.height = 'auto';
+                    }
+                }
+                
+                // Set initial size
+                resizeVideo();
+                
+                // Resize on window resize
+                window.addEventListener('resize', resizeVideo);
+                
+                // Handle video loading errors
+                heroVideo.onerror = function() {
+                    console.error("Hero video failed to load. Falling back to image.");
+                    
+                    // Create fallback image element
+                    const fallbackImg = document.createElement('img');
+                    fallbackImg.src = 'https://images.unsplash.com/photo-1483847242405-6306c90c84c3?auto=format&fit=crop&w=1950&q=80';
+                    fallbackImg.alt = 'Transport background';
+                    fallbackImg.className = 'hero-background-img';
+                    
+                    // Replace video with image
+                    heroVideoContainer.innerHTML = '';
+                    heroVideoContainer.appendChild(fallbackImg);
+                    
+                    // Apply same styles as video
+                    fallbackImg.style.position = 'fixed';
+                    fallbackImg.style.top = '0';
+                    fallbackImg.style.left = '0';
+                    fallbackImg.style.width = '100%';
+                    fallbackImg.style.height = '100vh';
+                    fallbackImg.style.objectFit = 'cover';
+                    fallbackImg.style.zIndex = '-1';
+                    
+                    // Error handling for fallback image
+                    fallbackImg.onerror = function() {
+                        console.error("Fallback image also failed to load.");
+                        heroVideoContainer.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(https://images.unsplash.com/photo-1509474527407-90bcc17b7405?auto=format&fit=crop&w=1950&q=80)';
+                        heroVideoContainer.style.backgroundSize = 'cover';
+                    };
+                };
+                
+                // Ensure video plays properly on mobile
+                heroVideo.addEventListener('touchstart', function() {
+                    if (this.paused) {
+                        this.play();
+                    } else {
+                        this.pause();
+                    }
+                });
+                
+                // Preload video metadata to ensure proper playback
+                heroVideo.load();
+            };
+            
+            // Initialize video background after a short delay to ensure elements are ready
+            setTimeout(initVideoBackground, 100);
+            
+            // Rest of the existing JavaScript code
             const header = document.querySelector('.header');
-            const heroBackgroundImg = document.getElementById('heroBackgroundImg');
             
             // Get nav elements once and reuse them
             const navLinks = document.querySelector('.nav-links');
             const mobileMenuButton = document.querySelector('.mobile-menu-button');
             const languageButton = document.querySelector('.language-button');
             const languageDropdown = document.querySelector('.language-dropdown');
-            
-            // Add error handling for the image
-            if (heroBackgroundImg) {
-                heroBackgroundImg.onerror = function() {
-                    console.error("Hero background image failed to load. Trying alternative format...");
-                    
-                    // Try to load photo1.jpg if photo1.png fails
-                    const imgPath = this.src;
-                    if (imgPath.endsWith('.png')) {
-                        this.src = imgPath.replace('.png', '.jpg');
-                    } else if (imgPath.endsWith('.jpg')) {
-                        // If both formats fail, show error message
-                        this.style.backgroundColor = '#f0f0f0';
-                        this.style.opacity = '0.3';
-                        this.style.border = '2px dashed #d32f2f';
-                        
-                        const errorMsg = document.createElement('div');
-                        errorMsg.textContent = 'Hero background image not found';
-                        errorMsg.style.position = 'absolute';
-                        errorMsg.style.top = '50%';
-                        errorMsg.style.left = '50%';
-                        errorMsg.style.transform = 'translate(-50%, -50%)';
-                        errorMsg.style.color = '#d32f2f';
-                        errorMsg.style.fontWeight = 'bold';
-                        errorMsg.style.fontSize = '1.2rem';
-                        errorMsg.style.zIndex = '10';
-                        
-                        const container = this.parentElement;
-                        container.style.position = 'relative';
-                        container.appendChild(errorMsg);
-                    }
-                };
-                
-                // NO SCROLL EFFECT - CONSISTENT BLUR OF 6px
-                heroBackgroundImg.style.filter = 'blur(6px)';
-            }
             
             // Update header on scroll
             window.addEventListener('scroll', function() {
