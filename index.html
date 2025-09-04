@@ -1169,7 +1169,7 @@
         /* FIXED: Corrected SVG URL format with proper prefix */
         .form-select {
             appearance: none;
-            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 1rem center;
             background-size: 1em;
@@ -1505,9 +1505,9 @@
     <section class="hero">
         <!-- Hero video background container -->
         <div class="hero-video-container">
-            <!-- Using a reliable video source that works without SSL errors -->
             <video class="hero-video" autoplay muted loop playsinline>
-                <source src="https://player.vimeo.com/external/378400552.sd.mp4?s=7e9c2c8d7b7a9d5d0c9c7e6f5e9f0a1a0a8e2c0a&profile_id=139&oauth2_token_id=103849561" type="video/mp4">
+                <!-- Using a reliable video source that actually works for embedding -->
+                <source src="https://cdn.pixabay.com/video/2023/05/19/161626-810906556_large.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -1536,94 +1536,4 @@
     <section id="about" class="section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title-h2">O FIRMIE</h2>
-                <p class="section-description">Firma PRZEDSIĘBIORSTWO HANDLOWO USŁUGOWE JERZY STANISZ to profesjonalne przedsiębiorstwo zajmujące się transportem i spedycją. Od 1992 roku działamy i nieustannie rozwijamy się, świadcząc naszym krajowym i zagranicznym Klientom usługi na najwyższym, europejskim poziomie.</p>
-            </div>
-            
-            <div class="about-container">
-                <div class="about-content">
-                    <div class="about-card animate-fade-in">
-                        <h3 class="about-card-title">
-                            <span class="about-card-icon">
-                                <i class="fas fa-history"></i>
-                            </span>
-                            Historia firmy
-                        </h3>
-                        <p>Od początku naszej działalności nadrzędnym celem działania jest realizacja każdego zlecenia w sposób profesjonalny, terminowy i zgodny z indywidualnymi potrzebami naszych klientów.</p>
-                    </div>
-                    
-                    <!-- Narrower Horizontal Timeline -->
-                    <div class="timeline-container animate-fade-in delay-1">
-                        <div class="horizontal-timeline">
-                            <div class="timeline-milestone">
-                                <div class="timeline-year">1992</div>
-                                <div class="timeline-description">Założenie firmy specjalizującej się w transportie krajowym</div>
-                            </div>
-                            <div class="timeline-milestone">
-                                <div class="timeline-year">1995</div>
-                                <div class="timeline-description">Rozszerzenie floty o samochody ciężarowe marki MAN i Mercedes-Benz</div>
-                            </div>
-                            <div class="timeline-milestone">
-                                <div class="timeline-year">2000-2004</div>
-                                <div class="timeline-description">Uzyskanie licencji przewoźnika krajowego, rozpoczęcie współpracy z firmami logistycznymi oraz wprowadzenie transportu międzynarodowego i specjalizacja w przewozach ładunków przestrzennych</div>
-                            </div>
-                            <div class="timeline-milestone">
-                                <div class="timeline-year">2010</div>
-                                <div class="timeline-description">Zakup nowoczesnego taboru z naczepami typu mega i jumbo</div>
-                            </div>
-                            <div class="timeline-milestone">
-                                <div class="timeline-year">2020</div>
-                                <div class="timeline-description">Certyfikat ISO 9001:2015 i transport materiałów sypkich</div>
-                            </div>
-                            <div class="timeline-milestone">
-                                <div class="timeline-year">2023</div>
-                                <div class="timeline-description">Nowoczesny tabor zapewniający kompleksową obsługę przewozów</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Us Section -->
-    <section id="why" class="section" style="background-color: #f9fafb;">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title-h2">DLACZEGO MY?</h2>
-                <p class="section-description">Nasz świat to projekty naszych klientów i codzienne starania aby stale pozytywnie zaskakiwać Was naszym zaangażowaniem.</p>
-            </div>
-            
-            <div class="why-us-grid">
-                <div class="why-us-card animate-fade-in">
-                    <div class="why-us-card-content">
-                        <div class="why-us-card-icon">
-                            <i class="fas fa-user-tie"></i>
-                        </div>
-                        <h3 class="why-us-card-title">Indywidualne podejście</h3>
-                        <p class="why-us-card-description">Dostosowujemy się do specyficznych potrzeb każdego klienta, tworząc spersonalizowane rozwiązania logistyczne.</p>
-                        <a href="#" class="why-us-card-link">
-                            Dowiedz się więcej
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="why-us-card animate-fade-in delay-1">
-                    <div class="why-us-card-content">
-                        <div class="why-us-card-icon">
-                            <i class="fas fa-sync-alt"></i>
-                        </div>
-                        <h3 class="why-us-card-title">Elastyczność i skuteczność</h3>
-                        <p class="why-us-card-description">Szybkie reagowanie na dynamiczne zmiany rynkowe i specjalne wymagania klientów.</p>
-                        <a href="#" class="why-us-card-link">
-                            Dowiedz się więcej
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="why-us-card animate-fade-in delay-2">
-                    <div class="why-us-card-content">
-                        <div class="why-us-card-icon">
-               
+                <h2 class=
