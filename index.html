@@ -546,4 +546,1459 @@
         }
         
         /* Hero Section - WITH VIDEO BACKGROUND */
-   
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Video background container */
+        .hero-video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+        
+        /* Overlay for better text contrast */
+        .hero-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%); /* Gradient from maszonski.pl */
+            z-index: -1;
+        }
+        
+        /* Dedicated text container with higher opacity for better readability */
+        .hero-text-container {
+            background: rgba(240, 242, 245, 0.9); /* Bright gray at 90% opacity */
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-md);
+            backdrop-filter: blur(4px);
+            width: 100%;
+            max-width: 650px;
+        }
+        
+        .hero-content {
+            max-width: 650px;
+            position: relative;
+            z-index: 1;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-subtitle {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-3);
+            display: inline-block;
+            padding-bottom: var(--space-1);
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .hero-title {
+            font-size: var(--text-5xl);
+            line-height: var(--leading-tight);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: var(--space-4);
+            color: var(--text-primary);
+        }
+        
+        .hero-description {
+            font-size: var(--text-lg);
+            line-height: var(--leading-relaxed);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-6);
+            max-width: 600px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-3);
+            padding: var(--space-3) var(--space-5);
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: var(--text-base);
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition-spring);
+            border: none;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-600), var(--primary-800));
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary-50);
+            transform: translateY(-2px);
+        }
+        
+        .btn-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Section Styling - FIXED */
+        .section {
+            padding: calc(var(--space-20) + 72px) 0 var(--space-20);
+            scroll-margin-top: 100px;
+            position: relative;
+            z-index: 2;
+            background: var(--bg-light);
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--space-12);
+        }
+        
+        .section-title {
+            font-size: var(--text-4xl);
+            line-height: var(--leading-tight);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-4);
+        }
+        
+        .section-description {
+            font-size: var(--text-xl);
+            line-height: var(--leading-relaxed);
+            color: var(--text-secondary);
+        }
+        
+        .section-title-h2 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: var(--space-6);
+        }
+        
+        .section-title-h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-500), var(--accent-blue));
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-8);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
+        
+        .about-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-spring);
+        }
+        
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .about-card-title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            color: var(--primary);
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            margin-bottom: var(--space-5);
+        }
+        
+        .about-card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-50);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+        
+        /* Horizontal Timeline Section - NARROWER VERSION */
+        .timeline-container {
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-500), var(--accent-blue));
+            border-radius: 2px 2px 0 0;
+        }
+        
+        .horizontal-timeline {
+            display: flex;
+            overflow-x: auto;
+            padding: var(--space-4) 0;
+            gap: var(--space-4);
+            scrollbar-width: thin;
+            scrollbar-color: var(--neutral-300) var(--bg-light);
+        }
+        
+        .horizontal-timeline::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .horizontal-timeline::-webkit-scrollbar-track {
+            background: var(--bg-light);
+            border-radius: 3px;
+        }
+        
+        .horizontal-timeline::-webkit-scrollbar-thumb {
+            background: var(--neutral-300);
+            border-radius: 3px;
+        }
+        
+        .timeline-milestone {
+            min-width: 180px;
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+            padding: var(--space-4);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-fast);
+            position: relative;
+            border-top: 3px solid var(--primary);
+        }
+        
+        .timeline-milestone:hover {
+            background: var(--primary-50);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .timeline-year {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-2);
+            text-align: center;
+        }
+        
+        .timeline-description {
+            font-size: var(--text-sm);
+            color: var(--text-tertiary);
+            line-height: var(--leading-normal);
+            text-align: center;
+        }
+        
+        /* Why Us Section */
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: var(--space-6);
+        }
+        
+        .why-us-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-spring);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .why-us-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-500), var(--accent-blue));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition-normal);
+            z-index: 2;
+        }
+        
+        .why-us-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .why-us-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .why-us-card-content {
+            padding: var(--space-7);
+            display: flex;
+            flex-direction: column;
+            min-height: 380px;
+        }
+        
+        .why-us-card-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--primary-50);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-5);
+            color: var(--primary);
+            font-size: 1.75rem;
+            transition: var(--transition-fast);
+        }
+        
+        .why-us-card:hover .why-us-card-icon {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .why-us-card-title {
+            font-size: var(--text-xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-3);
+            transition: var(--transition-fast);
+        }
+        
+        .why-us-card:hover .why-us-card-title {
+            color: var(--primary);
+        }
+        
+        .why-us-card-description {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-5);
+            flex-grow: 1;
+        }
+        
+        .why-us-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        
+        .why-us-card-link:hover {
+            gap: var(--space-3);
+        }
+        
+        /* Offer Section - CENTERED AND SPLIT INTO 2 COLUMNS */
+        .offer-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Equal columns */
+            gap: var(--space-8);
+        }
+        
+        .offer-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
+            text-align: center; /* Center text */
+        }
+        
+        .offer-column h3 {
+            text-align: center !important;
+        }
+        
+        .offer-column ul {
+            width: 100%;
+            max-width: 400px; /* Limit width for better readability */
+            margin: 0 auto;
+        }
+        
+        .offer-list {
+            list-style: none;
+            margin: 0 auto;
+        }
+        
+        .offer-list-item {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center; /* Center items */
+            gap: var(--space-3);
+            padding: var(--space-3) 0;
+            margin: 0 auto;
+        }
+        
+        .offer-list-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--primary-100);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.75rem;
+        }
+        
+        .offer-list-content {
+            color: var(--text-secondary);
+            text-align: left; /* Left-align content within items for readability */
+        }
+        
+        /* Fleet Section */
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: var(--space-6);
+        }
+        
+        .fleet-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-spring);
+            position: relative;
+        }
+        
+        .fleet-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-500), var(--accent-green));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition-normal);
+        }
+        
+        .fleet-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .fleet-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .fleet-card-content {
+            padding: var(--space-7);
+        }
+        
+        .fleet-card-title {
+            font-size: var(--text-xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-4);
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+        
+        .fleet-card-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-4);
+        }
+        
+        .fleet-card-spec {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .fleet-card-spec-label {
+            font-size: var(--text-sm);
+            color: var(--text-tertiary);
+            margin-bottom: var(--space-1);
+        }
+        
+        .fleet-card-spec-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-12);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-6);
+        }
+        
+        .contact-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-7);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-spring);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-5);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .contact-card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-50);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+        
+        .contact-card-content h3 {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-2);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: var(--bg-white);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-6);
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-2);
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: var(--space-4);
+            border: 1px solid var(--neutral-300);
+            border-radius: var(--radius-lg);
+            font-size: var(--text-base);
+            transition: var(--transition-fast);
+            background: var(--bg-light);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--bg-white);
+            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+        }
+        
+        /* FIXED: Corrected SVG URL format with proper prefix */
+        .form-select {
+            appearance: none;
+            background-image: url("image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--neutral-900);
+            color: var(--text-inverse);
+            padding: var(--space-14) 0 var(--space-8);
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-8);
+        }
+        
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-5);
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            text-decoration: none;
+        }
+        
+        .footer-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+        }
+        
+        .footer-logo-text {
+            font-size: var(--text-xl);
+            font-weight: 700;
+            color: white;
+        }
+        
+        .footer-description {
+            color: var(--neutral-400);
+            line-height: var(--leading-relaxed);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: var(--space-3);
+            margin-top: var(--space-4);
+        }
+        
+        .footer-social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: var(--transition-fast);
+        }
+        
+        .footer-social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links-title {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: white;
+            margin-bottom: var(--space-4);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-link {
+            display: block;
+            color: var(--neutral-400);
+            text-decoration: none;
+            margin-bottom: var(--space-3);
+            transition: var(--transition-fast);
+            font-size: var(--text-base);
+            line-height: var(--leading-normal);
+        }
+        
+        .footer-link:hover {
+            color: white;
+            transform: translateX(3px);
+        }
+        
+        .footer-bottom {
+            margin-top: var(--space-10);
+            padding-top: var(--space-6);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--neutral-500);
+            font-size: var(--text-sm);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-image {
+                width: 45%;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .about-container,
+            .offer-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-image {
+                display: none;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+            
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .section-header {
+                text-align: center;
+            }
+            
+            /* Single column layout for mobile */
+            .offer-column {
+                text-align: left;
+                align-items: flex-start;
+            }
+            
+            .offer-list-item {
+                justify-content: flex-start;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: var(--text-4xl);
+            }
+            
+            h2 {
+                font-size: var(--text-3xl);
+            }
+            
+            .hero-title {
+                font-size: var(--text-4xl);
+            }
+            
+            .hero-description {
+                font-size: var(--text-lg);
+            }
+            
+            .section {
+                padding: calc(var(--space-14) + 72px) 0 var(--space-14);
+            }
+            
+            .section-header {
+                margin-bottom: var(--space-8);
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-6);
+            }
+            
+            .why-us-grid,
+            .fleet-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            h1 {
+                font-size: var(--text-3xl);
+            }
+            
+            h2 {
+                font-size: var(--text-2xl);
+            }
+            
+            .hero-title {
+                font-size: var(--text-3xl);
+            }
+            
+            .section-title {
+                font-size: var(--text-2xl);
+            }
+            
+            .section-description {
+                font-size: var(--text-lg);
+            }
+            
+            .container {
+                padding-left: var(--space-4);
+                padding-right: var(--space-4);
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.95);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                flex-direction: column;
+                padding: var(--space-5);
+                gap: var(--space-4);
+                box-shadow: var(--shadow-md);
+                z-index: var(--z-dropdown);
+                animation: fadeIn 0.3s ease;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header - BLACK BACKGROUND -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="STANISZ TRANSPORT Logo" class="logo-image">
+            </a>
+            
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="#about" class="nav-link active">O FIRMIE</a></li>
+                    <li><a href="#why" class="nav-link">DLACZEGO MY?</a></li>
+                    <li><a href="#offer" class="nav-link">OFERTA</a></li>
+                    <li><a href="#fleet" class="nav-link">TABOR</a></li>
+                    <li><a href="#contact" class="nav-link">KONTAKT</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="language-switcher">
+                        <button class="language-button">
+                            <i class="fas fa-globe"></i>
+                            PL
+                        </button>
+                        <div class="language-dropdown">
+                            <button class="language-option active">PL</button>
+                            <button class="language-option">EN</button>
+                            <button class="language-option">DE</button>
+                            <button class="language-option">FR</button>
+                            <button class="language-option">ES</button>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn btn-primary">
+                        Skontaktuj się z nami
+                        <span class="btn-icon">
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-button">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section - WITH VIDEO BACKGROUND -->
+    <section class="hero">
+        <!-- Hero video background container -->
+        <div class="hero-video-container">
+            <!-- Using a reliable video source that actually works for embedding -->
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-traffic-on-a-highway-1212-large.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <div class="hero-overlay"></div>
+        
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <!-- Dedicated text container with higher opacity -->
+                <div class="hero-text-container">
+                    <div class="hero-subtitle">Profesjonalny transport od 1992 roku</div>
+                    <h1 class="hero-title">Kompleksowe usługi transportowe i spedycyjne na najwyższym europejskim poziomie</h1>
+                    <p class="hero-description">Od ponad 30 lat zapewniamy terminowość, bezpieczeństwo i profesjonalną obsługę dla Twoich przesyłek na terenie całej Europy.</p>
+                    <a href="#contact" class="btn btn-primary">
+                        Skontaktuj się z nami
+                        <span class="btn-icon">
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title-h2">O FIRMIE</h2>
+                <p class="section-description">Firma PRZEDSIĘBIORSTWO HANDLOWO USŁUGOWE JERZY STANISZ to profesjonalne przedsiębiorstwo zajmujące się transportem i spedycją. Od 1992 roku działamy i nieustannie rozwijamy się, świadcząc naszym krajowym i zagranicznym Klientom usługi na najwyższym, europejskim poziomie.</p>
+            </div>
+            
+            <div class="about-container">
+                <div class="about-content">
+                    <div class="about-card animate-fade-in">
+                        <h3 class="about-card-title">
+                            <span class="about-card-icon">
+                                <i class="fas fa-history"></i>
+                            </span>
+                            Historia firmy
+                        </h3>
+                        <p>Od początku naszej działalności nadrzędnym celem działania jest realizacja każdego zlecenia w sposób profesjonalny, terminowy i zgodny z indywidualnymi potrzebami naszych klientów.</p>
+                    </div>
+                    
+                    <!-- Narrower Horizontal Timeline -->
+                    <div class="timeline-container animate-fade-in delay-1">
+                        <div class="horizontal-timeline">
+                            <div class="timeline-milestone">
+                                <div class="timeline-year">1992</div>
+                                <div class="timeline-description">Założenie firmy specjalizującej się w transportie krajowym</div>
+                            </div>
+                            <div class="timeline-milestone">
+                                <div class="timeline-year">1995</div>
+                                <div class="timeline-description">Rozszerzenie floty o samochody ciężarowe marki MAN i Mercedes-Benz</div>
+                            </div>
+                            <div class="timeline-milestone">
+                                <div class="timeline-year">2000-2004</div>
+                                <div class="timeline-description">Uzyskanie licencji przewoźnika krajowego, rozpoczęcie współpracy z firmami logistycznymi oraz wprowadzenie transportu międzynarodowego i specjalizacja w przewozach ładunków przestrzennych</div>
+                            </div>
+                            <div class="timeline-milestone">
+                                <div class="timeline-year">2010</div>
+                                <div class="timeline-description">Zakup nowoczesnego taboru z naczepami typu mega i jumbo</div>
+                            </div>
+                            <div class="timeline-milestone">
+                                <div class="timeline-year">2020</div>
+                                <div class="timeline-description">Certyfikat ISO 9001:2015 i transport materiałów sypkich</div>
+                            </div>
+                            <div class="timeline-milestone">
+                                <div class="timeline-year">2023</div>
+                                <div class="timeline-description">Nowoczesny tabor zapewniający kompleksową obsługę przewozów</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="why" class="section" style="background-color: #f9fafb;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title-h2">DLACZEGO MY?</h2>
+                <p class="section-description">Nasz świat to projekty naszych klientów i codzienne starania aby stale pozytywnie zaskakiwać Was naszym zaangażowaniem.</p>
+            </div>
+            
+            <div class="why-us-grid">
+                <div class="why-us-card animate-fade-in">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Indywidualne podejście</h3>
+                        <p class="why-us-card-description">Dostosowujemy się do specyficznych potrzeb każdego klienta, tworząc spersonalizowane rozwiązania logistyczne.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="why-us-card animate-fade-in delay-1">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Elastyczność i skuteczność</h3>
+                        <p class="why-us-card-description">Szybkie reagowanie na dynamiczne zmiany rynkowe i specjalne wymagania klientów.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="why-us-card animate-fade-in delay-2">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Przejrzystość rozliczeń</h3>
+                        <p class="why-us-card-description">Brak ukrytych kosztów, jasne warunki współpracy i transparentne rozliczenia.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="why-us-card animate-fade-in">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-truck-moving"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Kompleksowość obsługi</h3>
+                        <p class="why-us-card-description">Pełne wsparcie na każdym etapie przesyłki - od planowania do dostawy.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="why-us-card animate-fade-in delay-1">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Jakość i terminowość</h3>
+                        <p class="why-us-card-description">Gwarancja dotrzymania terminów dostawy dzięki precyzyjnemu planowaniu i systemowi monitoringu GPS.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="why-us-card animate-fade-in delay-2">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Globalny zakres</h3>
+                        <p class="why-us-card-description">Przewozy krajowe i międzynarodowe w całej Europie dzięki rozległej sieci partnerów.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offer Section -->
+    <section id="offer" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title-h2">OFERTA</h2>
+                <p class="section-description">Od początku działalności nadrzędnym celem działania jest realizacja każdego zlecenia w sposób profesjonalny- terminowy i zgodny z indywidualnymi potrzebami naszych klientów.</p>
+            </div>
+            
+            <!-- Updated Offer Section with Centered Text and Two Columns -->
+            <div class="offer-container">
+                <div class="offer-column animate-fade-in">
+                    <h3 class="about-card-title text-center">
+                        <span class="about-card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </span>
+                        Bezpieczeństwo przesyłek
+                    </h3>
+                    <ul class="offer-list">
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                Ubezpieczenie OC przewoźnika w ruchu międzynarodowym na sumę gwarancyjną 100.000 euro
+                            </div>
+                        </li>
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                Ubezpieczenie OC przewoźnika w ruchu krajowym na sumę gwarancyjną 100.000 zł
+                            </div>
+                        </li>
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                Dodatkowe ubezpieczenie Cargo do pełnej wartości przewożonego mienia
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="offer-column animate-fade-in delay-1">
+                    <h3 class="about-card-title text-center">
+                        <span class="about-card-icon">
+                            <i class="fas fa-truck-loading"></i>
+                        </span>
+                        Nasza specjalizacja
+                    </h3>
+                    <ul class="offer-list">
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                Przewozy ładunków przestrzennych o kubaturze do 120 m3
+                            </div>
+                        </li>
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                Transport materiałów sypkich za pomocą ciągników siodłowych
+                            </div>
+                        </li>
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                System nawigacji GPS dla stałego monitoringu przewożonego ładunku
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="fleet" class="section" style="background-color: #f9fafb;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title-h2">TABOR</h2>
+                <p class="section-description">Nasz nowoczesny tabor zapewnia kompleksową obsługę przewozów na najwyższym poziomie.</p>
+            </div>
+            
+            <div class="fleet-grid">
+                <div class="fleet-card animate-fade-in">
+                    <div class="fleet-card-content">
+                        <h3 class="fleet-card-title">
+                            <i class="fas fa-truck-container"></i>
+                            ZESTAW JUMBO
+                        </h3>
+                        <div class="fleet-card-specs">
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Ładowność</span>
+                                <span class="fleet-card-spec-value">12 + 12 ton</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Długość</span>
+                                <span class="fleet-card-spec-value">7,7 + 7,7 m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Szerokość</span>
+                                <span class="fleet-card-spec-value">2,50m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Wysokość</span>
+                                <span class="fleet-card-spec-value">3,05m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Tonaż</span>
+                                <span class="fleet-card-spec-value">24t</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Kubatura</span>
+                                <span class="fleet-card-spec-value">120 m3</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Europalety</span>
+                                <span class="fleet-card-spec-value">38 szt.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fleet-card animate-fade-in delay-1">
+                    <div class="fleet-card-content">
+                        <h3 class="fleet-card-title">
+                            <i class="fas fa-trailer"></i>
+                            NACZEPA MEGA
+                        </h3>
+                        <div class="fleet-card-specs">
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Długość</span>
+                                <span class="fleet-card-spec-value">13,60 m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Szerokość</span>
+                                <span class="fleet-card-spec-value">2,48 m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Wysokość</span>
+                                <span class="fleet-card-spec-value">3,00 m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Tonaż</span>
+                                <span class="fleet-card-spec-value">25 t</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Kubatura</span>
+                                <span class="fleet-card-spec-value">100 m3</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Europalety</span>
+                                <span class="fleet-card-spec-value">33 szt.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title-h2">KONTAKT</h2>
+                <p class="section-description">Zapraszamy do kontaktu w celu uzyskania szczegółowych informacji na temat naszych usług.</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-card animate-fade-in">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Adres</h3>
+                            <p>PHU Jerzy Stanisz<br>
+                            ul. Ząbkowicka 22a<br>
+                            57-100 Strzelin</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card animate-fade-in delay-1">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Telefony</h3>
+                            <p>500 175 331<br>
+                            (71) 39 35 726</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card animate-fade-in delay-2">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>E-mail</h3>
+                            <p>biuro@stanisz-transport.pl</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form animate-fade-in delay-3">
+                    <form>
+                        <div class="form-group">
+                            <label for="name" class="form-label">Imię i nazwisko</label>
+                            <input type="text" id="name" class="form-control" placeholder="Wpisz swoje imię i nazwisko" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Adres e-mail</label>
+                            <input type="email" id="email" class="form-control" placeholder="Wpisz swój adres email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Numer telefonu</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="Wpisz swój numer telefonu" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Temat wiadomości</label>
+                            <select id="subject" class="form-control form-select" required>
+                                <option value="" disabled selected>Wybierz temat</option>
+                                <option value="oferta">Zapytanie o ofertę</option>
+                                <option value="wspolpraca">Współpraca biznesowa</option>
+                                <option value="pracownik">Zatrudnienie</option>
+                                <option value="inne">Inne</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Treść wiadomości</label>
+                            <textarea id="message" class="form-control form-textarea" placeholder="Napisz wiadomość..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Wyślij wiadomość
+                            <span class="btn-icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="footer-logo-text">STANISZ TRANSPORT</div>
+                </a>
+                <p class="footer-description">Profesjonalne usługi transportowe i spedycyjne od 1992 roku. Zapewniamy terminowość, bezpieczeństwo i profesjonalną obsługę dla Twoich przesyłek.</p>
+                <div class="footer-social">
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="footer-links-title">Szybkie linki</h3>
+                <ul class="footer-links">
+                    <li><a href="#about" class="footer-link">O firmie</a></li>
+                    <li><a href="#why" class="footer-link">Dlaczego my?</a></li>
+                    <li><a href="#offer" class="footer-link">Oferta</a></li>
+                    <li><a href="#fleet" class="footer-link">Tabor</a></li>
+                    <li><a href="#contact" class="footer-link">Kontakt</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="footer-links-title">Dokumenty</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Decyzja o nadaniu numeru identyfikacyjnego podatkowego</a></li>
+                    <li><a href="#" class="footer-link">Licencja krajowa</a></li>
+                    <li><a href="#" class="footer-link">Licencja międzynarodowa</a></li>
+                    <li><a href="#" class="footer-link">Ubezpieczenie w ruchu krajowym</a></li>
+                    <li><a href="#" class="footer-link">Ubezpieczenie w ruchu międzynarodowym</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="footer-links-title">Kontakt</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:biuro@stanisz-transport.pl" class="footer-link">biuro@stanisz-transport.pl</a></li>
+                    <li><a href="tel:500175331" class="footer-link">500 175 331</a></li>
+                    <li><a href="tel:(71)3935726" class="footer-link">(71) 39 35 726</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 STANISZ TRANSPORT | Wszelkie prawa zastrzeżone.</p>
+        </
