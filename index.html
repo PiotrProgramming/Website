@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STANISZ TRANSPORT | Professional Logistics & Transport</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚚</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -380,7 +381,7 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: var(--space-3);
+            gap: var(--space-4); /* Increased gap for better spacing with larger logo */
             text-decoration: none;
             transition: var(--transition-fast);
         }
@@ -568,11 +569,11 @@
             left: 50%;
             min-width: 100%;
             min-height: 100%;
-            width: auto;
-            height: auto;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: -1;
-            filter: blur(1px); /* VERY SLIGHT BLUR - 1px */
         }
         
         /* Overlay for better text contrast */
@@ -683,8 +684,11 @@
         
         /* Section Styling - FIXED */
         .section {
-            padding: calc(var(--space-20) + 72px) 0 var(--space-20); /* Added top padding for header */
-            scroll-margin-top: 100px; /* Ensures content isn't covered by fixed header */
+            padding: calc(var(--space-20) + 72px) 0 var(--space-20);
+            scroll-margin-top: 100px;
+            position: relative;
+            z-index: 2;
+            background: var(--bg-light);
         }
         
         .section-header {
@@ -952,7 +956,7 @@
         .offer-container {
             display: grid;
             grid-template-columns: 1fr 1fr; /* Equal columns */
-            gap: var(--space-12);
+            gap: var(--space-8);
         }
         
         .offer-column {
@@ -1127,10 +1131,6 @@
             margin-bottom: var(--space-2);
         }
         
-        .contact-card-content p {
-            color: var(--text-secondary);
-        }
-        
         /* Contact Form */
         .contact-form {
             background: var(--bg-white);
@@ -1170,6 +1170,7 @@
         /* FIXED: Corrected SVG URL format with proper prefix */
         .form-select {
             appearance: none;
+            /* CRITICAL FIX: Added data: prefix to fix 404 error */
             background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 1rem center;
@@ -1460,7 +1461,7 @@
     <header class="header">
         <div class="container header-container">
             <a href="#" class="logo">
-                <img src="/images/logo.png" alt="STANISZ TRANSPORT Logo" class="logo-image">
+                <img src="images/logo.png" alt="STANISZ TRANSPORT Logo" class="logo-image">
             </a>
             
             <nav class="nav">
@@ -1507,6 +1508,645 @@
         <!-- Hero video background container -->
         <div class="hero-video-container">
             <video class="hero-video" autoplay muted loop playsinline>
-                <!-- Using a reliable video source that actually works for embedding -->
+                <!-- Using the correct Mixkit video URL that loads seamlessly -->
                 <source src="https://assets.mixkit.co/videos/preview/mixkit-autumn-trees-along-a-highway-45258-large.mp4" type="video/mp4">
-                Your brows
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <div class="hero-overlay"></div>
+        
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <!-- Dedicated text container with higher opacity -->
+                <div class="hero-text-container">
+                    <div class="hero-subtitle">Profesjonalny transport od 1992 roku</div>
+                    <h1 class="hero-title">Kompleksowe usługi transportowe i spedycyjne na najwyższym europejskim poziomie</h1>
+                    <p class="hero-description">Od ponad 30 lat zapewniamy terminowość, bezpieczeństwo i profesjonalną obsługę dla Twoich przesyłek na terenie całej Europy.</p>
+                    <a href="#contact" class="btn btn-primary">
+                        Skontaktuj się z nami
+                        <span class="btn-icon">
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title-h2">O FIRMIE</h2>
+                <p class="section-description">Firma PRZEDSIĘBIORSTWO HANDLOWO USŁUGOWE JERZY STANISZ to profesjonalne przedsiębiorstwo zajmujące się transportem i spedycją. Od 1992 roku działamy i nieustannie rozwijamy się, świadcząc naszym krajowym i zagranicznym Klientom usługi na najwyższym, europejskim poziomie.</p>
+            </div>
+            
+            <div class="about-container">
+                <div class="about-content">
+                    <div class="about-card animate-fade-in">
+                        <h3 class="about-card-title">
+                            <span class="about-card-icon">
+                                <i class="fas fa-history"></i>
+                            </span>
+                            Historia firmy
+                        </h3>
+                        <p>Od początku naszej działalności nadrzędnym celem działania jest realizacja każdego zlecenia w sposób profesjonalny, terminowy i zgodny z indywidualnymi potrzebami naszych klientów.</p>
+                    </div>
+                    
+                    <!-- Narrower Horizontal Timeline -->
+                    <div class="timeline-container animate-fade-in delay-1">
+                        <div class="horizontal-timeline">
+                            <div class="timeline-milestone">
+                                <div class="timeline-year">1992</div>
+                                <div class="timeline-description">Założenie firmy specjalizującej się w transportie krajowym</div>
+                            </div>
+                            <div class="timeline-milestone">
+                                <div class="timeline-year">1995</div>
+                                <div class="timeline-description">Rozszerzenie floty o samochody ciężarowe marki MAN i Mercedes-Benz</div>
+                            </div>
+                            <div class="timeline-milestone">
+                                <div class="timeline-year">2000-2004</div>
+                                <div class="timeline-description">Uzyskanie licencji przewoźnika krajowego, rozpoczęcie współpracy z firmami logistycznymi oraz wprowadzenie transportu międzynarodowego i specjalizacja w przewozach ładunków przestrzennych</div>
+                            </div>
+                            <div class="timeline-milestone">
+                                <div class="timeline-year">2010</div>
+                                <div class="timeline-description">Zakup nowoczesnego taboru z naczepami typu mega i jumbo</div>
+                            </div>
+                            <div class="timeline-milestone">
+                                <div class="timeline-year">2020</div>
+                                <div class="timeline-description">Certyfikat ISO 9001:2015 i transport materiałów sypkich</div>
+                            </div>
+                            <div class="timeline-milestone">
+                                <div class="timeline-year">2023</div>
+                                <div class="timeline-description">Nowoczesny tabor zapewniający kompleksową obsługę przewozów</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="why" class="section" style="background-color: #f9fafb;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title-h2">DLACZEGO MY?</h2>
+                <p class="section-description">Nasz świat to projekty naszych klientów i codzienne starania aby stale pozytywnie zaskakiwać Was naszym zaangażowaniem.</p>
+            </div>
+            
+            <div class="why-us-grid">
+                <div class="why-us-card animate-fade-in">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Indywidualne podejście</h3>
+                        <p class="why-us-card-description">Dostosowujemy się do specyficznych potrzeb każdego klienta, tworząc spersonalizowane rozwiązania logistyczne.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="why-us-card animate-fade-in delay-1">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Elastyczność i skuteczność</h3>
+                        <p class="why-us-card-description">Szybkie reagowanie na dynamiczne zmiany rynkowe i specjalne wymagania klientów.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="why-us-card animate-fade-in delay-2">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Przejrzystość rozliczeń</h3>
+                        <p class="why-us-card-description">Brak ukrytych kosztów, jasne warunki współpracy i transparentne rozliczenia.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="why-us-card animate-fade-in">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-truck-moving"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Kompleksowość obsługi</h3>
+                        <p class="why-us-card-description">Pełne wsparcie na każdym etapie przesyłki - od planowania do dostawy.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="why-us-card animate-fade-in delay-1">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Jakość i terminowość</h3>
+                        <p class="why-us-card-description">Gwarancja dotrzymania terminów dostawy dzięki precyzyjnemu planowaniu i systemowi monitoringu GPS.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="why-us-card animate-fade-in delay-2">
+                    <div class="why-us-card-content">
+                        <div class="why-us-card-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="why-us-card-title">Globalny zakres</h3>
+                        <p class="why-us-card-description">Przewozy krajowe i międzynarodowe w całej Europie dzięki rozległej sieci partnerów.</p>
+                        <a href="#" class="why-us-card-link">
+                            Dowiedz się więcej
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offer Section -->
+    <section id="offer" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title-h2">OFERTA</h2>
+                <p class="section-description">Od początku działalności nadrzędnym celem działania jest realizacja każdego zlecenia w sposób profesjonalny- terminowy i zgodny z indywidualnymi potrzebami naszych klientów.</p>
+            </div>
+            
+            <!-- Updated Offer Section with Centered Text and Two Columns -->
+            <div class="offer-container">
+                <div class="offer-column animate-fade-in">
+                    <h3 class="about-card-title text-center">
+                        <span class="about-card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </span>
+                        Bezpieczeństwo przesyłek
+                    </h3>
+                    <ul class="offer-list">
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                Ubezpieczenie OC przewoźnika w ruchu międzynarodowym na sumę gwarancyjną 100.000 euro
+                            </div>
+                        </li>
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                Ubezpieczenie OC przewoźnika w ruchu krajowym na sumę gwarancyjną 100.000 zł
+                            </div>
+                        </li>
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                Dodatkowe ubezpieczenie Cargo do pełnej wartości przewożonego mienia
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="offer-column animate-fade-in delay-1">
+                    <h3 class="about-card-title text-center">
+                        <span class="about-card-icon">
+                            <i class="fas fa-truck-loading"></i>
+                        </span>
+                        Nasza specjalizacja
+                    </h3>
+                    <ul class="offer-list">
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                Przewozy ładunków przestrzennych o kubaturze do 120 m3
+                            </div>
+                        </li>
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                Transport materiałów sypkich za pomocą ciągników siodłowych
+                            </div>
+                        </li>
+                        <li class="offer-list-item">
+                            <div class="offer-list-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="offer-list-content">
+                                System nawigacji GPS dla stałego monitoringu przewożonego ładunku
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section id="fleet" class="section" style="background-color: #f9fafb;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title-h2">TABOR</h2>
+                <p class="section-description">Nasz nowoczesny tabor zapewnia kompleksową obsługę przewozów na najwyższym poziomie.</p>
+            </div>
+            
+            <div class="fleet-grid">
+                <div class="fleet-card animate-fade-in">
+                    <div class="fleet-card-content">
+                        <h3 class="fleet-card-title">
+                            <i class="fas fa-truck-container"></i>
+                            ZESTAW JUMBO
+                        </h3>
+                        <div class="fleet-card-specs">
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Ładowność</span>
+                                <span class="fleet-card-spec-value">12 + 12 ton</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Długość</span>
+                                <span class="fleet-card-spec-value">7,7 + 7,7 m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Szerokość</span>
+                                <span class="fleet-card-spec-value">2,50m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Wysokość</span>
+                                <span class="fleet-card-spec-value">3,05m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Tonaż</span>
+                                <span class="fleet-card-spec-value">24t</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Kubatura</span>
+                                <span class="fleet-card-spec-value">120 m3</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Europalety</span>
+                                <span class="fleet-card-spec-value">38 szt.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fleet-card animate-fade-in delay-1">
+                    <div class="fleet-card-content">
+                        <h3 class="fleet-card-title">
+                            <i class="fas fa-trailer"></i>
+                            NACZEPA MEGA
+                        </h3>
+                        <div class="fleet-card-specs">
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Długość</span>
+                                <span class="fleet-card-spec-value">13,60 m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Szerokość</span>
+                                <span class="fleet-card-spec-value">2,48 m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Wysokość</span>
+                                <span class="fleet-card-spec-value">3,00 m</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Tonaż</span>
+                                <span class="fleet-card-spec-value">25 t</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Kubatura</span>
+                                <span class="fleet-card-spec-value">100 m3</span>
+                            </div>
+                            <div class="fleet-card-spec">
+                                <span class="fleet-card-spec-label">Europalety</span>
+                                <span class="fleet-card-spec-value">33 szt.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title-h2">KONTAKT</h2>
+                <p class="section-description">Zapraszamy do kontaktu w celu uzyskania szczegółowych informacji na temat naszych usług.</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-card animate-fade-in">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Adres</h3>
+                            <p>PHU Jerzy Stanisz<br>
+                            ul. Ząbkowicka 22a<br>
+                            57-100 Strzelin</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card animate-fade-in delay-1">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Telefony</h3>
+                            <p>500 175 331<br>
+                            (71) 39 35 726</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card animate-fade-in delay-2">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>E-mail</h3>
+                            <p>biuro@stanisz-transport.pl</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form animate-fade-in delay-3">
+                    <form>
+                        <div class="form-group">
+                            <label for="name" class="form-label">Imię i nazwisko</label>
+                            <input type="text" id="name" class="form-control" placeholder="Wpisz swoje imię i nazwisko" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Adres e-mail</label>
+                            <input type="email" id="email" class="form-control" placeholder="Wpisz swój adres email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Numer telefonu</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="Wpisz swój numer telefonu" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Temat wiadomości</label>
+                            <select id="subject" class="form-control form-select" required>
+                                <option value="" disabled selected>Wybierz temat</option>
+                                <option value="oferta">Zapytanie o ofertę</option>
+                                <option value="wspolpraca">Współpraca biznesowa</option>
+                                <option value="pracownik">Zatrudnienie</option>
+                                <option value="inne">Inne</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Treść wiadomości</label>
+                            <textarea id="message" class="form-control form-textarea" placeholder="Napisz wiadomość..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Wyślij wiadomość
+                            <span class="btn-icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="footer-logo-text">STANISZ TRANSPORT</div>
+                </a>
+                <p class="footer-description">Profesjonalne usługi transportowe i spedycyjne od 1992 roku. Zapewniamy terminowość, bezpieczeństwo i profesjonalną obsługę dla Twoich przesyłek.</p>
+                <div class="footer-social">
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="footer-social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="footer-links-title">Szybkie linki</h3>
+                <ul class="footer-links">
+                    <li><a href="#about" class="footer-link">O firmie</a></li>
+                    <li><a href="#why" class="footer-link">Dlaczego my?</a></li>
+                    <li><a href="#offer" class="footer-link">Oferta</a></li>
+                    <li><a href="#fleet" class="footer-link">Tabor</a></li>
+                    <li><a href="#contact" class="footer-link">Kontakt</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="footer-links-title">Dokumenty</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Decyzja o nadaniu numeru identyfikacyjnego podatkowego</a></li>
+                    <li><a href="#" class="footer-link">Licencja krajowa</a></li>
+                    <li><a href="#" class="footer-link">Licencja międzynarodowa</a></li>
+                    <li><a href="#" class="footer-link">Ubezpieczenie w ruchu krajowym</a></li>
+                    <li><a href="#" class="footer-link">Ubezpieczenie w ruchu międzynarodowym</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="footer-links-title">Kontakt</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:biuro@stanisz-transport.pl" class="footer-link">biuro@stanisz-transport.pl</a></li>
+                    <li><a href="tel:500175331" class="footer-link">500 175 331</a></li>
+                    <li><a href="tel:(71)3935726" class="footer-link">(71) 39 35 726</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 STANISZ TRANSPORT | Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <script>
+        // CRITICAL FIX: Define initVideoBackground globally to prevent "not defined" error
+        function initVideoBackground() {
+            const heroVideo = document.querySelector('.hero-video');
+            
+            // Only proceed if video element exists
+            if (!heroVideo) {
+                console.warn("Hero video element not found");
+                return;
+            }
+            
+            // Critical fix: Make video load seamlessly with the page
+            heroVideo.addEventListener('loadeddata', function() {
+                // Video is ready to play
+            });
+            
+            // Critical fix: Handle autoplay without user interaction
+            heroVideo.play().catch(e => {
+                // If autoplay is blocked, just hide the error - don't show any loading indicators
+                console.log("Autoplay prevented, but this is normal on some browsers");
+            });
+            
+            // Critical fix: Ensure video dimensions are correct
+            function fixVideoDimensions() {
+                heroVideo.style.width = '100%';
+                heroVideo.style.height = '100%';
+                heroVideo.style.objectFit = 'cover';
+            }
+            
+            // Set initial size
+            fixVideoDimensions();
+            
+            // Resize on window resize
+            window.addEventListener('resize', fixVideoDimensions);
+            
+            // Preload the video
+            heroVideo.load();
+        }
+        
+        // Initialize video when DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize video background immediately
+            initVideoBackground();
+            
+            // Rest of the existing JavaScript code
+            const header = document.querySelector('.header');
+            
+            // Get nav elements once and reuse them
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const languageButton = document.querySelector('.language-button');
+            const languageDropdown = document.querySelector('.language-dropdown');
+            
+            // Update header on scroll
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Language switcher
+            if (languageButton && languageDropdown) {
+                languageButton.addEventListener('click', function() {
+                    languageDropdown.classList.toggle('show');
+                });
+                
+                document.addEventListener('click', function(event) {
+                    if (!event.target.closest('.language-switcher')) {
+                        languageDropdown.classList.remove('show');
+                    }
+                });
+            }
+            
+            // Mobile menu
+            if (mobileMenuButton && navLinks) {
+                mobileMenuButton.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    this.innerHTML = navLinks.classList.contains('active') ? 
+                        '<i class="fas fa-times"></i>' : 
+                        '<i class="fas fa-bars"></i>';
+                });
+                
+                // Close mobile menu when clicking a link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active nav link
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // Update active nav link based on scroll position
+            const sections = document.querySelectorAll('section');
+            const navLinksAll = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinksAll.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
