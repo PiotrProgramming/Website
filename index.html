@@ -574,6 +574,12 @@
             object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+        
+        .hero-video.loaded {
+            opacity: 1;
         }
         
         /* Overlay for better text contrast */
@@ -1170,7 +1176,7 @@
         /* FIXED: Corrected SVG URL format with proper prefix */
         .form-select {
             appearance: none;
-            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 1rem center;
             background-size: 1em;
@@ -1453,38 +1459,6 @@
                 grid-template-columns: 1fr;
             }
         }
-        
-        /* CRITICAL FIX: Video loading indicator */
-        .video-loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.85);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-        
-        .video-loading-spinner {
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            border-top: 5px solid white;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
     </style>
 </head>
 <body>
@@ -1536,16 +1510,10 @@
 
     <!-- Hero Section - WITH VIDEO BACKGROUND -->
     <section class="hero">
-        <!-- Video loading indicator - will be removed when video loads -->
-        <div class="video-loading">
-            <div class="video-loading-spinner"></div>
-            <div>Ładowanie wideo...</div>
-        </div>
-        
         <!-- Hero video background container -->
         <div class="hero-video-container">
-            <video class="hero-video" muted playsinline>
-                <!-- Using the correct Mixkit video URL -->
+            <video class="hero-video" autoplay muted loop playsinline>
+                <!-- Using the correct Mixkit video URL that loads seamlessly -->
                 <source src="https://assets.mixkit.co/videos/preview/mixkit-autumn-trees-along-a-highway-45258-large.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -2048,124 +2016,26 @@
             // Initialize video handling after DOM is fully loaded
             const initVideoBackground = function() {
                 const heroVideo = document.querySelector('.hero-video');
-                const videoLoading = document.querySelector('.video-loading');
                 
                 // Only proceed if video element exists
                 if (!heroVideo) {
                     console.warn("Hero video element not found");
-                    if (videoLoading) videoLoading.style.display = 'none';
                     return;
                 }
                 
-                // CRITICAL FIX: Proper video initialization sequence
-                let videoLoaded = false;
-                let playAttempted = false;
-                
-                // Function to attempt playing the video
-                const attemptPlay = function() {
-                    if (playAttempted) return;
-                    playAttempted = true;
-                    
-                    heroVideo.play().then(() => {
-                        console.log("Video playing successfully");
-                        videoLoaded = true;
-                        if (videoLoading) videoLoading.style.display = 'none';
-                    }).catch(e => {
-                        console.log("Video autoplay was prevented:", e);
-                        
-                        // Only show click-to-play if we're certain autoplay was blocked
-                        if (videoLoading && !videoLoaded) {
-                            videoLoading.innerHTML = `
-                                <div style="text-align: center;">
-                                    <div style="font-size: 1.2rem; margin-bottom: 15px;">Kliknij, aby odtworzyć wideo</div>
-                                    <div style="background: #d32f2f; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Odtwórz wideo</div>
-                                </div>
-                            `;
-                            videoLoading.style.cursor = 'pointer';
-                            videoLoading.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-                            videoLoading.style.display = 'flex';
-                            videoLoading.style.flexDirection = 'column';
-                            videoLoading.style.justifyContent = 'center';
-                            
-                            // Add click handler to play video
-                            videoLoading.querySelector('div[style*="cursor: pointer"]').addEventListener('click', function() {
-                                heroVideo.play().then(() => {
-                                    videoLoading.style.display = 'none';
-                                }).catch(e => {
-                                    console.error("Failed to play video on click:", e);
-                                });
-                            });
-                        }
-                    });
-                };
-                
-                // Handle video canplay event
-                heroVideo.addEventListener('canplay', function() {
-                    console.log("Video can play");
-                    if (!playAttempted) {
-                        attemptPlay();
-                    }
-                });
-                
-                // Handle video loadeddata event
+                // Critical fix: Make video load seamlessly with the page
                 heroVideo.addEventListener('loadeddata', function() {
-                    console.log("Video data loaded");
-                    if (!playAttempted) {
-                        attemptPlay();
-                    }
+                    // Add loaded class to fade in the video smoothly
+                    this.classList.add('loaded');
                 });
                 
-                // Handle video error
-                heroVideo.addEventListener('error', function(e) {
-                    console.error("Video error:", e);
-                    
-                    // Show fallback image on error
-                    const heroVideoContainer = document.querySelector('.hero-video-container');
-                    if (heroVideoContainer) {
-                        heroVideoContainer.innerHTML = '';
-                        const fallbackImg = document.createElement('img');
-                        fallbackImg.src = 'https://images.unsplash.com/photo-1509474527407-90bcc17b7405?auto=format&fit=crop&w=1950&q=80';
-                        fallbackImg.alt = 'Transport background';
-                        fallbackImg.style.position = 'fixed';
-                        fallbackImg.style.top = '0';
-                        fallbackImg.style.left = '0';
-                        fallbackImg.style.width = '100%';
-                        fallbackImg.style.height = '100vh';
-                        fallbackImg.style.objectFit = 'cover';
-                        fallbackImg.style.zIndex = '-1';
-                        heroVideoContainer.appendChild(fallbackImg);
-                    }
-                    
-                    if (videoLoading) {
-                        videoLoading.innerHTML = `
-                            <div style="text-align: center;">
-                                <div style="font-size: 1.2rem; margin-bottom: 15px;">Nie udało się załadować wideo</div>
-                                <div style="background: #d32f2f; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Załaduj ponownie</div>
-                            </div>
-                        `;
-                        videoLoading.style.cursor = 'pointer';
-                        
-                        // Add retry handler
-                        videoLoading.querySelector('div[style*="cursor: pointer"]').addEventListener('click', function() {
-                            window.location.reload();
-                        });
-                    }
+                // Critical fix: Handle autoplay without user interaction
+                heroVideo.play().catch(e => {
+                    // If autoplay is blocked, just hide the error - don't show any loading indicators
+                    console.log("Autoplay prevented, but this is normal on some browsers");
                 });
                 
-                // Handle video waiting/buffering
-                heroVideo.addEventListener('waiting', function() {
-                    if (videoLoading && !videoLoading.innerHTML.includes('Ładowanie wideo')) {
-                        videoLoading.innerHTML = '<div class="video-loading-spinner"></div><div>Buforowanie wideo...</div>';
-                        videoLoading.style.display = 'flex';
-                    }
-                });
-                
-                // Handle video canplaythrough
-                heroVideo.addEventListener('canplaythrough', function() {
-                    if (videoLoading) videoLoading.style.display = 'none';
-                });
-                
-                // CRITICAL FIX: Ensure video dimensions are correct
+                // Critical fix: Ensure video dimensions are correct
                 function fixVideoDimensions() {
                     heroVideo.style.width = '100%';
                     heroVideo.style.height = '100%';
@@ -2178,15 +2048,12 @@
                 // Resize on window resize
                 window.addEventListener('resize', fixVideoDimensions);
                 
-                // Load the video
+                // Preload the video
                 heroVideo.load();
-                
-                // Initial play attempt after short delay
-                setTimeout(attemptPlay, 300);
             };
             
-            // Initialize video background after a short delay to ensure elements are ready
-            setTimeout(initVideoBackground, 100);
+            // Initialize video background immediately (no delay)
+            initVideoBackground();
             
             // Rest of the existing JavaScript code
             const header = document.querySelector('.header');
