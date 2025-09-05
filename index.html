@@ -583,8 +583,9 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%); /* Gradient from maszonski.pl */
-            z-index: -1;
+            /* CRITICAL FIX: Changed to match maszonski.pl gradient */
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+            z-index: 0;
         }
         
         /* Dedicated text container with higher opacity for better readability */
@@ -1170,7 +1171,7 @@
         /* FIXED: Corrected SVG URL format with proper prefix */
         .form-select {
             appearance: none;
-            /* CRITICAL FIX: Added  prefix to fix 404 error */
+            /* CRITICAL FIX: Added data: prefix to fix 404 error */
             background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 1rem center;
@@ -1503,15 +1504,11 @@
         </div>
     </header>
 
-    <!-- Hero Section - WITH VIDEO BACKGROUND -->
+    <!-- Hero Section - WITH STATIC IMAGE (like maszonski.pl) -->
     <section class="hero">
-        <!-- Hero video background container -->
+        <!-- CRITICAL FIX: Using static image like maszonski.pl does -->
         <div class="hero-video-container">
-            <video class="hero-video" autoplay muted loop playsinline preload="auto">
-                <!-- Using the correct Mixkit video URL that loads seamlessly -->
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-autumn-trees-along-a-highway-45258-large.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            <img src="https://www.maszonski.pl/uploads/images/home/box/2-vv.jpg" alt="Transport background" class="hero-video">
         </div>
         
         <div class="hero-overlay"></div>
@@ -2008,82 +2005,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // CRITICAL FIX: Proper video initialization that works across all browsers
-            const initVideoBackground = function() {
-                const heroVideo = document.querySelector('.hero-video');
-                
-                // Only proceed if video element exists
-                if (!heroVideo) {
-                    console.warn("Hero video element not found");
-                    return;
-                }
-                
-                // CRITICAL FIX: Chrome autoplay workaround
-                // Chrome requires that the video be considered "trusted" before autoplay is allowed
-                // This happens automatically if the video is in the HTML with proper attributes
-                
-                // Ensure video is properly configured
-                heroVideo.muted = true;
-                heroVideo.autoplay = true;
-                heroVideo.playsInline = true;
-                heroVideo.preload = 'auto';
-                
-                // Preload the video
-                heroVideo.load();
-                
-                // CRITICAL FIX: Add a tiny delay to ensure browser has processed the HTML attributes
-                setTimeout(() => {
-                    // Try to play the video - this should succeed if the browser allows autoplay
-                    const playPromise = heroVideo.play();
-                    
-                    if (playPromise !== undefined) {
-                        playPromise.then(_ => {
-                            // Autoplay started successfully
-                            console.log("Video autoplay successful");
-                        }).catch(error => {
-                            // Autoplay was prevented
-                            console.log("Autoplay prevented, but this is normal on some browsers", error);
-                            
-                            // CRITICAL FIX: Final fallback - use a static image but make it look like video
-                            const heroVideoContainer = document.querySelector('.hero-video-container');
-                            if (heroVideoContainer) {
-                                // Create a fallback image that matches the video content
-                                const fallbackImg = document.createElement('img');
-                                fallbackImg.src = 'https://assets.mixkit.co/videos/preview/mixkit-autumn-trees-along-a-highway-45258-large.jpg';
-                                fallbackImg.alt = 'Transport background';
-                                fallbackImg.style.position = 'fixed';
-                                fallbackImg.style.top = '0';
-                                fallbackImg.style.left = '0';
-                                fallbackImg.style.width = '100%';
-                                fallbackImg.style.height = '100vh';
-                                fallbackImg.style.objectFit = 'cover';
-                                fallbackImg.style.zIndex = '-1';
-                                
-                                // Replace video with image
-                                heroVideoContainer.innerHTML = '';
-                                heroVideoContainer.appendChild(fallbackImg);
-                            }
-                        });
-                    }
-                }, 100); // Tiny delay to let browser process the HTML
-                
-                // Ensure video dimensions are correct
-                function fixVideoDimensions() {
-                    heroVideo.style.width = '100%';
-                    heroVideo.style.height = '100%';
-                    heroVideo.style.objectFit = 'cover';
-                }
-                
-                // Set initial size
-                fixVideoDimensions();
-                
-                // Resize on window resize
-                window.addEventListener('resize', fixVideoDimensions);
-            };
-            
-            // Initialize video background after a short delay to ensure elements are ready
-            setTimeout(initVideoBackground, 100);
-            
             // Rest of the existing JavaScript code
             const header = document.querySelector('.header');
             
