@@ -1171,7 +1171,7 @@
         /* FIXED: Corrected SVG URL format with proper prefix */
         .form-select {
             appearance: none;
-            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 1rem center;
             background-size: 1em;
@@ -1454,6 +1454,20 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+        /* CRITICAL FIX: Video debug elements */
+        .video-debug {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 10000;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -1509,7 +1523,7 @@
         <div class="hero-video-container">
             <video class="hero-video" autoplay muted loop playsinline>
                 <!-- Using a reliable video source that actually works for embedding -->
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-autumn-trees-along-a-highway-45258-large.mp4" type="video/mp4">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-traffic-on-a-highway-1212-large.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -1531,6 +1545,13 @@
                     </a>
                 </div>
             </div>
+        </div>
+        
+        <!-- CRITICAL FIX: Video debug information -->
+        <div class="video-debug">
+            Video Status: <span id="video-status">Loading...</span><br>
+            Video Dimensions: <span id="video-dimensions">0 x 0</span><br>
+            Container Dimensions: <span id="container-dimensions">0 x 0</span>
         </div>
     </section>
 
@@ -2012,10 +2033,14 @@
             const initVideoBackground = function() {
                 const heroVideo = document.querySelector('.hero-video');
                 const heroVideoContainer = document.querySelector('.hero-video-container');
+                const videoStatus = document.getElementById('video-status');
+                const videoDimensions = document.getElementById('video-dimensions');
+                const containerDimensions = document.getElementById('container-dimensions');
                 
                 // Only proceed if video element exists
                 if (!heroVideo || !heroVideoContainer) {
                     console.warn("Hero video elements not found. Using fallback background.");
+                    videoStatus.textContent = "Elements not found";
                     return;
                 }
                 
@@ -2025,6 +2050,10 @@
                     heroVideo.style.width = '100%';
                     heroVideo.style.height = '100%';
                     heroVideo.style.objectFit = 'cover';
+                    
+                    // Update debug info
+                    videoDimensions.textContent = `${Math.round(heroVideo.offsetWidth)} x ${Math.round(heroVideo.offsetHeight)}`;
+                    containerDimensions.textContent = `${Math.round(heroVideoContainer.offsetWidth)} x ${Math.round(heroVideoContainer.offsetHeight)}`;
                 }
                 
                 // Set initial size
@@ -2036,6 +2065,7 @@
                 // Handle video loading errors
                 heroVideo.onerror = function() {
                     console.error("Hero video failed to load. Falling back to image.");
+                    videoStatus.textContent = "Failed to load (error)";
                     
                     // Create fallback image element
                     const fallbackImg = document.createElement('img');
@@ -2059,10 +2089,41 @@
                     // Error handling for fallback image
                     fallbackImg.onerror = function() {
                         console.error("Fallback image also failed to load.");
+                        videoStatus.textContent = "Fallback failed";
                         heroVideoContainer.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(https://images.unsplash.com/photo-1509474527407-90bcc17b7405?auto=format&fit=crop&w=1950&q=80)';
                         heroVideoContainer.style.backgroundSize = 'cover';
                     };
                 };
+                
+                // Handle video canplay event to confirm it's working
+                heroVideo.addEventListener('canplay', function() {
+                    console.log("Video can play");
+                    videoStatus.textContent = "Playing";
+                });
+                
+                // Handle video play event to confirm it's working
+                heroVideo.addEventListener('play', function() {
+                    console.log("Video is playing");
+                    videoStatus.textContent = "Playing";
+                });
+                
+                // Handle video pause event
+                heroVideo.addEventListener('pause', function() {
+                    console.log("Video paused");
+                    videoStatus.textContent = "Paused";
+                });
+                
+                // Handle video waiting event (buffering)
+                heroVideo.addEventListener('waiting', function() {
+                    console.log("Video is buffering");
+                    videoStatus.textContent = "Buffering...";
+                });
+                
+                // Handle video stalled event
+                heroVideo.addEventListener('stalled', function() {
+                    console.log("Video stalled");
+                    videoStatus.textContent = "Stalled";
+                });
                 
                 // Ensure video plays properly on mobile
                 heroVideo.addEventListener('touchstart', function() {
@@ -2076,19 +2137,51 @@
                 // CRITICAL FIX: Add proper error handling and retry
                 heroVideo.addEventListener('error', function(e) {
                     console.error("Video error:", e);
+                    videoStatus.textContent = "Error occurred";
                     setTimeout(() => {
                         heroVideo.load();
-                        heroVideo.play().catch(e => console.log("Retry play failed:", e));
+                        heroVideo.play().catch(e => {
+                            console.log("Retry play failed:", e);
+                            videoStatus.textContent = "Retry failed";
+                        });
                     }, 1000);
                 });
                 
                 // Preload video metadata to ensure proper playback
                 heroVideo.load();
                 
-                // Force play on mobile (sometimes needed)
+                // CRITICAL FIX: Force play on all browsers
                 setTimeout(() => {
-                    heroVideo.play().catch(e => {
-                        console.log("Video autoplay was prevented, but this is normal on some mobile browsers");
+                    heroVideo.play().then(() => {
+                        console.log("Video playing successfully");
+                        videoStatus.textContent = "Playing";
+                    }).catch(e => {
+                        console.log("Video autoplay was prevented:", e);
+                        videoStatus.textContent = "Autoplay blocked (requires interaction)";
+                        
+                        // Add click-to-play overlay as fallback
+                        const overlay = document.createElement('div');
+                        overlay.style.position = 'fixed';
+                        overlay.style.top = '0';
+                        overlay.style.left = '0';
+                        overlay.style.width = '100%';
+                        overlay.style.height = '100vh';
+                        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+                        overlay.style.zIndex = '100';
+                        overlay.style.cursor = 'pointer';
+                        overlay.style.display = 'flex';
+                        overlay.style.justifyContent = 'center';
+                        overlay.style.alignItems = 'center';
+                        overlay.innerHTML = '<div style="color: white; background: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 10px; text-align: center;">Kliknij, aby odtworzyć wideo<br><small>(wymagane przez przeglądarkę)</small></div>';
+                        
+                        overlay.addEventListener('click', function() {
+                            heroVideo.play().then(() => {
+                                videoStatus.textContent = "Playing";
+                                document.body.removeChild(overlay);
+                            });
+                        });
+                        
+                        document.body.appendChild(overlay);
                     });
                 }, 500);
             };
