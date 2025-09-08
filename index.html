@@ -947,42 +947,29 @@
             gap: var(--space-3);
         }
         
-        /* Offer Section - CENTERED AND SPLIT INTO 2 COLUMNS */
+        /* Offer Section */
         .offer-container {
             display: grid;
             grid-template-columns: 1fr 1fr; /* Equal columns */
-            gap: var(--space-8);
+            gap: var(--space-12);
+            align-items: center;
         }
         
-        .offer-column {
+        .offer-content {
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center content horizontally */
-            text-align: center; /* Center text */
-        }
-        
-        .offer-column h3 {
-            text-align: center !important;
-        }
-        
-        .offer-column ul {
-            width: 100%;
-            max-width: 400px; /* Limit width for better readability */
-            margin: 0 auto;
+            gap: var(--space-6);
         }
         
         .offer-list {
             list-style: none;
-            margin: 0 auto;
         }
         
         .offer-list-item {
             display: flex;
             align-items: flex-start;
-            justify-content: center; /* Center items */
             gap: var(--space-3);
             padding: var(--space-3) 0;
-            margin: 0 auto;
         }
         
         .offer-list-icon {
@@ -1000,7 +987,6 @@
         
         .offer-list-content {
             color: var(--text-secondary);
-            text-align: left; /* Left-align content within items for readability */
         }
         
         /* Fleet Section */
@@ -1506,9 +1492,9 @@
     <section class="hero">
         <!-- Hero video background container -->
         <div class="hero-video-container">
-            <video class="hero-video" autoplay muted loop playsinline>
-                <!-- Using your Google Drive video link with proper formatting -->
-                <source src="https://drive.google.com/uc?export=download&id=1B-zl0JCCct69wYDgrhoAd8s9FPDb_zI3" type="video/mp4">
+            <video class="hero-video" autoplay muted loop playsinline style="filter: blur(1px);">
+                <!-- Using a reliable video source that allows embedding -->
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-autumn-trees-along-a-highway-45258-large.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -1693,74 +1679,78 @@
             
             <!-- Updated Offer Section with Centered Text and Two Columns -->
             <div class="offer-container">
-                <div class="offer-column animate-fade-in">
-                    <h3 class="about-card-title text-center">
-                        <span class="about-card-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </span>
-                        Bezpieczeństwo przesyłek
-                    </h3>
-                    <ul class="offer-list">
-                        <li class="offer-list-item">
-                            <div class="offer-list-icon">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div class="offer-list-content">
-                                Ubezpieczenie OC przewoźnika w ruchu międzynarodowym na sumę gwarancyjną 100.000 euro
-                            </div>
-                        </li>
-                        <li class="offer-list-item">
-                            <div class="offer-list-icon">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div class="offer-list-content">
-                                Ubezpieczenie OC przewoźnika w ruchu krajowym na sumę gwarancyjną 100.000 zł
-                            </div>
-                        </li>
-                        <li class="offer-list-item">
-                            <div class="offer-list-icon">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div class="offer-list-content">
-                                Dodatkowe ubezpieczenie Cargo do pełnej wartości przewożonego mienia
-                            </div>
-                        </li>
-                    </ul>
+                <div class="offer-content animate-fade-in">
+                    <div class="about-card">
+                        <h3 class="about-card-title">
+                            <span class="about-card-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </span>
+                            Bezpieczeństwo przesyłek
+                        </h3>
+                        <ul class="offer-list">
+                            <li class="offer-list-item">
+                                <div class="offer-list-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="offer-list-content">
+                                    Ubezpieczenie OC przewoźnika w ruchu międzynarodowym na sumę gwarancyjną 100.000 euro
+                                </div>
+                            </li>
+                            <li class="offer-list-item">
+                                <div class="offer-list-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="offer-list-content">
+                                    Ubezpieczenie OC przewoźnika w ruchu krajowym na sumę gwarancyjną 100.000 zł
+                                </div>
+                            </li>
+                            <li class="offer-list-item">
+                                <div class="offer-list-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="offer-list-content">
+                                    Dodatkowe ubezpieczenie Cargo do pełnej wartości przewożonego mienia
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <h3 class="about-card-title" style="margin-top: 2rem;">
+                            <span class="about-card-icon">
+                                <i class="fas fa-truck-loading"></i>
+                            </span>
+                            Nasza specjalizacja
+                        </h3>
+                        <ul class="offer-list">
+                            <li class="offer-list-item">
+                                <div class="offer-list-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="offer-list-content">
+                                    Przewozy ładunków przestrzennych o kubaturze do 120 m3
+                                </div>
+                            </li>
+                            <li class="offer-list-item">
+                                <div class="offer-list-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="offer-list-content">
+                                    Transport materiałów sypkich za pomocą ciągników siodłowych
+                                </div>
+                            </li>
+                            <li class="offer-list-item">
+                                <div class="offer-list-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="offer-list-content">
+                                    System nawigacji GPS dla stałego monitoringu przewożonego ładunku
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 
-                <div class="offer-column animate-fade-in delay-1">
-                    <h3 class="about-card-title text-center">
-                        <span class="about-card-icon">
-                            <i class="fas fa-truck-loading"></i>
-                        </span>
-                        Nasza specjalizacja
-                    </h3>
-                    <ul class="offer-list">
-                        <li class="offer-list-item">
-                            <div class="offer-list-icon">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div class="offer-list-content">
-                                Przewozy ładunków przestrzennych o kubaturze do 120 m3
-                            </div>
-                        </li>
-                        <li class="offer-list-item">
-                            <div class="offer-list-icon">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div class="offer-list-content">
-                                Transport materiałów sypkich za pomocą ciągników siodłowych
-                            </div>
-                        </li>
-                        <li class="offer-list-item">
-                            <div class="offer-list-icon">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div class="offer-list-content">
-                                System nawigacji GPS dla stałego monitoringu przewożonego ładunku
-                            </div>
-                        </li>
-                    </ul>
+                <div class="offer-image animate-fade-in delay-1">
+                    <img src="https://images.unsplash.com/photo-1586190237066-1d876d19f6c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Offer Image">
                 </div>
             </div>
         </div>
@@ -2007,7 +1997,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize video handling after DOM is fully loaded
+            // CRITICAL FIX: Initialize video background properly
             const initVideoBackground = function() {
                 const heroVideo = document.querySelector('.hero-video');
                 const heroVideoContainer = document.querySelector('.hero-video-container');
@@ -2023,6 +2013,9 @@
                 heroVideo.autoplay = true;
                 heroVideo.playsInline = true;
                 heroVideo.preload = 'auto';
+                
+                // CRITICAL FIX: Add slight blur (1px) to video
+                heroVideo.style.filter = 'blur(1px)';
                 
                 // Preload the video
                 heroVideo.load();
@@ -2043,10 +2036,17 @@
                             // CRITICAL FIX: Final fallback - use a static image but make it look like video
                             const heroVideoContainer = document.querySelector('.hero-video-container');
                             if (heroVideoContainer) {
-                                // Create a fallback image that matches the video content
+                                // Create fallback image element
                                 const fallbackImg = document.createElement('img');
                                 fallbackImg.src = 'https://images.unsplash.com/photo-1509474527407-90bcc17b7405?auto=format&fit=crop&w=1950&q=80';
                                 fallbackImg.alt = 'Transport background';
+                                fallbackImg.className = 'hero-background-img';
+                                
+                                // Replace video with image
+                                heroVideoContainer.innerHTML = '';
+                                heroVideoContainer.appendChild(fallbackImg);
+                                
+                                // Apply same styles as video
                                 fallbackImg.style.position = 'fixed';
                                 fallbackImg.style.top = '0';
                                 fallbackImg.style.left = '0';
@@ -2054,10 +2054,14 @@
                                 fallbackImg.style.height = '100vh';
                                 fallbackImg.style.objectFit = 'cover';
                                 fallbackImg.style.zIndex = '-1';
+                                fallbackImg.style.filter = 'blur(1px)'; // Same slight blur as video
                                 
-                                // Replace video with image
-                                heroVideoContainer.innerHTML = '';
-                                heroVideoContainer.appendChild(fallbackImg);
+                                // Error handling for fallback image
+                                fallbackImg.onerror = function() {
+                                    console.error("Fallback image also failed to load.");
+                                    heroVideoContainer.style.background = 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(https://images.unsplash.com/photo-1509474527407-90bcc17b7405?auto=format&fit=crop&w=1950&q=80)';
+                                    heroVideoContainer.style.backgroundSize = 'cover';
+                                };
                             }
                         });
                     }
