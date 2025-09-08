@@ -544,7 +544,7 @@
             color: var(--primary-light);
         }
         
-        /* Hero Section - WITH VIDEO BACKGROUND */
+        /* Hero Section - WITH YOUTUBE VIDEO BACKGROUND */
         .hero {
             height: 100vh;
             position: relative;
@@ -582,7 +582,7 @@
             width: 100%;
             height: 100vh;
             background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%); /* Gradient from maszonski.pl */
-            z-index: -1;
+            z-index: 0;
         }
         
         /* Dedicated text container with higher opacity for better readability */
@@ -1488,16 +1488,15 @@
         </div>
     </header>
 
-    <!-- Hero Section - WITH VIDEO BACKGROUND -->
+    <!-- Hero Section - WITH YOUTUBE VIDEO BACKGROUND -->
     <section class="hero">
         <!-- Hero video background container -->
         <div class="hero-video-container">
-            <!-- CRITICAL FIX: This is the ONLY way to potentially make Google Drive video work -->
             <iframe 
-                class="hero-video" 
-                src="https://drive.google.com/file/d/1B-zl0JCCct69wYDgrhoAd8s9FPDb_zI3/preview" 
-                frameborder="0" 
-                allow="autoplay; encrypted-media" 
+                class="hero-video"
+                src="https://www.youtube.com/embed/7UmxCpFYDec?autoplay=1&mute=1&loop=1&playlist=7UmxCpFYDec&controls=0&modestbranding=1&playsinline=1&rel=0"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
             </iframe>
@@ -2001,28 +2000,30 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // CRITICAL FIX: Google Drive doesn't allow direct video embedding
-            // The ONLY way to potentially show a Google Drive video is with an iframe
+            // CRITICAL FIX: YouTube video embedding with proper parameters
             const heroVideoContainer = document.querySelector('.hero-video-container');
             const heroVideo = document.querySelector('.hero-video');
             
             if (heroVideoContainer && heroVideo) {
-                // Make sure the iframe is properly styled
-                heroVideo.style.position = 'absolute';
-                heroVideo.style.top = '0';
-                heroVideo.style.left = '0';
-                heroVideo.style.width = '100%';
-                heroVideo.style.height = '100%';
-                heroVideo.style.pointerEvents = 'none'; // Prevents iframe from capturing clicks
+                // Add the proper YouTube parameters for background video effect
+                // autoplay=1 - starts automatically
+                // mute=1 - required for autoplay in most browsers
+                // loop=1 - loops the video
+                // playlist=VIDEO_ID - required for looping
+                // controls=0 - hides YouTube controls
+                // modestbranding=1 - reduces YouTube branding
+                // playsinline=1 - allows playback on mobile
+                // rel=0 - hides related videos at the end
+                heroVideo.src = "https://www.youtube.com/embed/7UmxCpFYDec?autoplay=1&mute=1&loop=1&playlist=7UmxCpFYDec&controls=0&modestbranding=1&playsinline=1&rel=0";
                 
-                // Add a slight blur effect to match the design
+                // Add slight blur effect for better text readability
                 heroVideo.style.filter = 'blur(1px)';
                 
-                // Add error handling for iframe loading
+                // Add error handling
                 heroVideo.addEventListener('error', function() {
-                    console.error("Google Drive video failed to load. This is expected due to Google Drive restrictions.");
+                    console.error("YouTube video failed to load. Using fallback image.");
                     
-                    // Create a fallback image
+                    // Create fallback image
                     const fallbackImg = document.createElement('img');
                     fallbackImg.src = 'https://images.unsplash.com/photo-1509474527407-90bcc17b7405?auto=format&fit=crop&w=1950&q=80';
                     fallbackImg.alt = 'Transport background';
