@@ -546,19 +546,19 @@
         
         /* Hero Section - WITH YOUTUBE VIDEO BACKGROUND - CORRECTED */
         .hero {
-            height: 100vh; /* EXACTLY one viewport height */
+            height: 75vh; /* Reduced from 100vh to 75vh */
             position: relative;
             overflow: hidden;
-            min-height: 700px; /* Minimum height for larger screens */
+            min-height: 500px; /* Minimum height for larger screens */
         }
         
         /* Video background container - CORRECTED */
         .hero-video-container {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh; /* EXACTLY one viewport height */
+            height: 100%;
             z-index: -2;
             overflow: hidden;
         }
@@ -578,11 +578,11 @@
         
         /* Overlay for better text contrast */
         .hero-overlay {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
+            height: 100%;
             background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%); /* Gradient from maszonski.pl */
             z-index: 0;
         }
@@ -602,7 +602,7 @@
             max-width: 650px;
             position: relative;
             z-index: 1;
-            height: 100vh;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2027,11 +2027,11 @@
                     const fallbackImg = document.createElement('img');
                     fallbackImg.src = 'https://images.unsplash.com/photo-1509474527407-90bcc17b7405?auto=format&fit=crop&w=1950&q=80';
                     fallbackImg.alt = 'Transport background';
-                    fallbackImg.style.position = 'fixed';
+                    fallbackImg.style.position = 'absolute';
                     fallbackImg.style.top = '0';
                     fallbackImg.style.left = '0';
                     fallbackImg.style.width = '100%';
-                    fallbackImg.style.height = '100vh';
+                    fallbackImg.style.height = '100%';
                     fallbackImg.style.objectFit = 'cover';
                     fallbackImg.style.zIndex = '-1';
                     fallbackImg.style.filter = 'blur(1px)';
