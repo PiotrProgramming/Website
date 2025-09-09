@@ -546,10 +546,10 @@
         
         /* Hero Section - WITH YOUTUBE VIDEO BACKGROUND - CORRECTED */
         .hero {
-            height: 75vh; /* Reduced from 100vh to 75vh */
+            height: 650px; /* Fixed height instead of vh */
+            max-height: 80vh; /* Maximum height as percentage */
             position: relative;
             overflow: hidden;
-            min-height: 500px; /* Minimum height for larger screens */
         }
         
         /* Video background container - CORRECTED */
@@ -566,13 +566,10 @@
         /* Video - CORRECTED */
         .hero-video {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 177.77777778vh; /* 16/9 ratio */
-            height: 100vh;
-            min-width: 100%;
-            min-height: 56.25vw; /* 9/16 ratio */
-            transform: translate(-50%, -50%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
         }
         
@@ -1364,6 +1361,10 @@
                 font-size: var(--text-lg);
             }
             
+            .hero {
+                height: 550px; /* Reduced height for tablets */
+            }
+            
             .section {
                 padding: calc(var(--space-14) + 72px) 0 var(--space-14);
             }
@@ -1402,6 +1403,10 @@
             
             .section-description {
                 font-size: var(--text-lg);
+            }
+            
+            .hero {
+                height: 500px; /* Reduced height for mobile */
             }
             
             .container {
@@ -2018,28 +2023,6 @@
                 
                 // Add slight blur effect for better text readability
                 heroVideo.style.filter = 'blur(1px)';
-                
-                // Add error handling
-                heroVideo.addEventListener('error', function() {
-                    console.error("YouTube video failed to load. Using fallback image.");
-                    
-                    // Create fallback image
-                    const fallbackImg = document.createElement('img');
-                    fallbackImg.src = 'https://images.unsplash.com/photo-1509474527407-90bcc17b7405?auto=format&fit=crop&w=1950&q=80';
-                    fallbackImg.alt = 'Transport background';
-                    fallbackImg.style.position = 'absolute';
-                    fallbackImg.style.top = '0';
-                    fallbackImg.style.left = '0';
-                    fallbackImg.style.width = '100%';
-                    fallbackImg.style.height = '100%';
-                    fallbackImg.style.objectFit = 'cover';
-                    fallbackImg.style.zIndex = '-1';
-                    fallbackImg.style.filter = 'blur(1px)';
-                    
-                    // Replace iframe with image
-                    heroVideoContainer.innerHTML = '';
-                    heroVideoContainer.appendChild(fallbackImg);
-                });
             }
             
             // Rest of the existing JavaScript code
