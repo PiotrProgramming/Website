@@ -8,20 +8,20 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            /* Core Color Palette */
-            --primary: #d32f2f;
-            --primary-light: #ff6659;
-            --primary-dark: #9a0007;
-            --primary-50: #fff0f0;
-            --primary-100: #ffe5e5;
-            --primary-200: #ffcaca;
-            --primary-300: #ffb0b0;
-            --primary-400: #ff9595;
-            --primary-500: #d32f2f;
-            --primary-600: #c62828;
-            --primary-700: #b71c1c;
-            --primary-800: #9a0007;
-            --primary-900: #750005;
+            /* Core Color Palette - Inspired by maszonski.pl */
+            --primary: #0056b3; /* Changed to blue as primary color (from maszonski.pl style) */
+            --primary-light: #3385ff;
+            --primary-dark: #003d82;
+            --primary-50: #f0f7ff;
+            --primary-100: #e6f0ff;
+            --primary-200: #cce0ff;
+            --primary-300: #99c2ff;
+            --primary-400: #66a3ff;
+            --primary-500: #0056b3;
+            --primary-600: #004693;
+            --primary-700: #003773;
+            --primary-800: #002854;
+            --primary-900: #001a35;
             
             /* Neutral Colors */
             --neutral-50: #f9fafb;
@@ -34,11 +34,6 @@
             --neutral-700: #374151;
             --neutral-800: #1f2937;
             --neutral-900: #111827;
-            
-            /* Additional Brand Colors */
-            --accent-blue: #3b82f6;
-            --accent-green: #10b981;
-            --accent-yellow: #f59e0b;
             
             /* Background Colors */
             --bg-light: #f9fafb;
@@ -546,8 +541,8 @@
         
         /* Hero Section - WITH YOUTUBE VIDEO BACKGROUND - CORRECTED */
         .hero {
-            height: 2100px; /* Increased by 100px from 2000px to 2100px */
-            max-height: 100vh; /* Slightly increased from 99vh to 100vh */
+            height: 100vh; /* Changed to viewport height */
+            max-height: 100vh;
             position: relative;
             overflow: hidden;
             padding-top: 76px; /* Matches header height */
@@ -608,7 +603,7 @@
         }
         
         .hero-subtitle {
-            font-size: var(--text-lg);
+            font-size: var(--text-2xl);
             font-weight: 600;
             color: var(--primary);
             text-transform: uppercase;
@@ -722,142 +717,23 @@
             transform: translateX(-50%);
             width: 60px;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-500), var(--accent-blue));
+            background: linear-gradient(90deg, var(--primary-500), var(--primary-700));
             border-radius: 2px;
         }
         
-        /* About Section */
-        .about-container {
-            display: flex;
-            flex-direction: column;
+        /* Services Section - Inspired by maszonski.pl */
+        .services-section {
+            padding-top: var(--space-16);
+            padding-bottom: var(--space-20);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: var(--space-8);
         }
         
-        .about-content {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-6);
-        }
-        
-        .about-card {
-            background: var(--bg-white);
-            border-radius: var(--radius-xl);
-            padding: var(--space-8);
-            box-shadow: var(--shadow-md);
-            transition: var(--transition-spring);
-        }
-        
-        .about-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .about-card-title {
-            display: flex;
-            align-items: center;
-            gap: var(--space-3);
-            color: var(--primary);
-            font-size: var(--text-2xl);
-            font-weight: 700;
-            margin-bottom: var(--space-5);
-        }
-        
-        .about-card-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--primary-50);
-            border-radius: var(--radius-lg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 1.25rem;
-        }
-        
-        /* Horizontal Timeline Section - NARROWER VERSION */
-        .timeline-container {
-            background: var(--bg-white);
-            border-radius: var(--radius-xl);
-            padding: var(--space-6);
-            box-shadow: var(--shadow-md);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-500), var(--accent-blue));
-            border-radius: 2px 2px 0 0;
-        }
-        
-        .horizontal-timeline {
-            display: flex;
-            overflow-x: auto;
-            padding: var(--space-4) 0;
-            gap: var(--space-4);
-            scrollbar-width: thin;
-            scrollbar-color: var(--neutral-300) var(--bg-light);
-        }
-        
-        .horizontal-timeline::-webkit-scrollbar {
-            height: 6px;
-        }
-        
-        .horizontal-timeline::-webkit-scrollbar-track {
-            background: var(--bg-light);
-            border-radius: 3px;
-        }
-        
-        .horizontal-timeline::-webkit-scrollbar-thumb {
-            background: var(--neutral-300);
-            border-radius: 3px;
-        }
-        
-        .timeline-milestone {
-            min-width: 180px;
-            background: var(--bg-light);
-            border-radius: var(--radius-md);
-            padding: var(--space-4);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition-fast);
-            position: relative;
-            border-top: 3px solid var(--primary);
-        }
-        
-        .timeline-milestone:hover {
-            background: var(--primary-50);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .timeline-year {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: var(--text-lg);
-            margin-bottom: var(--space-2);
-            text-align: center;
-        }
-        
-        .timeline-description {
-            font-size: var(--text-sm);
-            color: var(--text-tertiary);
-            line-height: var(--leading-normal);
-            text-align: center;
-        }
-        
-        /* Why Us Section */
-        .why-us-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: var(--space-6);
-        }
-        
-        .why-us-card {
+        .service-card {
             background: var(--bg-white);
             border-radius: var(--radius-xl);
             overflow: hidden;
@@ -865,140 +741,168 @@
             transition: var(--transition-spring);
             position: relative;
             z-index: 1;
+            text-align: center;
+            padding: var(--space-8);
         }
         
-        .why-us-card::before {
+        .service-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-500), var(--accent-blue));
+            background: linear-gradient(90deg, var(--primary-500), var(--primary-700));
             transform: scaleX(0);
             transform-origin: left;
             transition: var(--transition-normal);
             z-index: 2;
         }
         
-        .why-us-card:hover {
+        .service-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-xl);
         }
         
-        .why-us-card:hover::before {
+        .service-card:hover::before {
             transform: scaleX(1);
         }
         
-        .why-us-card-content {
-            padding: var(--space-7);
-            display: flex;
-            flex-direction: column;
-            min-height: 380px;
-        }
-        
-        .why-us-card-icon {
-            width: 72px;
-            height: 72px;
+        .service-icon {
+            width: 80px;
+            height: 80px;
             background: var(--primary-50);
             border-radius: var(--radius-xl);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: var(--space-5);
+            margin: 0 auto var(--space-5);
             color: var(--primary);
             font-size: 1.75rem;
-            transition: var(--transition-fast);
         }
         
-        .why-us-card:hover .why-us-card-icon {
-            background: var(--primary);
-            color: white;
-            transform: scale(1.05);
-        }
-        
-        .why-us-card-title {
-            font-size: var(--text-xl);
+        .service-title {
+            font-size: var(--text-2xl);
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: var(--space-3);
-            transition: var(--transition-fast);
+            margin-bottom: var(--space-4);
         }
         
-        .why-us-card:hover .why-us-card-title {
-            color: var(--primary);
-        }
-        
-        .why-us-card-description {
+        .service-description {
             color: var(--text-secondary);
-            margin-bottom: var(--space-5);
-            flex-grow: 1;
         }
         
-        .why-us-card-link {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-2);
-            color: var(--primary);
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition-fast);
+        /* Company Info Section - Inspired by maszonski.pl */
+        .company-section {
+            background-color: var(--bg-light);
+            padding-top: var(--space-16);
+            padding-bottom: var(--space-20);
         }
         
-        .why-us-card-link:hover {
-            gap: var(--space-3);
-        }
-        
-        /* Offer Section */
-        .offer-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Equal columns */
-            gap: var(--space-12);
-            align-items: center;
-        }
-        
-        .offer-content {
+        .company-container {
             display: flex;
             flex-direction: column;
-            gap: var(--space-6);
-        }
-        
-        .offer-list {
-            list-style: none;
-        }
-        
-        .offer-list-item {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-3);
-            padding: var(--space-3) 0;
-        }
-        
-        .offer-list-icon {
-            flex-shrink: 0;
-            width: 24px;
-            height: 24px;
-            background: var(--primary-100);
-            border-radius: var(--radius-md);
-            display: flex;
             align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 0.75rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
         
-        .offer-list-content {
+        .company-logo {
+            font-size: var(--text-5xl);
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: var(--space-6);
+            letter-spacing: -0.025em;
+        }
+        
+        .company-description {
+            font-size: var(--text-xl);
+            line-height: var(--leading-relaxed);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-8);
+        }
+        
+        .company-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-6);
+            width: 100%;
+            margin-bottom: var(--space-10);
+        }
+        
+        .stat-item {
+            padding: var(--space-6);
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .stat-value {
+            font-size: var(--text-4xl);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--space-2);
+        }
+        
+        .stat-label {
+            font-size: var(--text-lg);
             color: var(--text-secondary);
         }
         
-        /* Fleet Section */
-        .fleet-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: var(--space-6);
+        .quote-container {
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            box-shadow: var(--shadow-md);
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
         }
         
-        .fleet-card {
+        .quote-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-500), var(--primary-700));
+            border-radius: 2px 2px 0 0;
+        }
+        
+        .quote-text {
+            font-size: var(--text-2xl);
+            font-style: italic;
+            line-height: var(--leading-relaxed);
+            color: var(--text-primary);
+            margin-bottom: var(--space-6);
+        }
+        
+        .quote-author {
+            font-size: var(--text-lg);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .quote-position {
+            font-size: var(--text-base);
+            color: var(--text-secondary);
+        }
+        
+        /* News Section - Inspired by maszonski.pl */
+        .news-section {
+            padding-top: var(--space-16);
+            padding-bottom: var(--space-20);
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-8);
+        }
+        
+        .news-card {
             background: var(--bg-white);
             border-radius: var(--radius-xl);
             overflow: hidden;
@@ -1007,62 +911,36 @@
             position: relative;
         }
         
-        .fleet-card::before {
-            content: '';
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .news-date {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-500), var(--accent-green));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: var(--transition-normal);
+            top: var(--space-6);
+            left: var(--space-6);
+            background: var(--primary);
+            color: white;
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            z-index: 1;
         }
         
-        .fleet-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
+        .news-content {
+            padding: calc(var(--space-6) + 2rem) var(--space-6) var(--space-6);
         }
         
-        .fleet-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .fleet-card-content {
-            padding: var(--space-7);
-        }
-        
-        .fleet-card-title {
+        .news-title {
             font-size: var(--text-xl);
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: var(--space-4);
-            display: flex;
-            align-items: center;
-            gap: var(--space-3);
+            margin-bottom: var(--space-3);
         }
         
-        .fleet-card-specs {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-4);
-        }
-        
-        .fleet-card-spec {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .fleet-card-spec-label {
-            font-size: var(--text-sm);
-            color: var(--text-tertiary);
-            margin-bottom: var(--space-1);
-        }
-        
-        .fleet-card-spec-value {
-            font-weight: 600;
-            color: var(--text-primary);
+        .news-description {
+            color: var(--text-secondary);
         }
         
         /* Contact Section */
@@ -1311,6 +1189,14 @@
         }
         
         @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .about-container,
             .offer-container,
             .contact-container {
@@ -1364,7 +1250,7 @@
             }
             
             .hero {
-                height: 1950px; /* Increased by 100px from 1850px to 1950px */
+                height: 100vh;
                 padding-top: 76px;
             }
             
@@ -1409,7 +1295,7 @@
             }
             
             .hero {
-                height: 1900px; /* Increased by 100px from 1800px to 1900px */
+                height: 100vh;
                 padding-top: 76px;
             }
             
@@ -1463,10 +1349,9 @@
             
             <nav class="nav">
                 <ul class="nav-links">
-                    <li><a href="#about" class="nav-link active">O FIRMIE</a></li>
-                    <li><a href="#why" class="nav-link">DLACZEGO MY?</a></li>
-                    <li><a href="#offer" class="nav-link">OFERTA</a></li>
-                    <li><a href="#fleet" class="nav-link">TABOR</a></li>
+                    <li><a href="#services" class="nav-link active">USŁUGI</a></li>
+                    <li><a href="#company" class="nav-link">O FIRMIE</a></li>
+                    <li><a href="#news" class="nav-link">NOWOŚCI</a></li>
                     <li><a href="#contact" class="nav-link">KONTAKT</a></li>
                 </ul>
                 
@@ -1520,9 +1405,9 @@
             <div class="hero-content animate-fade-in">
                 <!-- Dedicated text container with higher opacity -->
                 <div class="hero-text-container">
-                    <div class="hero-subtitle">Profesjonalny transport od 1992 roku</div>
+                    <div class="hero-subtitle">INNOWACYJNIE I SKUTECZNIE</div>
                     <h1 class="hero-title">Kompleksowe usługi transportowe i spedycyjne na najwyższym europejskim poziomie</h1>
-                    <p class="hero-description">Od ponad 30 lat zapewniamy terminowość, bezpieczeństwo i profesjonalną obsługę dla Twoich przesyłek na terenie całej Europy.</p>
+                    <p class="hero-description">Kreujemy innowacyjne i skuteczne rozwiązania transportowo-logistyczne, zawsze dostosowane do potrzeb i preferencji naszych Klientów</p>
                     <a href="#contact" class="btn btn-primary">
                         Skontaktuj się z nami
                         <span class="btn-icon">
@@ -1534,323 +1419,97 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
+    <!-- Services Section - Inspired by maszonski.pl -->
+    <section id="services" class="services-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title-h2">O FIRMIE</h2>
-                <p class="section-description">Firma PRZEDSIĘBIORSTWO HANDLOWO USŁUGOWE JERZY STANISZ to profesjonalne przedsiębiorstwo zajmujące się transportem i spedycją. Od 1992 roku działamy i nieustannie rozwijamy się, świadcząc naszym krajowym i zagranicznym Klientom usługi na najwyższym, europejskim poziomie.</p>
+                <h2 class="section-title-h2">USŁUGI</h2>
             </div>
             
-            <div class="about-container">
-                <div class="about-content">
-                    <div class="about-card animate-fade-in">
-                        <h3 class="about-card-title">
-                            <span class="about-card-icon">
-                                <i class="fas fa-history"></i>
-                            </span>
-                            Historia firmy
-                        </h3>
-                        <p>Od początku naszej działalności nadrzędnym celem działania jest realizacja każdego zlecenia w sposób profesjonalny, terminowy i zgodny z indywidualnymi potrzebami naszych klientów.</p>
+            <div class="services-grid">
+                <div class="service-card animate-fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
                     </div>
-                    
-                    <!-- Narrower Horizontal Timeline -->
-                    <div class="timeline-container animate-fade-in delay-1">
-                        <div class="horizontal-timeline">
-                            <div class="timeline-milestone">
-                                <div class="timeline-year">1992</div>
-                                <div class="timeline-description">Założenie firmy specjalizującej się w transportie krajowym</div>
-                            </div>
-                            <div class="timeline-milestone">
-                                <div class="timeline-year">1995</div>
-                                <div class="timeline-description">Rozszerzenie floty o samochody ciężarowe marki MAN i Mercedes-Benz</div>
-                            </div>
-                            <div class="timeline-milestone">
-                                <div class="timeline-year">2000-2004</div>
-                                <div class="timeline-description">Uzyskanie licencji przewoźnika krajowego, rozpoczęcie współpracy z firmami logistycznymi oraz wprowadzenie transportu międzynarodowego i specjalizacja w przewozach ładunków przestrzennych</div>
-                            </div>
-                            <div class="timeline-milestone">
-                                <div class="timeline-year">2010</div>
-                                <div class="timeline-description">Zakup nowoczesnego taboru z naczepami typu mega i jumbo</div>
-                            </div>
-                            <div class="timeline-milestone">
-                                <div class="timeline-year">2020</div>
-                                <div class="timeline-description">Certyfikat ISO 9001:2015 i transport materiałów sypkich</div>
-                            </div>
-                            <div class="timeline-milestone">
-                                <div class="timeline-year">2023</div>
-                                <div class="timeline-description">Nowoczesny tabor zapewniający kompleksową obsługę przewozów</div>
-                            </div>
-                        </div>
+                    <h3 class="service-title">Transport<br>międzynarodowy</h3>
+                    <p class="service-description">Realizujemy kompleksowe usługi transportowo-logistyczne na terenie krajów Unii Europejskiej. Nasza flota to ponad 420 nowych pojazdów o ładowności 24t (do 120m3). Transportujemy ładunki całopojazdowe oraz częściowe.</p>
+                </div>
+                
+                <div class="service-card animate-fade-in delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-temperature-low"></i>
                     </div>
+                    <h3 class="service-title">Transport w<br>temperaturze kontrolowanej</h3>
+                    <p class="service-description">Transport w kontrolowanej temperaturze to wyspecjalizowany sektor logistyki, który koncentruje się na utrzymaniu określonych warunków cieplnych dla produktów w całym procesie transportu, od producenta, aż po finalnego odbiorcę.</p>
+                </div>
+                
+                <div class="service-card animate-fade-in delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <h3 class="service-title">Logistyka<br>kontraktowa</h3>
+                    <p class="service-description">Oferujemy powierzchnie magazynowe zlokalizowane w doskonałych punktach na zachodzie oraz południu Polski. Nasze obiekty zapewniają łatwy dostęp do głównych szlaków tranzytowych, co pozwala na efektywną logistykę i szybką dystrybucję towarów.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Us Section -->
-    <section id="why" class="section" style="background-color: #f9fafb;">
+    <!-- Company Section - Inspired by maszonski.pl -->
+    <section id="company" class="company-section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title-h2">DLACZEGO MY?</h2>
-                <p class="section-description">Nasz świat to projekty naszych klientów i codzienne starania aby stale pozytywnie zaskakiwać Was naszym zaangażowaniem.</p>
-            </div>
-            
-            <div class="why-us-grid">
-                <div class="why-us-card animate-fade-in">
-                    <div class="why-us-card-content">
-                        <div class="why-us-card-icon">
-                            <i class="fas fa-user-tie"></i>
-                        </div>
-                        <h3 class="why-us-card-title">Indywidualne podejście</h3>
-                        <p class="why-us-card-description">Dostosowujemy się do specyficznych potrzeb każdego klienta, tworząc spersonalizowane rozwiązania logistyczne.</p>
-                        <a href="#" class="why-us-card-link">
-                            Dowiedz się więcej
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
+            <div class="company-container">
+                <h2 class="company-logo">STANISZ TRANSPORT</h2>
+                <p class="company-description">Dziś STANISZ TRANSPORT to zespół ponad 700 osób, własne zaplecze magazynowe oraz nowoczesna flota ponad 420 pojazdów (średni wiek 1,5 r.), zarządzana przez specjalistów, wspieranych naszą kulturą organizacyjną (ISO 9001) jak również wydajnymi systemami IT.</p>
+                
+                <div class="company-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">700+</div>
+                        <div class="stat-label">Zatrudnionych pracowników</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">420+</div>
+                        <div class="stat-label">Pojazdów w flocie</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">1,5</div>
+                        <div class="stat-label">Średni wiek pojazdów (lata)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">30+</div>
+                        <div class="stat-label">Lat doświadczenia</div>
                     </div>
                 </div>
                 
-                <div class="why-us-card animate-fade-in delay-1">
-                    <div class="why-us-card-content">
-                        <div class="why-us-card-icon">
-                            <i class="fas fa-sync-alt"></i>
-                        </div>
-                        <h3 class="why-us-card-title">Elastyczność i skuteczność</h3>
-                        <p class="why-us-card-description">Szybkie reagowanie na dynamiczne zmiany rynkowe i specjalne wymagania klientów.</p>
-                        <a href="#" class="why-us-card-link">
-                            Dowiedz się więcej
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="why-us-card animate-fade-in delay-2">
-                    <div class="why-us-card-content">
-                        <div class="why-us-card-icon">
-                            <i class="fas fa-file-invoice-dollar"></i>
-                        </div>
-                        <h3 class="why-us-card-title">Przejrzystość rozliczeń</h3>
-                        <p class="why-us-card-description">Brak ukrytych kosztów, jasne warunki współpracy i transparentne rozliczenia.</p>
-                        <a href="#" class="why-us-card-link">
-                            Dowiedz się więcej
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="why-us-card animate-fade-in">
-                    <div class="why-us-card-content">
-                        <div class="why-us-card-icon">
-                            <i class="fas fa-truck-moving"></i>
-                        </div>
-                        <h3 class="why-us-card-title">Kompleksowość obsługi</h3>
-                        <p class="why-us-card-description">Pełne wsparcie na każdym etapie przesyłki - od planowania do dostawy.</p>
-                        <a href="#" class="why-us-card-link">
-                            Dowiedz się więcej
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="why-us-card animate-fade-in delay-1">
-                    <div class="why-us-card-content">
-                        <div class="why-us-card-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <h3 class="why-us-card-title">Jakość i terminowość</h3>
-                        <p class="why-us-card-description">Gwarancja dotrzymania terminów dostawy dzięki precyzyjnemu planowaniu i systemowi monitoringu GPS.</p>
-                        <a href="#" class="why-us-card-link">
-                            Dowiedz się więcej
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="why-us-card animate-fade-in delay-2">
-                    <div class="why-us-card-content">
-                        <div class="why-us-card-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <h3 class="why-us-card-title">Globalny zakres</h3>
-                        <p class="why-us-card-description">Przewozy krajowe i międzynarodowe w całej Europie dzięki rozległej sieci partnerów.</p>
-                        <a href="#" class="why-us-card-link">
-                            Dowiedz się więcej
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
+                <div class="quote-container">
+                    <p class="quote-text">Naszej misji pozostajemy wierni od ponad 30 lat. Kreujemy innowacyjne i skuteczne rozwiązania transportowo-logistyczne, zawsze dostosowane do potrzeb naszych Klientów. Dbamy o efektywność realizowanych projektów przy zachowaniu najwyższych standardów jakości.</p>
+                    <div class="quote-author">Jerzy Stanisz</div>
+                    <div class="quote-position">Prezes Zarządu</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Offer Section -->
-    <section id="offer" class="section">
+    <!-- News Section - Inspired by maszonski.pl -->
+    <section id="news" class="news-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title-h2">OFERTA</h2>
-                <p class="section-description">Od początku działalności nadrzędnym celem działania jest realizacja każdego zlecenia w sposób profesjonalny- terminowy i zgodny z indywidualnymi potrzebami naszych klientów.</p>
+                <h2 class="section-title-h2">NOWOŚCI</h2>
             </div>
             
-            <!-- Updated Offer Section with Centered Text and Two Columns -->
-            <div class="offer-container">
-                <div class="offer-content animate-fade-in">
-                    <div class="about-card">
-                        <h3 class="about-card-title">
-                            <span class="about-card-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </span>
-                            Bezpieczeństwo przesyłek
-                        </h3>
-                        <ul class="offer-list">
-                            <li class="offer-list-item">
-                                <div class="offer-list-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="offer-list-content">
-                                    Ubezpieczenie OC przewoźnika w ruchu międzynarodowym na sumę gwarancyjną 100.000 euro
-                                </div>
-                            </li>
-                            <li class="offer-list-item">
-                                <div class="offer-list-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="offer-list-content">
-                                    Ubezpieczenie OC przewoźnika w ruchu krajowym na sumę gwarancyjną 100.000 zł
-                                </div>
-                            </li>
-                            <li class="offer-list-item">
-                                <div class="offer-list-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="offer-list-content">
-                                    Dodatkowe ubezpieczenie Cargo do pełnej wartości przewożonego mienia
-                                </div>
-                            </li>
-                        </ul>
-                        
-                        <h3 class="about-card-title" style="margin-top: 2rem;">
-                            <span class="about-card-icon">
-                                <i class="fas fa-truck-loading"></i>
-                            </span>
-                            Nasza specjalizacja
-                        </h3>
-                        <ul class="offer-list">
-                            <li class="offer-list-item">
-                                <div class="offer-list-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="offer-list-content">
-                                    Przewozy ładunków przestrzennych o kubaturze do 120 m3
-                                </div>
-                            </li>
-                            <li class="offer-list-item">
-                                <div class="offer-list-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="offer-list-content">
-                                    Transport materiałów sypkich za pomocą ciągników siodłowych
-                                </div>
-                            </li>
-                            <li class="offer-list-item">
-                                <div class="offer-list-icon">
-                                    <i class="fas fa-check"></i>
-                                </div>
-                                <div class="offer-list-content">
-                                    System nawigacji GPS dla stałego monitoringu przewożonego ładunku
-                                </div>
-                            </li>
-                        </ul>
+            <div class="news-grid">
+                <div class="news-card animate-fade-in">
+                    <div class="news-date">14 cze</div>
+                    <div class="news-content">
+                        <h3 class="news-title">Dostawa 120 sztuk nowych naczep intermodalnych typu HUCKEPACK</h3>
+                        <p class="news-description">Dostawa 120 sztuk nowych naczep intermodalnych typu HUCKEPACK.</p>
                     </div>
                 </div>
                 
-                <div class="offer-image animate-fade-in delay-1">
-                    <img src="https://images.unsplash.com/photo-1586190237066-1d876d19f6c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Offer Image">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Fleet Section -->
-    <section id="fleet" class="section" style="background-color: #f9fafb;">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title-h2">TABOR</h2>
-                <p class="section-description">Nasz nowoczesny tabor zapewnia kompleksową obsługę przewozów na najwyższym poziomie.</p>
-            </div>
-            
-            <div class="fleet-grid">
-                <div class="fleet-card animate-fade-in">
-                    <div class="fleet-card-content">
-                        <h3 class="fleet-card-title">
-                            <i class="fas fa-truck-container"></i>
-                            ZESTAW JUMBO
-                        </h3>
-                        <div class="fleet-card-specs">
-                            <div class="fleet-card-spec">
-                                <span class="fleet-card-spec-label">Ładowność</span>
-                                <span class="fleet-card-spec-value">12 + 12 ton</span>
-                            </div>
-                            <div class="fleet-card-spec">
-                                <span class="fleet-card-spec-label">Długość</span>
-                                <span class="fleet-card-spec-value">7,7 + 7,7 m</span>
-                            </div>
-                            <div class="fleet-card-spec">
-                                <span class="fleet-card-spec-label">Szerokość</span>
-                                <span class="fleet-card-spec-value">2,50m</span>
-                            </div>
-                            <div class="fleet-card-spec">
-                                <span class="fleet-card-spec-label">Wysokość</span>
-                                <span class="fleet-card-spec-value">3,05m</span>
-                            </div>
-                            <div class="fleet-card-spec">
-                                <span class="fleet-card-spec-label">Tonaż</span>
-                                <span class="fleet-card-spec-value">24t</span>
-                            </div>
-                            <div class="fleet-card-spec">
-                                <span class="fleet-card-spec-label">Kubatura</span>
-                                <span class="fleet-card-spec-value">120 m3</span>
-                            </div>
-                            <div class="fleet-card-spec">
-                                <span class="fleet-card-spec-label">Europalety</span>
-                                <span class="fleet-card-spec-value">38 szt.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="fleet-card animate-fade-in delay-1">
-                    <div class="fleet-card-content">
-                        <h3 class="fleet-card-title">
-                            <i class="fas fa-trailer"></i>
-                            NACZEPA MEGA
-                        </h3>
-                        <div class="fleet-card-specs">
-                            <div class="fleet-card-spec">
-                                <span class="fleet-card-spec-label">Długość</span>
-                                <span class="fleet-card-spec-value">13,60 m</span>
-                            </div>
-                            <div class="fleet-card-spec">
-                                <span class="fleet-card-spec-label">Szerokość</span>
-                                <span class="fleet-card-spec-value">2,48 m</span>
-                            </div>
-                            <div class="fleet-card-spec">
-                                <span class="fleet-card-spec-label">Wysokość</span>
-                                <span class="fleet-card-spec-value">3,00 m</span>
-                            </div>
-                            <div class="fleet-card-spec">
-                                <span class="fleet-card-spec-label">Tonaż</span>
-                                <span class="fleet-card-spec-value">25 t</span>
-                            </div>
-                            <div class="fleet-card-spec">
-                                <span class="fleet-card-spec-label">Kubatura</span>
-                                <span class="fleet-card-spec-value">100 m3</span>
-                            </div>
-                            <div class="fleet-card-spec">
-                                <span class="fleet-card-spec-label">Europalety</span>
-                                <span class="fleet-card-spec-value">33 szt.</span>
-                            </div>
-                        </div>
+                <div class="news-card animate-fade-in delay-1">
+                    <div class="news-date">14 cze</div>
+                    <div class="news-content">
+                        <h3 class="news-title">Dostawa 182 sztuk zmodernizowanych nadwozi wymiennych</h3>
+                        <p class="news-description">Dostawa 182 sztuk zmodernizowanych nadwozi wymiennych, przystosowanych do przewozów intermodalnych.</p>
                     </div>
                 </div>
             </div>
@@ -1976,10 +1635,9 @@
             <div>
                 <h3 class="footer-links-title">Szybkie linki</h3>
                 <ul class="footer-links">
-                    <li><a href="#about" class="footer-link">O firmie</a></li>
-                    <li><a href="#why" class="footer-link">Dlaczego my?</a></li>
-                    <li><a href="#offer" class="footer-link">Oferta</a></li>
-                    <li><a href="#fleet" class="footer-link">Tabor</a></li>
+                    <li><a href="#services" class="footer-link">Usługi</a></li>
+                    <li><a href="#company" class="footer-link">O firmie</a></li>
+                    <li><a href="#news" class="footer-link">Nowości</a></li>
                     <li><a href="#contact" class="footer-link">Kontakt</a></li>
                 </ul>
             </div>
