@@ -546,8 +546,8 @@
         
         /* Hero Section - WITH YOUTUBE VIDEO BACKGROUND - CORRECTED */
         .hero {
-            height: 2000px; /* Increased by 200px from 1800px to 2000px */
-            max-height: 99vh; /* Slightly increased from 98vh to 99vh */
+            height: 2100px; /* Increased by 100px from 2000px to 2100px */
+            max-height: 100vh; /* Slightly increased from 99vh to 100vh */
             position: relative;
             overflow: hidden;
             padding-top: 76px; /* Matches header height */
@@ -596,11 +596,12 @@
             max-width: 650px;
         }
         
+        /* MODIFIED: Centered vertically in viewport */
         .hero-content {
             max-width: 650px;
             position: relative;
             z-index: 1;
-            height: 100%;
+            min-height: calc(100vh - 76px); /* Viewport height minus header height */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1363,7 +1364,7 @@
             }
             
             .hero {
-                height: 1850px; /* Increased by 200px from 1650px to 1850px */
+                height: 1950px; /* Increased by 100px from 1850px to 1950px */
                 padding-top: 76px;
             }
             
@@ -1408,7 +1409,7 @@
             }
             
             .hero {
-                height: 1800px; /* Increased by 200px from 1600px to 1800px */
+                height: 1900px; /* Increased by 100px from 1800px to 1900px */
                 padding-top: 76px;
             }
             
