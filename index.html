@@ -926,10 +926,13 @@
             border-radius: var(--radius-md);
             font-weight: 600;
             z-index: 1;
+            /* Added bottom margin to create space between date and title */
+            margin-bottom: var(--space-4);
         }
         
+        /* FIXED: Increased top padding to prevent date and title overlap */
         .news-content {
-            padding: calc(var(--space-6) + 2rem) var(--space-6) var(--space-6);
+            padding: 5rem var(--space-6) var(--space-6) var(--space-6);
         }
         
         .news-title {
