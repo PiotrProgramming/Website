@@ -990,6 +990,11 @@
         }
         
         /* Contact Section */
+        .contact-section {
+            padding-top: var(--space-16);
+            padding-bottom: var(--space-20);
+        }
+        
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1699,14 +1704,70 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
+    <section id="contact" class="contact-section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title-h2">KONTAKT</h2>
                 <p class="section-description">Zapraszamy do kontaktu w celu uzyskania szczegółowych informacji na temat naszych usług.</p>
             </div>
             
-            <div class="contact-container">
+            <!-- Employee cards placed ABOVE the contact form -->
+            <div class="employee-section">
+                <h3 class="employee-section-title">Nasi specjaliści</h3>
+                <div class="employee-grid">
+                    <!-- EMPLOYEE CARD TEMPLATE - COPY THIS BLOCK TO ADD A NEW EMPLOYEE -->
+                    <div class="employee-card animate-fade-in">
+                        <div class="employee-photo">
+                            <img src="images/employees/employee1.jpg" alt="Imię Nazwisko">
+                        </div>
+                        <div class="employee-info">
+                            <h3 class="employee-name">Imię Nazwisko</h3>
+                            <p class="employee-position">Kierownik działu logistyki</p>
+                            <div class="employee-contact">
+                                <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+48123456789">123 456 789</a></p>
+                                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:imie.nazwisko@stanisz-transport.pl">imie.nazwisko@stanisz-transport.pl</a></p>
+                                <p><i class="fas fa-map-marker-alt"></i> Dział: Transport międzynarodowy</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- EMPLOYEE CARD TEMPLATE WITH ANIMATION DELAY - COPY THIS FOR ADDITIONAL EMPLOYEES -->
+                    <div class="employee-card animate-fade-in delay-1">
+                        <div class="employee-photo">
+                            <img src="images/employees/employee2.jpg" alt="Imię Nazwisko">
+                        </div>
+                        <div class="employee-info">
+                            <h3 class="employee-name">Imię Nazwisko</h3>
+                            <p class="employee-position">Kierownik działu obsługi klienta</p>
+                            <div class="employee-contact">
+                                <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+48123456789">123 456 789</a></p>
+                                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:imie.nazwisko@stanisz-transport.pl">imie.nazwisko@stanisz-transport.pl</a></p>
+                                <p><i class="fas fa-map-marker-alt"></i> Dział: Obsługa klienta</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ADD NEW EMPLOYEE CARDS BELOW THIS LINE -->
+                    <!-- COPY AND PASTE THE TEMPLATE ABOVE, THEN MODIFY THE CONTENT -->
+                    <div class="employee-card animate-fade-in delay-2">
+                        <div class="employee-photo">
+                            <img src="images/employees/employee3.jpg" alt="Imię Nazwisko">
+                        </div>
+                        <div class="employee-info">
+                            <h3 class="employee-name">Imię Nazwisko</h3>
+                            <p class="employee-position">Kierownik transportu w temperaturze kontrolowanej</p>
+                            <div class="employee-contact">
+                                <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+48123456789">123 456 789</a></p>
+                                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:imie.nazwisko@stanisz-transport.pl">imie.nazwisko@stanisz-transport.pl</a></p>
+                                <p><i class="fas fa-map-marker-alt"></i> Dział: Transport w temperaturze kontrolowanej</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact info and form -->
+            <div class="contact-container" style="margin-top: var(--space-8);">
                 <div class="contact-info">
                     <div class="contact-card animate-fade-in">
                         <div class="contact-card-icon">
@@ -1738,61 +1799,6 @@
                         <div class="contact-card-content">
                             <h3>E-mail</h3>
                             <p>biuro@stanisz-transport.pl</p>
-                        </div>
-                    </div>
-                    
-                    <!-- MODIFIED: Employee cards section - TALLER AND LESS WIDE -->
-                    <div class="employee-section">
-                        <h3 class="employee-section-title">Nasi specjaliści</h3>
-                        <div class="employee-grid">
-                            <!-- EMPLOYEE CARD TEMPLATE - COPY THIS BLOCK TO ADD A NEW EMPLOYEE -->
-                            <div class="employee-card animate-fade-in">
-                                <div class="employee-photo">
-                                    <img src="images/employees/employee1.jpg" alt="Imię Nazwisko">
-                                </div>
-                                <div class="employee-info">
-                                    <h3 class="employee-name">Imię Nazwisko</h3>
-                                    <p class="employee-position">Kierownik działu logistyki</p>
-                                    <div class="employee-contact">
-                                        <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+48123456789">123 456 789</a></p>
-                                        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:imie.nazwisko@stanisz-transport.pl">imie.nazwisko@stanisz-transport.pl</a></p>
-                                        <p><i class="fas fa-map-marker-alt"></i> Dział: Transport międzynarodowy</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- EMPLOYEE CARD TEMPLATE WITH ANIMATION DELAY - COPY THIS FOR ADDITIONAL EMPLOYEES -->
-                            <div class="employee-card animate-fade-in delay-1">
-                                <div class="employee-photo">
-                                    <img src="images/employees/employee2.jpg" alt="Imię Nazwisko">
-                                </div>
-                                <div class="employee-info">
-                                    <h3 class="employee-name">Imię Nazwisko</h3>
-                                    <p class="employee-position">Kierownik działu obsługi klienta</p>
-                                    <div class="employee-contact">
-                                        <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+48123456789">123 456 789</a></p>
-                                        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:imie.nazwisko@stanisz-transport.pl">imie.nazwisko@stanisz-transport.pl</a></p>
-                                        <p><i class="fas fa-map-marker-alt"></i> Dział: Obsługa klienta</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- ADD NEW EMPLOYEE CARDS BELOW THIS LINE -->
-                            <!-- COPY AND PASTE THE TEMPLATE ABOVE, THEN MODIFY THE CONTENT -->
-                            <div class="employee-card animate-fade-in delay-2">
-                                <div class="employee-photo">
-                                    <img src="images/employees/employee3.jpg" alt="Imię Nazwisko">
-                                </div>
-                                <div class="employee-info">
-                                    <h3 class="employee-name">Imię Nazwisko</h3>
-                                    <p class="employee-position">Kierownik transportu w temperaturze kontrolowanej</p>
-                                    <div class="employee-contact">
-                                        <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+48123456789">123 456 789</a></p>
-                                        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:imie.nazwisko@stanisz-transport.pl">imie.nazwisko@stanisz-transport.pl</a></p>
-                                        <p><i class="fas fa-map-marker-alt"></i> Dział: Transport w temperaturze kontrolowanej</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1948,79 +1954,4 @@
                     languageDropdown.classList.toggle('show');
                 });
                 
-                document.addEventListener('click', function(event) {
-                    if (!event.target.closest('.language-switcher')) {
-                        languageDropdown.classList.remove('show');
-                    }
-                });
-            }
             
-            // Mobile menu
-            if (mobileMenuButton && navLinks) {
-                mobileMenuButton.addEventListener('click', function() {
-                    navLinks.classList.toggle('active');
-                    this.innerHTML = navLinks.classList.contains('active') ? 
-                        '<i class="fas fa-times"></i>' : 
-                        '<i class="fas fa-bars"></i>';
-                });
-                
-                // Close mobile menu when clicking a link
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.addEventListener('click', function() {
-                        navLinks.classList.remove('active');
-                        mobileMenuButton.innerHTML = '<i class="fas fa-bars"></i>';
-                    });
-                });
-            }
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Update active nav link
-                        document.querySelectorAll('.nav-link').forEach(link => {
-                            link.classList.remove('active');
-                        });
-                        this.classList.add('active');
-                    }
-                });
-            });
-            
-            // Update active nav link based on scroll position
-            const sections = document.querySelectorAll('section');
-            const navLinksAll = document.querySelectorAll('.nav-link');
-            
-            window.addEventListener('scroll', function() {
-                let current = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (pageYOffset >= (sectionTop - 100)) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                navLinksAll.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html>
