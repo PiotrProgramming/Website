@@ -743,29 +743,45 @@
             z-index: 1;
             text-align: center;
             padding: var(--space-8);
+            height: 480px; /* Fixed height for consistent card sizing */
+            display: flex;
+            flex-direction: column;
         }
         
-        .service-card::before {
-            content: '';
+        /* MODIFIED: Service card with focused image on icon/title area */
+        .service-image {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-500), var(--primary-700));
-            transform: scaleX(0);
-            transform-origin: left;
+            width: 100%;
+            height: 55%; /* Focuses on top portion where icon/title are */
+            background-size: cover;
+            background-position: center 30%; /* Focuses on the specific area */
+            z-index: -1;
             transition: var(--transition-normal);
-            z-index: 2;
         }
         
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
+        .service-card.transport .service-image {
+            background-image: url('images/photo1.png');
         }
         
-        .service-card:hover::before {
-            transform: scaleX(1);
+        .service-card.logistics .service-image {
+            background-image: url('images/photo2.png');
+        }
+        
+        .service-card:hover .service-image {
+            transform: scale(1.05);
+        }
+        
+        /* MODIFIED: Overlay for better text readability - only over image area */
+        .service-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 55%; /* Matches image height */
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+            z-index: 0;
         }
         
         .service-icon {
@@ -779,17 +795,30 @@
             margin: 0 auto var(--space-5);
             color: var(--primary);
             font-size: 1.75rem;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition-normal);
         }
         
         .service-title {
             font-size: var(--text-2xl);
             font-weight: 700;
-            color: var(--text-primary);
+            color: var(--text-inverse);
             margin-bottom: var(--space-4);
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .service-description {
             color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
+            margin-top: auto;
+            padding: var(--space-6) var(--space-4);
+            background: var(--bg-white);
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            flex: 1;
         }
         
         /* Company Info Section - Inspired by maszonski.pl */
@@ -850,25 +879,39 @@
             color: var(--text-secondary);
         }
         
+        /* MODIFIED: Quote section with photo as left background */
         .quote-container {
+            display: flex;
+            align-items: center;
             background: var(--bg-white);
             border-radius: var(--radius-xl);
-            padding: var(--space-8);
             box-shadow: var(--shadow-md);
             max-width: 700px;
             margin: 0 auto;
-            position: relative;
+            overflow: hidden;
         }
         
-        .quote-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-500), var(--primary-700));
-            border-radius: 2px 2px 0 0;
+        .quote-image {
+            width: 250px;
+            height: 250px;
+            overflow: hidden;
+            border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+        }
+        
+        .quote-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-normal);
+        }
+        
+        .quote-image img:hover {
+            transform: scale(1.05);
+        }
+        
+        .quote-content {
+            padding: var(--space-8);
+            flex: 1;
         }
         
         .quote-text {
@@ -993,6 +1036,105 @@
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: var(--space-2);
+        }
+        
+        /* MODIFIED: Employee cards section - TALLER AND LESS WIDE */
+        .employee-section {
+            margin-top: var(--space-8);
+        }
+        
+        .employee-section-title {
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: var(--space-6);
+        }
+        
+        .employee-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Changed from 2 to 3 columns for narrower cards */
+            gap: var(--space-6);
+        }
+        
+        .employee-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-spring);
+            display: flex;
+            flex-direction: column;
+            max-width: 320px; /* Added max-width to make cards narrower */
+            margin: 0 auto; /* Center cards horizontally */
+        }
+        
+        .employee-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .employee-photo {
+            width: 100%;
+            height: 220px; /* Increased height for more vertical proportion */
+            overflow: hidden;
+        }
+        
+        .employee-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-normal);
+        }
+        
+        .employee-card:hover .employee-photo img {
+            transform: scale(1.05);
+        }
+        
+        .employee-info {
+            padding: var(--space-6);
+            flex: 1; /* Ensures consistent height for content area */
+        }
+        
+        .employee-name {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-1);
+        }
+        
+        .employee-position {
+            font-size: var(--text-lg);
+            color: var(--primary);
+            margin-bottom: var(--space-3);
+            font-weight: 500;
+        }
+        
+        .employee-contact {
+            color: var(--text-secondary);
+        }
+        
+        .employee-contact p {
+            margin-bottom: var(--space-2);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-2);
+            line-height: 1.5;
+        }
+        
+        .employee-contact i {
+            min-width: 20px;
+            margin-top: 2px;
+        }
+        
+        .employee-contact a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        
+        .employee-contact a:hover {
+            text-decoration: underline;
         }
         
         /* Contact Form */
@@ -1274,6 +1416,11 @@
             .fleet-grid {
                 grid-template-columns: 1fr;
             }
+            
+            /* ADDED: Responsive employee cards */
+            .employee-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
         @media (max-width: 640px) {
@@ -1337,6 +1484,31 @@
             
             .why-us-grid,
             .fleet-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* ADDED: Responsive service cards */
+            .service-card {
+                height: 400px;
+            }
+            
+            /* ADDED: Responsive quote section */
+            .quote-container {
+                flex-direction: column;
+            }
+            
+            .quote-image {
+                width: 100%;
+                height: 200px;
+                border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            }
+            
+            /* ADDED: Responsive employee cards */
+            .employee-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
                 grid-template-columns: 1fr;
             }
         }
@@ -1430,7 +1602,9 @@
             </div>
             
             <div class="services-grid">
-                <div class="service-card animate-fade-in">
+                <div class="service-card transport animate-fade-in">
+                    <div class="service-image"></div>
+                    <div class="service-overlay"></div>
                     <div class="service-icon">
                         <i class="fas fa-truck"></i>
                     </div>
@@ -1438,12 +1612,14 @@
                     <p class="service-description">Realizujemy kompleksowe usługi transportowo-logistyczne na terenie krajów Unii Europejskiej. Nasza flota to ponad 30 nowych pojazdów o ładowności 24t (do 120m3). Transportujemy ładunki całopojazdowe oraz częściowe.</p>
                 </div>
                 
-                <div class="service-card animate-fade-in delay-1">
+                <div class="service-card logistics animate-fade-in delay-1">
+                    <div class="service-image"></div>
+                    <div class="service-overlay"></div>
                     <div class="service-icon">
                         <i class="fas fa-warehouse"></i>
                     </div>
                     <h3 class="service-title">Logistyka<br>kontraktowa</h3>
-                    <p class="service-description">Oferujemy powierzchnie magazynowe zlokalizowane w doskonałych punktach na zachodzie oraz południu Polski. Nasze obiekty zapewniają łatwy dostęp do głównych szlaków tranzytowych, co pozwala na efektywną logistykę i szybką dystrybucję towarów.</p>
+                    <p class="service-description">Oferujemy elastyczne rozwiązania logistyczne oparte na długoterminowych umowach. Dostarczamy pojazdy oraz organizujemy transport na ustalonych trasach zgodnie z indywidualnymi wymaganiami Klienta.</p>
                 </div>
             </div>
         </div>
@@ -1475,10 +1651,16 @@
                     </div>
                 </div>
                 
+                <!-- MODIFIED: Quote section with photo as left background -->
                 <div class="quote-container">
-                    <p class="quote-text">Naszej misji pozostajemy wierni od ponad 30 lat. Kreujemy innowacyjne i skuteczne rozwiązania transportowo-logistyczne, zawsze dostosowane do potrzeb naszych Klientów. Dbamy o efektywność realizowanych projektów przy zachowaniu najwyższych standardów jakości.</p>
-                    <div class="quote-author">Jerzy Stanisz</div>
-                    <div class="quote-position">Prezes Zarządu</div>
+                    <div class="quote-image">
+                        <img src="images/photo3.png" alt="Nasz zespół">
+                    </div>
+                    <div class="quote-content">
+                        <p class="quote-text">Naszej misji pozostajemy wierni od ponad 30 lat. Kreujemy innowacyjne i skuteczne rozwiązania transportowo-logistyczne, zawsze dostosowane do potrzeb naszych Klientów. Dbamy o efektywność realizowanych projektów przy zachowaniu najwyższych standardów jakości.</p>
+                        <div class="quote-author">Jerzy Stanisz</div>
+                        <div class="quote-position">Prezes Zarządu</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1494,10 +1676,19 @@
             <div class="news-grid">
                 <!-- NEWS ITEM TEMPLATE - COPY THIS BLOCK TO ADD A NEW ITEM -->
                 <div class="news-card animate-fade-in">
-                    <div class="news-date">10 wrze 2025</div>
+                    <div class="news-date">14 cze</div>
                     <div class="news-content">
-                        <h3 class="news-title">Dostawa 2 nowych pojazdów typu JUMBO</h3>
-                        <p class="news-description">Dostawa 2 nowych pojazdów typu JUMBO firmy DAF wyprodukowanych w 2025</p>
+                        <h3 class="news-title">Dostawa 120 sztuk nowych naczep intermodalnych typu HUCKEPACK</h3>
+                        <p class="news-description">Dostawa 120 sztuk nowych naczep intermodalnych typu HUCKEPACK.</p>
+                    </div>
+                </div>
+                
+                <!-- NEWS ITEM TEMPLATE WITH ANIMATION DELAY - COPY THIS FOR ADDITIONAL ITEMS -->
+                <div class="news-card animate-fade-in delay-1">
+                    <div class="news-date">14 cze</div>
+                    <div class="news-content">
+                        <h3 class="news-title">Dostawa 182 sztuk zmodernizowanych nadwozi wymiennych</h3>
+                        <p class="news-description">Dostawa 182 sztuk zmodernizowanych nadwozi wymiennych, przystosowanych do przewozów intermodalnych.</p>
                     </div>
                 </div>
                 
@@ -1523,8 +1714,8 @@
                         </div>
                         <div class="contact-card-content">
                             <h3>Adres</h3>
-                            <p>STANISZ TRANSPORT SP. Z O.O.<br>
-                            ul. Oławska 48<br>
+                            <p>PHU Jerzy Stanisz<br>
+                            ul. Ząbkowicka 22a<br>
                             57-100 Strzelin</p>
                         </div>
                     </div>
@@ -1547,6 +1738,61 @@
                         <div class="contact-card-content">
                             <h3>E-mail</h3>
                             <p>biuro@stanisz-transport.pl</p>
+                        </div>
+                    </div>
+                    
+                    <!-- MODIFIED: Employee cards section - TALLER AND LESS WIDE -->
+                    <div class="employee-section">
+                        <h3 class="employee-section-title">Nasi specjaliści</h3>
+                        <div class="employee-grid">
+                            <!-- EMPLOYEE CARD TEMPLATE - COPY THIS BLOCK TO ADD A NEW EMPLOYEE -->
+                            <div class="employee-card animate-fade-in">
+                                <div class="employee-photo">
+                                    <img src="images/employees/employee1.jpg" alt="Imię Nazwisko">
+                                </div>
+                                <div class="employee-info">
+                                    <h3 class="employee-name">Imię Nazwisko</h3>
+                                    <p class="employee-position">Kierownik działu logistyki</p>
+                                    <div class="employee-contact">
+                                        <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+48123456789">123 456 789</a></p>
+                                        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:imie.nazwisko@stanisz-transport.pl">imie.nazwisko@stanisz-transport.pl</a></p>
+                                        <p><i class="fas fa-map-marker-alt"></i> Dział: Transport międzynarodowy</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- EMPLOYEE CARD TEMPLATE WITH ANIMATION DELAY - COPY THIS FOR ADDITIONAL EMPLOYEES -->
+                            <div class="employee-card animate-fade-in delay-1">
+                                <div class="employee-photo">
+                                    <img src="images/employees/employee2.jpg" alt="Imię Nazwisko">
+                                </div>
+                                <div class="employee-info">
+                                    <h3 class="employee-name">Imię Nazwisko</h3>
+                                    <p class="employee-position">Kierownik działu obsługi klienta</p>
+                                    <div class="employee-contact">
+                                        <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+48123456789">123 456 789</a></p>
+                                        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:imie.nazwisko@stanisz-transport.pl">imie.nazwisko@stanisz-transport.pl</a></p>
+                                        <p><i class="fas fa-map-marker-alt"></i> Dział: Obsługa klienta</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- ADD NEW EMPLOYEE CARDS BELOW THIS LINE -->
+                            <!-- COPY AND PASTE THE TEMPLATE ABOVE, THEN MODIFY THE CONTENT -->
+                            <div class="employee-card animate-fade-in delay-2">
+                                <div class="employee-photo">
+                                    <img src="images/employees/employee3.jpg" alt="Imię Nazwisko">
+                                </div>
+                                <div class="employee-info">
+                                    <h3 class="employee-name">Imię Nazwisko</h3>
+                                    <p class="employee-position">Kierownik transportu w temperaturze kontrolowanej</p>
+                                    <div class="employee-contact">
+                                        <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+48123456789">123 456 789</a></p>
+                                        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:imie.nazwisko@stanisz-transport.pl">imie.nazwisko@stanisz-transport.pl</a></p>
+                                        <p><i class="fas fa-map-marker-alt"></i> Dział: Transport w temperaturze kontrolowanej</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
