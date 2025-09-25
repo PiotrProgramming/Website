@@ -1043,7 +1043,7 @@
             margin-bottom: var(--space-2);
         }
         
-        /* MODIFIED: Employee cards section - TALLER AND LESS WIDE */
+        /* MODIFIED: Employee cards section - NO PHOTOS */
         .employee-section {
             margin-top: var(--space-8);
         }
@@ -1058,7 +1058,7 @@
         
         .employee-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Changed from 2 to 3 columns for narrower cards */
+            grid-template-columns: repeat(3, 1fr);
             gap: var(--space-6);
         }
         
@@ -1070,8 +1070,10 @@
             transition: var(--transition-spring);
             display: flex;
             flex-direction: column;
-            max-width: 320px; /* Added max-width to make cards narrower */
-            margin: 0 auto; /* Center cards horizontally */
+            max-width: 320px;
+            margin: 0 auto;
+            padding: var(--space-6); /* Added padding since we don't have photos */
+            border-left: 4px solid var(--primary); /* Added accent border for visual interest */
         }
         
         .employee-card:hover {
@@ -1079,26 +1081,8 @@
             box-shadow: var(--shadow-lg);
         }
         
-        .employee-photo {
-            width: 100%;
-            height: 220px; /* Increased height for more vertical proportion */
-            overflow: hidden;
-        }
-        
-        .employee-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition-normal);
-        }
-        
-        .employee-card:hover .employee-photo img {
-            transform: scale(1.05);
-        }
-        
         .employee-info {
-            padding: var(--space-6);
-            flex: 1; /* Ensures consistent height for content area */
+            /* No photo section, so this is the main content */
         }
         
         .employee-name {
@@ -1106,6 +1090,8 @@
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: var(--space-1);
+            padding-bottom: var(--space-2);
+            border-bottom: 1px solid var(--neutral-200);
         }
         
         .employee-position {
@@ -1125,6 +1111,8 @@
             align-items: flex-start;
             gap: var(--space-2);
             line-height: 1.5;
+            padding-left: var(--space-1);
+            border-left: 2px solid var(--neutral-200);
         }
         
         .employee-contact i {
@@ -1329,6 +1317,10 @@
         
         .delay-4 {
             animation-delay: 0.4s;
+        }
+        
+        .delay-5 {
+            animation-delay: 0.5s;
         }
         
         /* Responsive Design */
@@ -1717,9 +1709,6 @@
                 <div class="employee-grid">
                     <!-- EMPLOYEE CARD 1 -->
                     <div class="employee-card animate-fade-in">
-                        <div class="employee-photo">
-                            <img src="images/employees/employee1.jpg" alt="Jan Kowalski">
-                        </div>
                         <div class="employee-info">
                             <h3 class="employee-name">Jan Kowalski</h3>
                             <p class="employee-position">Kierownik działu logistyki</p>
@@ -1733,9 +1722,6 @@
                     
                     <!-- EMPLOYEE CARD 2 -->
                     <div class="employee-card animate-fade-in delay-1">
-                        <div class="employee-photo">
-                            <img src="images/employees/employee2.jpg" alt="Anna Nowak">
-                        </div>
                         <div class="employee-info">
                             <h3 class="employee-name">Anna Nowak</h3>
                             <p class="employee-position">Kierownik działu obsługi klienta</p>
@@ -1749,9 +1735,6 @@
                     
                     <!-- EMPLOYEE CARD 3 -->
                     <div class="employee-card animate-fade-in delay-2">
-                        <div class="employee-photo">
-                            <img src="images/employees/employee3.jpg" alt="Piotr Wiśniewski">
-                        </div>
                         <div class="employee-info">
                             <h3 class="employee-name">Piotr Wiśniewski</h3>
                             <p class="employee-position">Kierownik transportu w temperaturze kontrolowanej</p>
@@ -1765,9 +1748,6 @@
                     
                     <!-- EMPLOYEE CARD 4 -->
                     <div class="employee-card animate-fade-in delay-3">
-                        <div class="employee-photo">
-                            <img src="images/employees/employee4.jpg" alt="Ewa Szymańska">
-                        </div>
                         <div class="employee-info">
                             <h3 class="employee-name">Ewa Szymańska</h3>
                             <p class="employee-position">Kierownik działu spedycji</p>
@@ -1781,9 +1761,6 @@
                     
                     <!-- EMPLOYEE CARD 5 -->
                     <div class="employee-card animate-fade-in delay-4">
-                        <div class="employee-photo">
-                            <img src="images/employees/employee5.jpg" alt="Michał Dąbrowski">
-                        </div>
                         <div class="employee-info">
                             <h3 class="employee-name">Michał Dąbrowski</h3>
                             <p class="employee-position">Kierownik działu IT</p>
@@ -1797,9 +1774,6 @@
                     
                     <!-- EMPLOYEE CARD 6 -->
                     <div class="employee-card animate-fade-in delay-5">
-                        <div class="employee-photo">
-                            <img src="images/employees/employee6.jpg" alt="Magdalena Wójcik">
-                        </div>
                         <div class="employee-info">
                             <h3 class="employee-name">Magdalena Wójcik</h3>
                             <p class="employee-position">Kierownik działu HR</p>
