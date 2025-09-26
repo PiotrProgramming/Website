@@ -1043,7 +1043,7 @@
             margin-bottom: var(--space-2);
         }
         
-        /* MODIFIED: Employee cards section - NO PHOTOS */
+        /* MODIFIED: Employee cards section - WIDER CARDS TO PREVENT EMAIL WRAPPING */
         .employee-section {
             margin-top: var(--space-8);
         }
@@ -1070,10 +1070,10 @@
             transition: var(--transition-spring);
             display: flex;
             flex-direction: column;
-            max-width: 320px;
+            max-width: 380px; /* Increased from 320px to 380px */
             margin: 0 auto;
-            padding: var(--space-6); /* Added padding since we don't have photos */
-            border-left: 4px solid var(--primary); /* Added accent border for visual interest */
+            padding: var(--space-6);
+            border-left: 4px solid var(--primary);
         }
         
         .employee-card:hover {
@@ -1124,6 +1124,7 @@
             color: var(--primary);
             text-decoration: none;
             transition: var(--transition-fast);
+            word-break: break-all; /* Ensures long emails break properly */
         }
         
         .employee-contact a:hover {
@@ -1710,11 +1711,12 @@
                     <!-- EMPLOYEE CARD 1 -->
                     <div class="employee-card animate-fade-in">
                         <div class="employee-info">
-                            <h3 class="employee-name">Jerzy Stanisz</h3>
-                            <p class="employee-position">CEO</p>
+                            <h3 class="employee-name">Jan Kowalski</h3>
+                            <p class="employee-position">Kierownik działu logistyki</p>
                             <div class="employee-contact">
-                                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:biuro@stanisz-transport.pl">biuro@stanisz-transport.pl</a></p>
-                                
+                                <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+48123456789">123 456 789</a></p>
+                                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:jan.kowalski@stanisz-transport.pl">jan.kowalski@stanisz-transport.pl</a></p>
+                                <p><i class="fas fa-map-marker-alt"></i> Dział: Transport międzynarodowy</p>
                             </div>
                         </div>
                     </div>
@@ -1722,11 +1724,12 @@
                     <!-- EMPLOYEE CARD 2 -->
                     <div class="employee-card animate-fade-in delay-1">
                         <div class="employee-info">
-                            <h3 class="employee-name">Mateusz Stanisz</h3>
-                            <p class="employee-position">Dyrektor</p>
+                            <h3 class="employee-name">Anna Nowak</h3>
+                            <p class="employee-position">Kierownik działu obsługi klienta</p>
                             <div class="employee-contact">
-                                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:biuro@stanisz-transport.com">biuro@stanisz-transport.com</a></p>
-                                <p><i class="fas fa-map-marker-alt"></i> Dział: Spedycja międzynarodowa</p>
+                                <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+48123456789">123 456 789</a></p>
+                                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:anna.nowak@stanisz-transport.pl">anna.nowak@stanisz-transport.pl</a></p>
+                                <p><i class="fas fa-map-marker-alt"></i> Dział: Obsługa klienta</p>
                             </div>
                         </div>
                     </div>
@@ -1734,12 +1737,12 @@
                     <!-- EMPLOYEE CARD 3 -->
                     <div class="employee-card animate-fade-in delay-2">
                         <div class="employee-info">
-                            <h3 class="employee-name">Piotr Kołodziejczyk</h3>
-                            <p class="employee-position">Project Manager</p>
+                            <h3 class="employee-name">Piotr Wiśniewski</h3>
+                            <p class="employee-position">Kierownik transportu w temperaturze kontrolowanej</p>
                             <div class="employee-contact">
-                                <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+48572310954">+48 572 310 954</a></p>
-                                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:piotr@stanisz-transport.com">piotr@stanisz-transport.com</a></p>
-                                <p><i class="fas fa-map-marker-alt"></i> Dział: Technologie informatyczne</p>
+                                <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+48123456789">123 456 789</a></p>
+                                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:piotr.wisniewski@stanisz-transport.pl">piotr.wisniewski@stanisz-transport.pl</a></p>
+                                <p><i class="fas fa-map-marker-alt"></i> Dział: Transport w temperaturze kontrolowanej</p>
                             </div>
                         </div>
                     </div>
@@ -1747,12 +1750,12 @@
                     <!-- EMPLOYEE CARD 4 -->
                     <div class="employee-card animate-fade-in delay-3">
                         <div class="employee-info">
-                            <h3 class="employee-name">Przemysław Głodzik</h3>
-                            <p class="employee-position">Spedytor Międzynarodowy</p>
+                            <h3 class="employee-name">Ewa Szymańska</h3>
+                            <p class="employee-position">Kierownik działu spedycji</p>
                             <div class="employee-contact">
-                                <p><i class="fas fa-phone"></i> Telefon: <a href="tel:"></a></p>
-                                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:przemek@stanisz-transport.pl">przemek@stanisz-transport.pl</a></p>
-                                <p><i class="fas fa-map-marker-alt"></i> Dział: Spedycja międzynarodowa</p>
+                                <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+48123456789">123 456 789</a></p>
+                                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:ewa.szymanska@stanisz-transport.pl">ewa.szymanska@stanisz-transport.pl</a></p>
+                                <p><i class="fas fa-map-marker-alt"></i> Dział: Spedycja</p>
                             </div>
                         </div>
                     </div>
@@ -1760,12 +1763,12 @@
                     <!-- EMPLOYEE CARD 5 -->
                     <div class="employee-card animate-fade-in delay-4">
                         <div class="employee-info">
-                            <h3 class="employee-name">Monika</h3>
-                            <p class="employee-position">Spedytorka międzynarodowy</p>
+                            <h3 class="employee-name">Michał Dąbrowski</h3>
+                            <p class="employee-position">Kierownik działu IT</p>
                             <div class="employee-contact">
-                                <p><i class="fas fa-phone"></i> Telefon: <a href=""></a></p>
-                                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:monika@stanisz-transport.com">monika@stanisz-transport.com</a></p>
-                                <p><i class="fas fa-map-marker-alt"></i> Dział: Spedycja międzynarodowa</p>
+                                <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+48123456789">123 456 789</a></p>
+                                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:michal.dabrowski@stanisz-transport.pl">michal.dabrowski@stanisz-transport.pl</a></p>
+                                <p><i class="fas fa-map-marker-alt"></i> Dział: Technologie informatyczne</p>
                             </div>
                         </div>
                     </div>
@@ -1773,12 +1776,12 @@
                     <!-- EMPLOYEE CARD 6 -->
                     <div class="employee-card animate-fade-in delay-5">
                         <div class="employee-info">
-                            <h3 class="employee-name">Marta Żygadło</h3>
-                            <p class="employee-position">Pracownik Administracyjny</p>
+                            <h3 class="employee-name">Magdalena Wójcik</h3>
+                            <p class="employee-position">Kierownik działu HR</p>
                             <div class="employee-contact">
-                                <p><i class="fas fa-phone"></i> Telefon: <a href="tel:"></a></p>
-                                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:marta@stanisz-transport.pl">marta@stanisz-transport.pl</a></p>
-                                <p><i class="fas fa-map-marker-alt"></i> Dział: Zasoby ludzkie i Fakturowanie</p>
+                                <p><i class="fas fa-phone"></i> Telefon: <a href="tel:+48123456789">123 456 789</a></p>
+                                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:magdalena.wojcik@stanisz-transport.pl">magdalena.wojcik@stanisz-transport.pl</a></p>
+                                <p><i class="fas fa-map-marker-alt"></i> Dział: Zasoby ludzkie</p>
                             </div>
                         </div>
                     </div>
@@ -1794,9 +1797,20 @@
                         </div>
                         <div class="contact-card-content">
                             <h3>Adres</h3>
-                            <p>STANISZ TRANSPORT SP. Z O.O.<br>
-                            ul. Oławska 48<br>
+                            <p>PHU Jerzy Stanisz<br>
+                            ul. Ząbkowicka 22a<br>
                             57-100 Strzelin</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card animate-fade-in delay-1">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Telefony</h3>
+                            <p>500 175 331<br>
+                            (71) 39 35 726</p>
                         </div>
                     </div>
                     
